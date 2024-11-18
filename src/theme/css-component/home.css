@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* ======================================================== */
+.home_row_1 {
+  height: 100vh;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+
+}
+
+.nav_bar {
+  display: none;
+}
+
+/* .home_col_1 {
+  background-color: antiquewhite;
+} */
+
+.home_col_2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.home_row_2 {
+  position: relative;
+}
+
+.m_row2 {
+  display: none;
+}
+
+.row2 {
+  margin-top: 10%;
+}
+
+.home_col_3 {
+  margin-top: 5%;
+}
+
+.home_col_3_1 {
+  display: flex;
+  justify-content: center;
+}
+
+.home_col_3_2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: orange;
+
+}
+
+.home_col_3_2 h2 {
+  font-family: 'Dancing Script', cursive;
+}
+
+.home_col_3_2 h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 60px;
+}
+
+.home_col_3_2 p {
+  font-size: 30px;
+  color: white;
+  font-family: "Abel", sans-serif;
+}
+
+
+
+
+.home_col_4_1 {
+  display: flex;
+  justify-content: center;
+}
+
+.home_col_4_2 {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+  text-align: center;
+  color: orange;
+
+}
+
+.home_col_4_2_1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.home_col_4_2_1 h2 {
+  font-family: 'Dancing Script', cursive;
+}
+
+.home_col_4_2_1 h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 60px;
+}
+
+.home_col_4_2_2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home_col_4_2_2 div {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  align-content: space-between;
+
+}
+
+.home_col_4_2_2 div p:last-child {
+  color: orange;
+}
+
+.home_col_4_2_2 p {
+  font-size: 25px;
+  color: white;
+  font-family: "Abel", sans-serif;
+}
+
+.home_col_4_2_3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.home_col_4_2_2 div p:first-child {
+  transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+}
+
+.home_col_4_2_2 div p:first-child:hover {
+  text-decoration: underline;
+  color: orange;
+}
+
+
+
+/* ================================== */
+.home_btn {
+  --color: orange;
+  padding: 0.8em 1.7em;
+  background-color: transparent;
+  border-radius: .3em;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .5s;
+  font-weight: 400;
+  font-size: 17px;
+  border: 1px solid;
+  font-family: inherit;
+  text-transform: uppercase;
+  color: var(--color);
+  z-index: 1;
+  top: 3%;
+}
+
+.home_btn::before,
+.home_btn::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: var(--color);
+  transition: 1s ease;
+}
+
+.home_btn::before {
+  top: -1em;
+  left: -1em;
+}
+
+.home_btn::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+}
+
+.home_btn:hover::before,
+.home_btn:hover::after {
+  height: 410px;
+  width: 410px;
+}
+
+.home_btn:hover {
+  color: rgb(255, 255, 255);
+}
+
+.home_btn:active {
+  filter: brightness(.8);
+}
+
+/* ==================================== */
+.home_col3_3 {
+  height: 50vh;
+  margin-top: 3%;
+  color: black;
+}
+
+.home_col1_3 div h1 {
+  font-size: 25px;
+  /* color: white; */
+  font-family: "Abel", sans-serif;
+}
+
+.home_col1_3 div p {
+  font-size: 50px;
+  font-family: 'Dancing Script', cursive;
+  color: orange;
+}
+
+.home_col1_3 div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.home_col1_3 div div {
+  height: 7vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
+}
+
+.home_col3_1 div h1 {
+  font-size: 25px;
+  /* color: white; */
+  font-family: "Abel", sans-serif;
+}
+
+.home_col3_1 div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+}
+
+.home_col3_1 div h1:hover {
+  color: orange;
+}
+
+.row2 {
+  margin-top: 17%;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================PHONE VIEW ====================================================================== */
+
+@media(max-width:320px) {
+  .home_row_1 {
+    margin-top: 10%;
+  }
+
+  .nav_bar {
+    display: block;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .home_col_3_2 h1 {
+    font-size: 20px;
+  }
+
+  .home_col_3_2 p {
+    font-size: 10px;
+  }
+
+  .home_col_3_2 h2 {
+    font-size: 15px;
+  }
+
+  .home_btn {
+    font-weight: 400;
+    font-size: 10px;
+
+  }
+
+  .w_row2 {
+    display: none;
+  }
+
+  .m_row2 {
+    display: block;
+  }
+
+  .row2 {
+    margin-top: 27%;
+  }
+
+  .home_col_4_2_1 h2 {
+    font-size: 20px;
+  }
+
+  .home_col_4_2 {
+    margin-top: 3%;
+  }
+
+  .home_col_4_2_1 h1 {
+    font-size: 30px;
+  }
+
+
+  .home_col_4_2_2 div {
+    width: 100%;
+  }
+
+  .home_col_4_2_2 p {
+    font-size: 15px;
+  }
+
+  /* ======================================================= */
+
+  .home_col3_3 {
+    margin-top: 15%;
+  }
+
+  .home_col3_1 {
+    height: 50vh;
+    background-color: black;
+  }
+
+  .home_col3_1 div h1 {
+    font-size: 15px;
+  }
+
+  .home_col3_1 div {
+    width: 70%;
+  }
+
+  .home_col1_3 {
+    margin-top: 25%;
+    margin-bottom: 10%;
+  }
+
+  .home_col1_3 div h1 {
+    font-size: 15px;
+
+  }
+
+  .home_col1_3 div p {
+    font-size: 30px;
+  }
+
+  .home_col1_3 div {
+    width: 70%;
+    height: 100%;
+
+  }
+
+  .home_col1_3 div div {
+    height: 7vh;
+    width: 100%;
+
+  }
+
+
+}

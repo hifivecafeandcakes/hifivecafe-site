@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.BTB_cart_row1 {
+    height: 10vh;
+
+}
+
+.BTB_cart_row2 {
+    height: 100vh;
+}
+
+.BTB_cart_row12 div {
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-5{
+    padding: 5px !important;
+}
+
+.BTB_cart_row12 div h2 {
+
+    text-align: center;
+    color: white;
+    font-family: "Abel", sans-serif;
+    font-size: 150%;
+    
+
+
+}
+
+.BTB_cart_row2_1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+
+.BTB_cart_row2_1 h2 {
+    color: white;
+}
+
+
+/* ======================== */
+.BTB_cart_row2_1 {
+    display: flex;
+    justify-content: space-around;
+}
+
+h4 {
+    color: orange;
+}
+
+.BTB_cart_row2_1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* ============================= */
+
+.btn_select {
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    font-family: "Abel", sans-serif;
+}
+.btn_select select{
+    color: orange;
+    background-color: black;
+    width: 50%;
+    padding: 2%;
+    font-family: "Abel", sans-serif;
+}
+
+.btn_select>input {
+    width: 4%;
+    font-family: "Abel", sans-serif;
+}
+
+/* ================================================= */
+.BTB_cart_row2_3 {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.btb_cart_col1 h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 300%;
+
+}
+
+.BTB_cart_row2_2 {
+    display: flex;
+    justify-content: center;
+}
+
+.BTB_cart_row2_2_1 div {
+    font-family: "Abel", sans-serif;
+    width: 100%;
+}
+.BTB_cart_row2_2_1 div h4{
+    font-family: "Abel", sans-serif;
+}
+
+.BTB_cart_row2_2_1 {
+    display: flex;
+    font-family: "Abel", sans-serif;
+
+}
+
+
+
+.BTB_cart_row2_2_3{
+    width: 100%;
+    display: flex;
+}
+
+
+.inp{
+    padding:3% ;
+}
+
+
+
+/* ================================== */
+
+.BTB_cart_row2_1_1{
+    width: 60%;
+    height: 60%;
+}
+.BTB_cart_row2_1_1 img{
+    width: 100%;
+    height: 100%;
+}
+.BTB_cart_row2_1_2{
+    width: 60%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.BTB_cart_row2_1_2 img{
+    width: 20%;
+    height: 60%;
+    
+}
+
+/* =============================================================== */
+
+@media(max-width:320px) {
+    .btb_cart_col1 h1 {
+        font-size: 150%;
+    }
+
+    .BTB_cart_row12 div h2 {
+        font-size: 10px;
+    }
+
+    .BTB_cart_row2_2_3 {
+        width: 100%;
+        display: flex;
+       flex-direction: column;    
+    }
+    .BTB_cart_row2_2_3 div div textarea {
+        width: 88vw;
+    }
+    
+    
+    .BTB_cart_row2_2_3_2 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .BTB_cart_row2_2_3_2 div input {
+       padding: 1%;
+       background-color: aqua;
+    }
+    /* .btnselect>select {
+        width: 50%;
+        text-align: center;
+    } */
+    .inp{
+        width: 98%;
+
+    }
+    
+    .btnselect {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: aqua;
+        
+    }
+   
+    
+}

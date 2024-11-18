@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+
+.cake_cart_row1 {
+    height: 10vh;
+}
+
+.cake_cart_row2 {
+    height: 100vh;
+}
+
+.cake_cart_row12 div {
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cake_cart_row12 div h2 {
+
+    text-align: center;
+    color: white;
+    font-family: 'Philosopher', sans-serif;
+
+
+}
+
+.cake_cart_row2_1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+
+
+.cake_cart_row2_1 h2 {
+    color: white;
+}
+
+/* ======================== */
+.cake_cart_row2_1 {
+    display: flex;
+    justify-content: space-around;
+}
+
+h4 {
+    color: orange;
+}
+
+.cake_cart_row2_1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* ============================= */
+.select>select {
+    width: 50%;
+    color: orange;
+    background-color: black;
+    padding: 3%;
+
+}
+
+.select {
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.select>input {
+    width: 4%;
+}
+
+/* ================================================= */
+.cake_cart_row2_3 {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.cake_cart_col1 h1 {
+    font-family: 'Black Ops One', system-ui;
+    font-size: 400%;
+}
+
+.cake_cart_row2_2 {
+    display: flex;
+    justify-content: center;
+}
+
+.cake_cart_row2_2_1 div {
+
+    width: 100%;
+}
+
+.cake_cart_row2_2_1 {
+    display: flex;
+
+}
+
+.cake_cart_row2_2_2 {
+    display: flex;
+}
+
+.cake_cart_row2_2_2 div {
+
+    width: 100%;
+}
+
+.cake_cart_row2_2_3 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cake_cart_row2_2_3_2 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.inp {
+    padding: 5%;
+}
+
+.cake_cart_row2_1 img {
+    width: 60%;
+    height: 80%;
+    border-radius: 10%;
+}
+
+.cake_cart_row2_2_1 div input{
+   width: 30%;
+}
+/* =============================================================== */
+
+@media(max-width:320px) {
+    .cake_cart_col1 h1 {
+        font-size: 150%;
+    }
+
+    .cake_cart_row2_1 {
+        width: 100vw;
+    }
+
+    .cake_cart_row2_1 img {
+        width: 80%;
+        height: 80%;
+        border-radius: 10%;
+    }
+    .cake_cart_row2_2_1 {
+        display: flex;
+        flex-direction: column;
+    
+    }
+    .cake_cart_row2_2_1 div input{
+        width: 100%;
+    }
+    .cake_cart_row2_2_2{
+        flex-direction: column;
+    }
+    .cake_cart_row2_2_3{
+        flex-direction: column;
+    }
+
+
+}

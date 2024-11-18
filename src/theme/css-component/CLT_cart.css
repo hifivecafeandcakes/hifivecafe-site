@@ -1,0 +1,118 @@
+.CLT_cart_row1 {
+    height: 8vh;
+}
+
+.CLT_cart_row2 {
+    top: 0px;
+    margin: 0px;
+    padding: 0px;
+    height: 80vh;
+}
+
+.CLT_cart_row2_1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.CLT_cart_row2_1 img {
+    width: 80%;
+    height: 70%;
+
+}
+
+.CLT_cart_row2_1 h2 {
+    color: white;
+    font-size: 25px;
+    font-family: "Abel", sans-serif;
+    margin-top: 1%;
+}
+
+/* ======================== */
+.CLT_cart_row2_2 {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.CLT_cart_row2_2 .CLT_cart_row2_2_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%
+        /* align-items: center; */
+}
+
+
+.CLT_cart_row2_3 {
+    /* margin-top: 4%; */
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+label {
+    color: orange;
+    font-size: larger;
+}
+
+.CLT_cart_row2_2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-control {
+    padding: 5%;
+}
+
+
+label.required:after {
+    content: '*';
+    color: green;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+.success {
+    color: green;
+}
+
+.error, .danger {
+    color: red;
+}
+
+.status_text {
+    font-family: "Bebas Neue", sans-serif;
+}
+
+
+/* =========================================================================== */
+@media(max-width:320px) {
+    .form-control {
+        padding: 2%;
+    }
+
+    .CLT_cart_row2_3 {
+        display: flex;
+        justify-content: center;
+    }
+
+}

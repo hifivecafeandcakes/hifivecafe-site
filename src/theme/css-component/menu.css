@@ -1,0 +1,483 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.menu_cart_col1_1 {
+    height: 5vh;
+    /* background-color: aqua; */
+}
+
+.menu_cart_col1_2 {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+.menu_cart_col1_2 h1 {
+    font-size: 70px;
+    font-family: "Bebas Neue", sans-serif;
+    color: orange;
+}
+
+.cart_container table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.cart_container table thead td {
+    border: 1px solid orange;
+    font-weight: 700;
+    font-size: 25px;
+    color: orange;
+    /* border: none; */
+    padding: 6px 0;
+}
+
+.cart_container table td {
+    border: 1px solid orange;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 1%;
+    color: white;
+    font-family: "Abel", sans-serif;
+}
+
+.cart_container table tbody img {
+    width: 50%;
+    object-fit: cover;
+}
+
+.cart_bottom {
+    height: 50vh;
+    margin-top: 2%;
+}
+
+.cart_bottom_2 {
+    border: 1px solid orange;
+    height: 30vh;
+}
+
+.cart_bottom_2_1 {
+    font-size: 30px;
+    padding: 2%;
+    color: orange;
+    border-bottom: 1px solid orange;
+    font-family: "Abel", sans-serif;
+
+}
+
+.cart_bottom_2_2 {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.cart_bottom_2_2 div {
+
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.cartItem {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #1B1212;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    margin-bottom: 2vh;
+}
+
+.cartItem div {
+    display: flex;
+}
+
+.cartItem_icon {
+    color: white;
+    position: relative;
+    left: 70%;
+
+}
+
+.itemDesc {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 6vh;
+    padding-right: 5vh;
+}
+
+.divImg {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cartItemName {
+    font-weight: bold;
+    color: #FAC898;
+    display: inline;
+    text-align: left;
+    font-family: "Abel", sans-serif;
+}
+
+.cartItemPrice {
+    margin-top: 0.7vh;
+    margin-bottom: 0.7vh;
+    margin-left: -1.8vh;
+    padding-right: 10%;
+    color: white;
+    font-size: 2.6vh;
+    font-family: "Abel", sans-serif;
+}
+
+.cartItemDesc {
+    font-family: "Abel", sans-serif;
+    color: white;
+    margin-left: -2vh;
+    font-size: 2.6vh;
+}
+
+
+.cartItemImg {
+    width: 80%;
+    border-radius: 1.5vh;
+}
+
+.cartBTN {
+    margin-top: -2.5vh;
+}
+
+.cartQTY {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: -2vh;
+}
+
+.cartCount {
+    width: 5vh;
+    height: 4vh;
+    border-radius: 1vh;
+    text-align: center;
+    background-color: #FFFCBA;
+}
+
+.minus {
+    width: 3.5vh;
+    margin-right: 0.5vh;
+}
+
+.plus {
+    width: 3.5vh;
+    margin-left: 0.5vh;
+}
+
+#total {
+    margin-left: 40%;
+    margin-right: 5%;
+}
+
+.itemCard {
+    background-color: #FAC898;
+}
+
+.cartTotel {
+    text-align: center;
+    font-family: "Abel", sans-serif;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.itemList {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -3.5vh;
+    padding-bottom: 2%;
+}
+
+.itemList1 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -2.5vh;
+}
+
+.item {
+    margin-left: 4vh;
+    /* font-family: Caveat; */
+    font-family: "Abel", sans-serif;
+    font-size: 2.8vh;
+    letter-spacing: 0.4vh;
+}
+
+.subTotal {
+    margin-left: 4vh;
+    /* font-family: Caveat; */
+    font-family: "Abel", sans-serif;
+    font-size: 2.8vh;
+    letter-spacing: 0.4vh;
+    font-weight: bold;
+}
+
+.itemPrice {
+    margin-right: 5vh;
+    border-left: solid 1px #FAC898;
+    padding-left: 4vh;
+    /* font-family: Caveat; */
+    font-family: "Abel", sans-serif;
+    font-size: 2.8vh;
+    font-weight: bolder;
+}
+
+.itemQty {
+    margin-left: 2vh;
+    /* font-family: Caveat; */
+    font-family: "Abel", sans-serif;
+    font-size: 2.8vh;
+    font-weight: lighter;
+}
+
+.itemQty1 {
+    margin-left: 2vh;
+    /* font-family: Caveat; */
+    font-family: "Abel", sans-serif;
+    font-size: 2.8vh;
+    font-weight: bolder;
+}
+
+.cost {
+    margin-bottom: 2vh;
+}
+
+
+
+.order {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cbutton {
+    height: 3em;
+    padding: 2%;
+    /* border-radius: 30em; */
+    font-size: 15px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 1px 1px 2px #c5c5c5,
+        -1px -1px 12px #ffffff;
+}
+
+
+
+/* ======================================================================== */
+
+@media(max-width:320px) {
+    .cartItem_icon {
+        color: white;
+        position: relative;
+        left: 30%;
+    }
+
+    .menu_cart_col1_1 {
+        height: 10vh;
+        /* background-color: aqua; */
+    }
+
+    .menu_cart_col1_2 h1 {
+        font-size: 30px;
+    }
+
+    .cart_container table {
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .cart_container table thead td {
+
+        font-weight: 700;
+        font-size: 10px;
+        padding: 2px 0;
+    }
+
+    .cart_container table td {
+
+        font-size: 10px;
+    }
+
+    .cart_container table td h5 {
+
+        font-size: 10px;
+    }
+
+    .cart_container table tbody img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .cart_bottom {
+        height: 20vh;
+        margin-top: 2%;
+        width: 50vw;
+        margin-left: 47%;
+    }
+
+    .cart_bottom_2 {
+        border: 1px solid orange;
+        height: 100%;
+    }
+
+    .cart_bottom_2_1 {
+        font-size: 10px;
+    }
+
+    .cart_bottom_2_2 {
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: 5%;
+    }
+
+    .cart_bottom_2_2 div {
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+
+    }
+
+    .cart_bottom_2_2 div h3 {
+        font-size: 10px;
+    }
+
+    .cartItem {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 2vh;
+        padding-right: 1.5vh;
+    }
+
+    .cartItemName {
+        font-size: 3vh;
+        font-weight: bold;
+        margin-bottom: 0;
+        color: #fcb713;
+    }
+
+    .cartItemPrice {
+        font-size: 2.5vh;
+        margin-top: 0.7vh;
+        margin-bottom: 0.7vh;
+
+        color: white;
+    }
+
+    .cartItemDesc {
+        font-size: 2.4vh;
+        color: white;
+        margin-left: -2vh;
+    }
+
+    .cartItemImg {
+        width: 120%;
+        border-radius: 0.8vh;
+    }
+
+    #total {
+        margin-left: 4%;
+    }
+
+    .item {
+        margin-left: 4vh;
+        /* font-family: Caveat; */
+        font-family: Chakra Petch;
+        font-size: 2.2vh;
+        letter-spacing: 0.4vh;
+    }
+
+    .itemPrice {
+        margin-right: 5vh;
+        border-left: solid 1px #FAC898;
+        padding-left: 4vh;
+        /* font-family: Caveat; */
+        font-family: Chakra Petch;
+        font-size: 2.2vh;
+        font-weight: bolder;
+    }
+
+    .itemQty {
+        margin-left: 2vh;
+        /* font-family: Caveat; */
+        font-family: Chakra Petch;
+        font-size: 2.2vh;
+        font-weight: lighter;
+    }
+
+    .itemQty1 {
+        margin-left: 2vh;
+        /* font-family: Caveat; */
+        font-family: Chakra Petch;
+        font-size: 2.2vh;
+        font-weight: bolder;
+    }
+
+    .cartCount {
+        width: 5vh;
+        height: 3vh;
+        border-radius: 1vh;
+        text-align: center;
+        background-color: #FFFCBA;
+        font-size: 1.8vh;
+    }
+
+    .minus {
+        width: 2.5vh;
+        margin-right: 0.5vh;
+    }
+
+    .plus {
+        width: 2.5vh;
+        margin-left: 0.5vh;
+    }
+
+    .itemDesc {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 2vh;
+        padding-right: 2vh;
+    }
+
+}

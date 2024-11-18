@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=The+Nautigal&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+.full {
+    height: 100vh;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://i.pinimg.com/originals/e1/2a/8e/e12a8ea15dc3cf40777ea8d7b01142d2.jpg');
+    background-size: cover;
+
+
+}
+
+.loginbox {
+    width: 25vw;
+    height: 80vh;
+    position: relative;
+    border: 0px solid;
+    /* overflow: hidden; */
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.862);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.buttonbox {
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0px 0px 20px 9px #ff61241f;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 30px;
+
+}
+
+.l_togglebtn {
+    padding: 10px 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    position: relative;
+    font-family: 'Lora', serif;
+    outline: none;
+
+}
+
+.logbtn {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border-radius: 30px;
+}
+
+.regbtn {
+    top: 0;
+    right: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to left, #ff105f, #ffad06);
+    border-radius: 30px;
+}
+
+/* .forminput {
+
+    top: 150px;
+    position: absolute;
+    margin-left: 20%;
+    width: 280px;
+    height: 200px;
+    font-family: 'Lora', serif;
+} */
+
+/* .regforminput {
+    top: 120px;
+    margin-left: 5%;
+    position: absolute;
+    width: 280px;
+    font-family: 'Lora', serif;
+} */
+
+.input {
+    width: 97%;
+    margin: 5px;
+    padding: 6%;
+    border: 1px solid white;
+    border-radius: 25px;
+    font-family: 'Lora', serif;
+
+}
+
+.input2 {
+    width: 97%;
+    margin: 5px;
+    padding: 6%;
+    border: 1px solid white;
+    border-radius: 25px;
+    font-family: 'Lora', serif;
+
+}
+
+.submitbtn {
+    top: 40px;
+    position: relative;
+    width: 35%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    font-weight: bolder;
+}
+
+.regsubmitbtn {
+    top: 30px;
+    position: relative;
+    width: 40%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    font-weight: bolder;
+}
+
+.link {
+    text-decoration: none;
+}
+
+#log {
+    left: 15px;
+}
+
+#reg {
+    left: 15px;
+}
+
+
+/* =============================================================================================== *
+
+
+
+
+
+
+
+/* ====================================
+ */
+@media (max-width: 1600px) {
+
+    .forminput {
+        margin-left: 10%;
+    }
+
+    .regforminput {
+        margin-left: 10%;
+    }
+
+
+}
+
+@media (max-width: 1350px) {
+
+    .loginbox {
+        width: 30vw;
+    }
+
+    .forminput {
+        margin-left: 10%;
+    }
+
+    .regforminput {
+        margin-left: 10%;
+    }
+
+}
+
+@media (max-width: 1200px) {
+
+    .loginbox {
+        width: 30vw;
+    }
+
+    .forminput {
+        margin-left: 10%;
+    }
+
+    .regforminput {
+        margin-left: 10%;
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    .loginbox {
+        width: 40vw;
+    }
+
+    .forminput {
+        margin-left: 15%;
+    }
+
+    .regforminput {
+        margin-left: 15%;
+    }
+
+}
+
+@media (max-width: 1000px) {
+
+    .loginbox {
+        width: 50vw;
+        height: 80%;
+    }
+
+    .forminput {
+        margin-left: 18%;
+    }
+
+    .regforminput {
+        margin-left: 18%;
+        top: 80px;
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    .loginbox {
+        width: 50vw;
+        height: 90vh;
+    }
+
+    .forminput {
+        margin-left: 15%;
+    }
+
+    .regforminput {
+        margin-left: 15%;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .loginbox {
+        width: 60vw;
+        height: 80%;
+    }
+
+    .forminput {
+        margin-left: 15%;
+
+    }
+
+    .regforminput {
+        margin-left: 15%;
+        top: 80px;
+    }
+
+}
+
+@media (max-width: 550px) {
+
+    .loginbox {
+        width: 75%;
+        height: 80%;
+    }
+
+    .forminput {
+        margin-left: 13%;
+        top: 150px;
+    }
+
+    .regforminput {
+        margin-left: 13%;
+        top: 80px;
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    .loginbox {
+        width: 90%;
+
+    }
+
+    .loginbox {
+        width: 100%;
+        height: 80%;
+    }
+
+
+    .forminput {
+        margin-left: 8%;
+        top: 100px;
+    }
+
+    .regforminput {
+        margin-left: 8%;
+        top: 80px;
+    }
+
+}
+
+@media (max-width: 320px) {
+
+
+    .full {
+        width: 100vw;
+        height: 100vh;
+
+    }
+
+    .loginbox {
+        width: 80vw;
+        height: 60%;
+
+    }
+
+    .buttonbox {
+        width: 200px;
+    }
+
+    .l_togglebtn {
+        padding: 5px 5px;
+    }
+
+    .forminput {
+
+        margin-left: -6%;
+        top: 30%;
+        width: 100%;
+        height: 75%;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-evenly; */
+        align-items: center;
+
+    }
+
+    .input {
+        width: 80%;
+        height: 15%;
+        padding: 2%;
+        border: 1px solid white;
+    }
+
+    .input2 {
+        
+        padding: 2%;
+        width: 100%;
+        height: 10%;
+        top: 0%;
+        margin-left: 0%;
+       
+        border: 1px solid white;
+
+    }
+
+    .submitbtn {
+        margin-top: 0%;
+        margin-left: 30%;
+        padding: 2%;
+    }
+
+    .regforminput {
+        margin-left: 7%;
+        top: 90px;
+        height: 100%;
+        width: 80%;
+    }
+
+    .regsubmitbtn {
+        margin-left: 25%;
+        margin-top: -6%;
+        padding: 2%;
+        width: 40%;
+    }
+
+}

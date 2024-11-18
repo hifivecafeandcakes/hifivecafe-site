@@ -1,0 +1,1 @@
+export const vegmenus = ["Veg Menu-1","Veg Menu-2","Veg Menu-3","Veg Menu-4"]
