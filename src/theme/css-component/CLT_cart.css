@@ -68,6 +68,12 @@ label {
     padding: 5%;
 }
 
+.form-control {
+    background-color: black;
+    color: orange !important;
+    width: 100% !important;
+}
+
 
 label.required:after {
     content: '*';

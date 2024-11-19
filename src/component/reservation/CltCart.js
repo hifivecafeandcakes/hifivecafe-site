@@ -51,6 +51,8 @@ const CltCart = () => {
     const [cakeMsg, setCakeMsg] = useState('');
     const [comment, setComment] = useState('');
 
+    const [total, setTotal] = useState(0);
+    const [price, setPrice] = useState(0);
 
     const [menus, setMenus] = useState([]);
     const [vegMenus, setVegMenus] = useState([]);
@@ -133,6 +135,8 @@ const CltCart = () => {
                     } else {
                         setCakes([...cakesArr]);
                     }
+                    setTotal(parseFloat(reservation_subcategory[0].sub_cat_price_range))
+                    setPrice(parseFloat(reservation_subcategory[0].sub_cat_price_range))
                 }
                 else {
                     console.log("No data found.");
@@ -218,6 +222,9 @@ const CltCart = () => {
         formData.append("cake", cake);
         formData.append("cake_msg", cakeMsg);
         formData.append("remarks", comment);
+
+        formData.append("total", total);
+        formData.append("price", price);
 
         try {
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/website/reservation/booking/create`, formData)
@@ -323,20 +330,20 @@ const CltCart = () => {
                                     // <MenuSlider menuImages={menuImages} />
                                     <CustomSubSlider images={mainImages} />
                                     : ""}
-                                <h2>CODE : {subcatres.sub_tilte}</h2>
-                                <h2>&#8377;&nbsp;{subcatres.sub_cat_price_range}</h2>
+                                <h3 className='orange'>CODE : {subcatres.sub_tilte}</h3>
+                                <h2 className='green'>₹{price}</h2>
                             </div>
                             <div className="col-lg-4 CLT_cart_row2_2 ">
                                 <div className='CLT_cart_row2_2_div'>
                                     <Status msg={status.msg} type={status.type} toggle={status.toggle} onClose={() => setStatus(empStatus)} />
                                     <div className="row p-2">
                                         <div className='col-lg-6'>
-                                            <label className='required'>Date</label>
+                                            <label className='required'>Date <span className='green'>*</span></label>
                                             <input type="date" min={minDate} className="required form-control p-2" onChange={(e) => { setDateError(false); setDate(e.target.value) }} />
                                             {(dateError) ? <span className='error'>This is field required</span> : ""}
                                         </div>
                                         <div className='col-lg-6'>
-                                            <label className='required'>Time</label>
+                                            <label className='required'>Time <span className='green'>*</span></label>
                                             <input type="time" min={minTime} className="form-control p-2" onChange={(e) => { setTimeError(false); setTime(e.target.value) }} />
                                             {(timeError) ? <span className='error'>This is field required</span> : ""}
                                         </div>

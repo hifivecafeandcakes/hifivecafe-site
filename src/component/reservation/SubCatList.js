@@ -53,6 +53,12 @@ const SubCatList = () => {
     const res_cat_id = localStorage.getItem('res_cat_id');
     const res_id = localStorage.getItem('res_id');
 
+    let RedirectURL = '/clt_cart';
+    if (res_id == 2) {
+        RedirectURL = '/btb_cart';
+    }else{
+        RedirectURL = '/tb_cart';
+    }
 
     // ==========================
 
@@ -148,10 +154,10 @@ const SubCatList = () => {
                                     {
                                         res_scat_list?.map((item, i) => (
                                             <div className='col-lg-3 sub_cat_list_2 ' key={i}>
-                                                {/* <a  href="/clt_cart">
-                                                    
-                                                </a> */}
-                                                <Link onClick={() => route_cat(item.reser_sub_id)} to="/clt_cart"><img src={item.sub_img} alt={`Image ${i}`} /> </Link>
+
+                                                <Link onClick={() => route_cat(item.reser_sub_id)} to={RedirectURL}><img src={item.sub_img} alt={`Image ${i}`} /> </Link>
+
+
                                                 <div>
                                                     <h5>{item.sub_tilte}</h5>
                                                     <h5>{item.sub_cat_price_range}</h5>
