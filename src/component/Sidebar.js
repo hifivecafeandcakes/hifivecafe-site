@@ -54,14 +54,14 @@ const Sidebar = () => {
                         <div className='sidebar_two'>
                             <ul >
 
-                                <div data-aos='fade-left'><a href="/" >HOME</a></div>
-                                <div data-aos='fade-left'><a href="/galary">GALLERY</a></div>
-                                <div data-aos='fade-left'><a href="/reservation">RESERVATION</a></div>
+                                <div data-aos='fade-left'><Link to="/">HOME</Link></div>
+                                <div data-aos='fade-left'><Link to="/galary">GALLERY</Link></div>
+                                <div data-aos='fade-left'><Link to="/reservation">RESERVATION</Link></div>
                                 <div data-aos='fade-left'><a onClick={upcoming} href="#"> CAKE</a></div>
                                 <div data-aos='fade-left'><a onClick={upcoming} href="#">MENU</a></div>
                                 <div data-aos='fade-left'><a onClick={upcoming} href="#">CONTACT US</a></div>
                                 <div data-aos='fade-left' style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <Link to="/cart" href="#"><FontAwesomeIcon icon={faCartShopping} /></Link>
+                                    <Link to="/order" href="#"><FontAwesomeIcon icon={faCartShopping} /></Link>
                                     {(userid) ?
                                         <><h5 className='green'>Hi, {username}</h5> <Link to="/" onClick={logout}>Logout</Link></> :
                                         <Link to="/login">LOGIN</Link>

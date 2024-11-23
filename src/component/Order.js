@@ -117,7 +117,7 @@ const Order = () => {
                                                                     <span><div className="cart-label1">Guest:</div> &nbsp;{data.booking_guest_name}</span>
                                                                     <span><div className="cart-label1">Total People:</div> &nbsp;{data.booking_total_people}</span>
                                                                     <span><div className="cart-label1">Food Type:</div> {(data.booking_veg_or_nonveg == "Veg") ? "Veg" : "Non-Veg"} </span>
-                                                                    <span><div className="cart-label1">Additional Information:</div>{(data.remarks) ? data.remarks : "-"}</span>
+                                                                    <span><div className="cart-label1">Additional Information:</div>{(data.comment) ? data.comment : "-"}</span>
                                                                     {/* </div>
                                                                     <div className="ps-2 "> */}
                                                                     <span><div className="cart-label1">Cake:</div>&nbsp;{(data.booking_cake == "") ? "-" : data.booking_cake}</span>

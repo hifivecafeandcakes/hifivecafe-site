@@ -27,7 +27,7 @@ export default function Checkout() {
 
     const location = useLocation();
 
-    const { id, booking_id, user, reservationSubCategory } = location.state || {}; // Access the passed data
+    const { id, booking_id, user, totalPrice } = location.state || {}; // Access the passed data
 
     console.log(id);
     const handlePayment = async (params) => {
@@ -35,7 +35,7 @@ export default function Checkout() {
         const options = {
             key: "rzp_test_OUh154ABfed3y0", // Enter the Key ID generated from the Dashboard
             // DDhNhOXW3EZ5MKexGupUdz9j
-            amount: reservationSubCategory.sub_cat_price_range, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            amount: totalPrice, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency: "INR",
             name: "Hifive Cafe",
             description: "Test Transaction",

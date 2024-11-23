@@ -95,7 +95,7 @@ const Login = () => {
     formData.append('name', name);
     formData.append('phone', phone);
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/register`, formData)
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/website/register`, formData)
       console.log(res);
       if (res?.data?.Response?.success == '1') {
         localStorage.setItem('user_id', res?.data?.Response?.result[0].user_id);
@@ -158,7 +158,7 @@ const Login = () => {
     formData.append('email', email);
     formData.append('password', password);
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/signin`, formData)
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/website/signin`, formData)
       console.log(res);
       if (res?.data?.Response?.success == '1') {
         localStorage.setItem('user_id', res?.data?.Response?.result[0].user_id);
@@ -226,19 +226,19 @@ const Login = () => {
                 ) : (
                   <form id='reg' className='regforminput'>
 
-                    <input type="text" className='input2' placeholder='Name' data-aos='fade-down' maxLength={15} value={name}
+                    <input type="text" className='input2' autoComplete='off' placeholder='Name' data-aos='fade-down' maxLength={15} value={name}
                       onChange={(e) => { setNameError(false); setName(e.target.value) }} /><br></br>
                     {(nameError) ? <span className='error ps-3'>This is field required</span> : ""}
 
-                    <input type="number" className='input2' placeholder='Phone no' data-aos='fade-down' value={phone}
+                    <input type="number" className='input2' autoComplete='off' placeholder='Phone no' data-aos='fade-down' value={phone}
                       onChange={(e) => { setPhoneError(false); setPhone(e.target.value) }} />
                     {(phoneError) ? <span className='error ps-3'>This is field required</span> : ""}
 
-                    <input type="email" className='input2' placeholder='Email id' data-aos='fade-down' maxLength={50} value={emailId}
+                    <input type="email" className='input2' autoComplete='off' placeholder='Email id' data-aos='fade-down' maxLength={50} value={emailId}
                       onChange={(e) => { setEmailIdError(false); setEmailId(e.target.value) }} />
                     {(emailIdError) ? <span className='error ps-3'>This is field required</span> : ""}
 
-                    <input type="password" className='input2' placeholder='password' minLength={6} maxLength={10} value={password1}
+                    <input type="password" className='input2' autoComplete='off' placeholder='password' minLength={6} maxLength={10} value={password1}
                       data-aos='fade-down' onChange={(e) => { setPassword1Error(false); setPassword1(e.target.value) }} />
                     {(password1Error) ? <span className='error ps-3'>This is field required</span> : ""}
 

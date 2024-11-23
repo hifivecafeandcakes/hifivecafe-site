@@ -233,7 +233,7 @@ const CltCart = () => {
                 let results = res?.data?.Response?.RazorpayOrder;
                 results.booking_id = res?.data?.Response?.ReservationId;
                 results.user = res?.data?.Response?.user[0];
-                results.reservationSubCategory = res?.data?.Response?.reservationSubCategory[0];
+                results.totalPrice = total;
                 setStatus({ msg: "Booked Successfully!", type: "success", toggle: "open" });
                 navigate('/checkout', { state: results });
                 // window.location.href = '/reservation';

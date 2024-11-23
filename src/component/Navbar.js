@@ -42,18 +42,18 @@ const Navbar = () => {
         <>
             <div className='navbar container-fluid'>
                 <div className='logo'>
-                    <a href="/"> <img src={LOGO} width={"35px"} /></a>
+                <Link to="/"> <img src={LOGO} width={"35px"} /></Link>
 
                 </div>
                 <ul className='hero'>
 
-                    <li><a href="/">HOME</a></li>
-                    <li><a href="/galary">GALLERY</a></li>
-                    <li><a href="/reservation">RESERVATION</a></li>
-                    <li><a onClick={upcoming} href="#"> CAKE</a></li>
-                    <li><a onClick={upcoming} href="#">MENU</a></li>
-                    <li><a onClick={upcoming} href="#">CONTACT US</a></li>
-                    <li><a onClick={upcoming} href="#"><FontAwesomeIcon icon={faCartShopping} /></a></li>
+                    <li><Link to="/">HOME</Link></li>
+                    <li><Link to="/galary">GALLERY</Link></li>
+                    <li><Link to="/reservation">RESERVATION</Link></li>
+                    <li><Link onClick={upcoming} href="#"> CAKE</Link></li>
+                    <li><Link onClick={upcoming} href="#">MENU</Link></li>
+                    <li><Link onClick={upcoming} href="#">CONTACT US</Link></li>
+                    <li><Link onClick={upcoming} href="#"><FontAwesomeIcon icon={faCartShopping} /></Link></li>
 
 
                 </ul>
@@ -63,15 +63,15 @@ const Navbar = () => {
                         <h4 className='green'>Hi, {username}</h4>
                         <Link to="/" className='action_btn' onClick={logout}>Logout</Link>
                     </> :
-                    <a href="/login"><button className='action_btn'> Login</button></a>}
+                    <Link href="/login"><button className='action_btn'> Login</button></Link>}
 
 
 
                 <div className="toggle_btn" onClick={handleToggle}  >
 
 
-                    {isDropdownOpen ? <div style={{ display: 'flex', justifyContent: 'space-between ', width: '100%' }}><a href="/menu_cart" style={{ marginRight: '90%' }}><FontAwesomeIcon icon={faCartShopping} /></a> <FontAwesomeIcon icon={faTimes} color='orange' /></div>
-                        : <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}><a href="" style={{ marginRight: '90%', marginTop: '-12%' }}><FontAwesomeIcon icon={faCartShopping} /></a>  <FontAwesomeIcon icon={faBars} color='orange' /> </div>}
+                    {isDropdownOpen ? <div style={{ display: 'flex', justifyContent: 'space-between ', width: '100%' }}><Link href="/menu_cart" style={{ marginRight: '90%' }}><FontAwesomeIcon icon={faCartShopping} /></Link> <FontAwesomeIcon icon={faTimes} color='orange' /></div>
+                        : <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}><Link href="" style={{ marginRight: '90%', marginTop: '-12%' }}><FontAwesomeIcon icon={faCartShopping} /></Link>  <FontAwesomeIcon icon={faBars} color='orange' /> </div>}
 
 
 
@@ -83,14 +83,14 @@ const Navbar = () => {
 
 
             <div className={`dropdown_menu ${isDropdownOpen ? 'open' : ''}`}>
-                <li><a href="/">HOME</a></li>
-                <li><a href="/galary">GALLERY</a></li>
-                <li><a href="/reservation">RESERVATION</a></li>
-                <li><a onClick={upcoming} href="#"> CAKE</a></li>
-                <li><a onClick={upcoming} href="#">MENU</a></li>
+                <li><Link to="/">HOME</Link></li>
+                <li><Link to="/galary">GALLERY</Link></li>
+                <li><Link to="/reservation">RESERVATION</Link></li>
+                <li><Link onClick={upcoming} href="#"> CAKE</Link></li>
+                <li><Link onClick={upcoming} href="#">MENU</Link></li>
 
-                <li><a onClick={upcoming} href="#">CONTACT US</a></li>
-                <li ><a href="/login" className='button' > Login</a></li>
+                <li><Link onClick={upcoming} href="#">CONTACT US</Link></li>
+                <li ><Link href="/login" className='button' > Login</Link></li>
 
             </div>
 
