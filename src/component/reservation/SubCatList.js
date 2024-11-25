@@ -54,9 +54,13 @@ const SubCatList = () => {
     const res_id = localStorage.getItem('res_id');
 
     let RedirectURL = '/clt_cart';
-    if (res_id == 2) {
+    if (res_id == 1) {
+        RedirectURL = '/clt_cart';
+    }
+    else if (res_id == 2) {
         RedirectURL = '/btb_cart';
-    }else{
+    }
+    else{
         RedirectURL = '/tb_cart';
     }
 
