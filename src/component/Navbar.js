@@ -59,7 +59,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <div className="text-center"  style={{ display: 'flex', justifyContent: 'space-between', width: '30%' }}>
+                {/* <div className="text-center"  style={{ display: 'flex', justifyContent: 'space-between', width: '30%' }}> */}
 
                     <ul className='hero'>
                         <li><Link to="/">HOME</Link></li>
@@ -77,7 +77,7 @@ const Navbar = () => {
                         </> :
                         <Link href="/login"><button className='action_btn'> Login</button></Link>}
 
-                </div>
+                {/* </div> */}
                 <div className="toggle_btn" >
                     <Link to="/order" href="#"><FontAwesomeIcon icon={faCartShopping} /></Link>
                     <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }} className='ps-4 pt-2'>

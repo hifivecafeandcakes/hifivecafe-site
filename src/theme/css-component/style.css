@@ -97,7 +97,19 @@
       .mob-sidebar-content {
           height: 0vh;
           position: relative;
-          z-index: 2;
+          z-index: 1000;
+      }
+
+      .mob-sidebar-content.show {
+          height: 20vh;
+          z-index: 1000;
+          position: relative;
+          background-color: black;
+          display: block;
+        }
+
+      .mob-sidebar-content.hide {
+          height: 0vh;
       }
 
       .mob-sidebar_three {
