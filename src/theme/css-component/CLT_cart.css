@@ -1,44 +1,56 @@
 .CLT_cart_row1 {
-    height: 8vh;
+    margin-top: 60px;
+    height: auto;
 }
 
 .CLT_cart_row2 {
     top: 0px;
     margin: 0px;
     padding: 0px;
-    height: 80vh;
+    height: auto;
 }
 
 .CLT_cart_row2_1 {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .CLT_cart_row2_1 img {
     width: 80%;
     height: 70%;
+}
 
+.BTB_cart_row12 div h2 {
+    text-align: center;
+    color: white;
+    font-family: "Abel", sans-serif;
+    font-size: 80%;
+    margin-top: 0px;
 }
 
 .CLT_cart_row2_1 h2 {
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     font-family: "Abel", sans-serif;
-    margin-top: 1%;
+    margin-top: 5px;
+}
+
+input[type="date"],
+input[type="time"] {
+    background-color: grey;
 }
 
 /* ======================== */
 .CLT_cart_row2_2 {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-content: center;
 }
 
 .CLT_cart_row2_2 .CLT_cart_row2_2_div {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     width: 100%
@@ -48,14 +60,28 @@
 
 .CLT_cart_row2_3 {
     /* margin-top: 4%; */
-    display: flex;
-    justify-content: center;
-    align-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-content: center; */
 }
 
 label {
     color: orange;
-    font-size: larger;
+    font-size: 16px;
+}
+
+h4,
+h5,
+h6 {
+    color: orange;
+}
+
+.fs-22 {
+    font-size: 22px;
+}
+
+.fs-24 {
+    font-size: 22px;
 }
 
 .CLT_cart_row2_2 {
@@ -65,7 +91,7 @@ label {
 }
 
 .form-control {
-    padding: 5%;
+    padding: 3%;
 }
 
 .form-control {
@@ -73,6 +99,17 @@ label {
     color: orange !important;
     width: 100% !important;
 }
+
+
+.form-control:focus {
+    color: orange;
+    background-color: black;
+}
+
+.p-4 {
+    padding: 4px !important;
+}
+
 
 
 label.required:after {
@@ -86,7 +123,7 @@ label.required:after {
     color: white;
     font-weight: bold;
     float: right;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 20px;
     cursor: pointer;
     transition: 0.3s;
@@ -97,18 +134,24 @@ label.required:after {
     color: black;
 }
 
-.success {
-    color: green;
+.success,
+.green {
+    color: green !important;
 }
 
-.error, .danger {
+.error,
+.danger {
     color: red;
 }
 
 .status_text {
-    font-family: "Bebas Neue", sans-serif;
+    font-family: "Abel", sans-serif;
 }
 
+
+.candle-div .customslide .slide-content {
+    padding: 2px !important;
+}
 
 /* =========================================================================== */
 @media(max-width:320px) {
@@ -117,8 +160,30 @@ label.required:after {
     }
 
     .CLT_cart_row2_3 {
-        display: flex;
+        /* display: flex; */
         justify-content: center;
     }
 
+}
+
+@keyframes fadeInUpdate {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+.price-updated {
+    animation: fadeInUpdate 0.5s ease-out;
 }

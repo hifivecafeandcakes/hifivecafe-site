@@ -89,9 +89,13 @@ button {
 
 .slide-content {
   text-align: center;
-  background: rgba(0, 0, 0, 0.5);
+  /* background: rgba(0, 0, 0, 0.5); */
   padding: 20px;
   border-radius: 5px;
+  color: white;
+}
+
+.slide-content h4 {
   color: white;
 }
 

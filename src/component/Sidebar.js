@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 
-const Sidebar = () => {
+const Sidebar = ({ openSidebar = 'hide' }) => {
 
     const [username, setUsername] = useState(localStorage.getItem('user_name'));
     const [userid, setUserid] = useState(localStorage.getItem('user_id'));
@@ -33,7 +33,36 @@ const Sidebar = () => {
         AOS.init({ duration: 1000 });
     })
 
-    
+    console.log(openSidebar);
+
+
+    const [device, setDevice] = useState("desktop");
+
+
+    const handleResize = () => {
+        if (window.innerWidth < 768) {
+            setDevice("mobile");
+            localStorage.setItem("device", "mobile")
+        } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+            setDevice("tablet");
+            localStorage.setItem("device", "tablet")
+        } else {
+            setDevice("desktop");
+            localStorage.setItem("device", "desktop")
+        }
+    };
+
+    useEffect(() => {
+        // Call once on mount to set the initial device type
+        handleResize();
+
+        // Add event listener for window resize
+        window.addEventListener("resize", handleResize);
+
+        // Clean up event listener on component unmount
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
 
 
     function upcoming() {
@@ -41,19 +70,16 @@ const Sidebar = () => {
     }
     return (
         <>
-            <div className='container-fluid ' >
+            <div className={device == "mobile" ? ` container-fluid sidebar-body ${openSidebar}` : 'container-fluid sidebar-body'}>
                 <div className='row'>
-                    <div className='col-lg-3' style={{ height: '100vh', position: 'fixed', zIndex: '2' }}>
-
-                        <div className='sidebar_one'>
-                            <a href="/">
-                                <img src={LOGO} alt="Hifive Logo" />
-                            </a>
+                    <div className={device == "mobile" ? `col-lg-3 mob-sidebar-content ${openSidebar}` : 'col-lg-3 web-sidebar-content'}>
+                        <div className={device == "mobile" ? `sidebar_one mob-mt-20 ${openSidebar}` : 'sidebar_one'}>
+                            <Link href="/">
+                                <img src={LOGO} className='logo-image' alt="Hifive Logo" />
+                            </Link>
                         </div>
-
-                        <div className='sidebar_two'>
+                        <div className={device == "mobile" ? `sidebar_two mob-mt-80 ${openSidebar}` : 'sidebar_two show'}>
                             <ul >
-
                                 <div data-aos='fade-left'><Link to="/">HOME</Link></div>
                                 <div data-aos='fade-left'><Link to="/galary">GALLERY</Link></div>
                                 <div data-aos='fade-left'><Link to="/reservation">RESERVATION</Link></div>
@@ -67,24 +93,22 @@ const Sidebar = () => {
                                         <Link to="/login">LOGIN</Link>
                                     }
                                 </div>
-
-
                             </ul>
-
                         </div>
-                        <div className='sidebar_three'>
+                        <div className={device == "mobile" ? `mob-sidebar_three  ${openSidebar}` : 'sidebar_three show'}>
                             <a
                                 href="https://api.whatsapp.com/send?phone=919585135049" // Make sure the phone number is in the correct format
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                
                             >
                                 <WhatsappIcon
                                     size={60}
                                     round={true}
-                                    style={{ position: 'relative', top: '30%', left: '-140%' }}
+                                    style={{ position: 'relative', top: '0%', left: '5%', color: 'green' }}
                                 />
                             </a>
-                            <IconButton style={{ color: 'white' }}>
+                            <IconButton style={{ color: 'white' }} className='ms-4'>
                                 <InstagramIcon />
                             </IconButton>
 
@@ -98,7 +122,7 @@ const Sidebar = () => {
 
                     </div>
                 </div>
-            </div>
+            </div >
 
 
         </>

@@ -3,12 +3,16 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Navbar from "../Navbar";
 import '../../theme/css-component/reservation.css'
 import Sidebar from '../Sidebar';
-import ReactPlayer from 'react-player'
-// import Slider from 'react-slick';
 import vid1 from '../../theme/video/vid1.webm'
 import vid2 from '../../theme/video/vid2.mp4'
 import vid3 from '../../theme/video/vid3.mp4'
 import BgGrey from '../../theme/image/site/bg-grey.jpg'
+
+
+import reservationMob1 from '../../theme/image/reservation/reservation-mob1.jpeg'
+import reservationMob2 from '../../theme/image/reservation/reservation-mob2.jpeg'
+import reservationWeb1 from '../../theme/image/reservation/reservation-web.jpeg'
+import reservationWeb2 from '../../theme/image/reservation/reservation-web.jpeg'
 
 // import InstagramIcon from '@mui/icons-material/Instagram';
 // import FacebookIcon from '@mui/icons-material/Facebook';
@@ -16,38 +20,10 @@ import BgGrey from '../../theme/image/site/bg-grey.jpg'
 // import { IconButton } from '@mui/material';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
 
 
 const Reservation = () => {
-
-
-    const video = [
-        {
-            id: 1,
-            src: vid1
-        }, {
-            id: 2,
-            src: vid2
-        }, {
-            id: 3,
-            src: vid3
-        }
-    ]
-
-    const [videoid, setVideoid] = useState(0);
-    const nextvid = (i) => {
-
-        if (i === 2 || i === 1 || i === 0) {
-            setVideoid(i)
-        } else {
-            setVideoid(0)
-        }
-
-    }
-
-
-
-
 
     // =======================================res_list
     const [res_list, setRes_list] = useState([])
@@ -73,10 +49,27 @@ const Reservation = () => {
         localStorage.setItem("res_id", e)
     }
 
+    const route_code = (v) => {
+        localStorage.removeItem('res_code')
+        localStorage.setItem("res_code", v)
+    }
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    };
+
+
+    const device = localStorage.getItem('device');
+
+    console.log(device);
 
     return (
         <>
-            <div className='container-fluid ' >
+            <div className='container-fluid  reservation-div' >
                 <div className='row'>
                     <div className='col-lg-12'>
                         <div className='row nav_bar'>
@@ -85,34 +78,34 @@ const Reservation = () => {
 
                         <div className='row home_row_1'>
                             <div className='col-lg-3 home_col_1 sidebar ' >
-
                                 <Sidebar />
                             </div>
-                            <div className='col-lg-9  home_col_2'>
-                                <ReactPlayer
-                                    url={video[videoid].src}
-                                    width='100vw'
-                                    height='100vh'
-                                    pip={true}
-                                    controls={false}
-                                    playing={true}
-                                    playbackRate={1}
-                                    volume={0}
-                                    onEnded={() => nextvid(videoid + 1)}
-                                />
+                            <div className='col-lg-9 home_col_2 mob-mb-40'>
+
+                                <Slider {...settings} style={{ width: '90%' }}>
+                                    <div><img style={{ width: '100%', height: '90vh' }} className="responsive-image" src={(device == 'mobile') ? reservationMob1 : reservationWeb1} ></img></div>
+                                    <div><img style={{ width: '100%', height: '90vh' }} className="responsive-image" src={(device == 'mobile') ? reservationMob2 : reservationWeb2} ></img></div>
+                                </Slider>
+
                             </div>
                         </div>
 
-                        <div className='row home_row2 ' >
-                            <div className='col-lg-3  sidebar ' >
-                                <Sidebar />
+                        <div className='row mob-mb-20 '>
+                            <div className='col-lg-3' >
+                            </div>
+                            <div className='col-lg-9'>
+                                <h1 className='text-center white'>RESERVATION</h1>
+                            </div>
+                        </div>
+
+                        <div className='row home_row2'>
+                            <div className='col-lg-3' >
                             </div>
 
 
                             {res_list?.map((item, index) => (
-                                <div className='col-lg-3  home_row2_1 '>
+                                <div className='col-lg-3 home_row2_1 mob-mb-20'>
 
-                                    <h1 className=' d-lg-none'>RESERVATION</h1>
                                     <div style={{ display: 'flex' }}>
 
                                         <img className='img1' alt="img" src={BgGrey} />
@@ -124,7 +117,7 @@ const Reservation = () => {
                                     <h4>{item.reser_title}</h4>
                                     {/* <button style={{ textAlign: 'center' }} className='home_action2_btn ' onClick={() => route_cat(res_list[0]?.reser_id)}>BOOK NOW</button> */}
                                     <Link to="/sub_cat" style={{ textAlign: 'center' }} className='home_action2_btn '
-                                        onClick={() => route_cat(item.reser_id)}>BOOK NOW</Link>
+                                        onClick={() => { route_cat(item.reser_id); route_code(item.reser_code) }}>BOOK NOW</Link>
 
                                 </div>
                             ))}

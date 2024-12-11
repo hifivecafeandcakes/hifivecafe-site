@@ -1,30 +1,35 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css"
-import Navbar from "../Navbar";
-import TextField from '@mui/material/TextField';
-import '../../theme/css-component/BTB_cart.css'
+import Navbar from "../Navbar.js";
+import '../../theme/css-component/CLT_cart.css'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import axios from 'axios';
+import Status from './Status.js';
 import { useNavigate } from "react-router-dom";
-import { cakesArr, photoShootsArr, photoShootPricesArr, photoPrintsArr, photoPrintPricesArr, flowersArr, flowersPricesArr, cakeWeightArr, cakeShapeArr } from '../common/Constant';
-import CustomSlider from './CustomSlider';
-import CustomSubSlider from './CustomSubSlider';
-
-import vid1 from '../../theme/video/vid1.webm'
-import vid2 from '../../theme/video/vid2.mp4'
-import vid3 from '../../theme/video/vid3.mp4'
-import Status from './Status';
-import Footer from './Footer';
-
+import CustomSubSlider from './CustomSubSlider.js';
+import {
+    cakesArr, timeSlotsArr, ledArr,
+    ledPricesArr, ageArr, agePricesArr, firesArr, firesPricesArr, balloonThemeArr,
+    photoShootsArr, photoShootPricesArr, photoPrintsArr, photoPrintPricesArr,
+    flowersArr, flowersPricesArr, cakeWeightArr, cakeShapeArr, cakeShapePricesArr, noPeoplesSilverArr, noPeoplesGoldArr, noPeoplesEliteArr
+} from '../common/Birthday';
+import Footer from './Footer.js';
+import validator from '../validate.ts';
 
 
 const BtbCart = () => {
-
     const user_id = localStorage.getItem("user_id")
     const res_id = localStorage.getItem('res_id');
     const res_cat_id = localStorage.getItem('res_cat_id');
     const res_scat_id = localStorage.getItem('res_scat_id');
+
+    const res_code = localStorage.getItem('res_code');
+    const res_cat_code = localStorage.getItem('res_cat_code');
+
+
+    const [isUpdated, setIsUpdated] = useState(false);  // To trigger animation
+
 
     const navigate = useNavigate();
     // console.log(user_id);
@@ -36,24 +41,57 @@ const BtbCart = () => {
         }
     }, []);
 
+    //fetching parameters
     const [subcatres, setSubcatres] = useState(''); //actual fetching subcat data
     const [mainImages, setMainImages] = useState([]); //actual data
 
-
+    // form parameter
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
+    const [timeSlot, setTimeSlot] = useState('');
     const [guestName, setGuestName] = useState('');
+    const [guestWhatsapp, setGuestWhatsapp] = useState('');
     const [numOfPeople, setNumOfPeople] = useState(1);
 
     const [cake, setCake] = useState('');
+    const [cakeMsg, setCakeMsg] = useState('');
+
     const [cakeWeight, setCakeWeight] = useState('');
     const [cakeShape, setCakeShape] = useState('');
-    const [cakes, setCakes] = useState([]);
-    const [cakeMsg, setCakeMsg] = useState('');
+    const [cakeShapePrice, setCakeShapePrice] = useState(0);
+
     const [comment, setComment] = useState('');
+
+    const [balloonTheme, setBalloonTheme] = useState("");
 
     const [total, setTotal] = useState(0);
     const [price, setPrice] = useState(0);
+
+    const [cakes, setCakes] = useState([]);
+    const [timeSlots, setTimeSlots] = useState([]);
+
+    const [peoples, setPeoples] = useState([]); 
+    
+
+    //Error
+    const [dateError, setDateError] = useState(false);
+    const [timeError, setTimeError] = useState(false);
+    const [timeSlotError, setTimeSlotError] = useState(false);
+    const [guestNameError, setGuestNameError] = useState(false);
+    const [hasPhoneError, setHasPhoneError] = useState(false);
+
+
+    const [cakeMsgError, setCakeMsgError] = useState(false);
+    const [cakeError, setCakeError] = useState(false);
+    const [cakeWeightError, setCakeWeightError] = useState(false);
+    const [cakeShapeError, setCakeShapeError] = useState(false);
+    // status
+    const empStatus = { msg: "", type: "success", toggle: "close" }
+    const [status, setStatus] = useState(empStatus);
+
+
+    // Slick
+    const [refreshKey, setRefreshKey] = useState(0);
 
 
     const [photoShoot, setPhotoShoot] = useState('');
@@ -71,24 +109,182 @@ const BtbCart = () => {
     const [flowerPrice, setFlowerPrice] = useState(0);
     const [flowersPrices, setFlowersPrices] = useState([]);
 
+    const [fire, setFire] = useState('');
+    const [fires, setFires] = useState([]);
+    const [firePrice, setFirePrice] = useState(0);
+    const [firesPrices, setFiresPrices] = useState([]);
 
-    //Error
-    const [dateError, setDateError] = useState(false);
-    const [timeError, setTimeError] = useState(false);
-    const [guestNameError, setGuestNameError] = useState(false);
+    const [led, setLed] = useState('');
+    const [leds, setLeds] = useState([]);
+    const [ledPrice, setLedPrice] = useState(0);
+    const [ledsPrices, setLedsPrices] = useState([]);
 
-    const [cakeMsgError, setCakeMsgError] = useState(false);
-    const [cakeError, setCakeError] = useState(false);
-    const [cakeWeightError, setCakeWeightError] = useState(false);
-    const [cakeShapeError, setCakeShapeError] = useState(false);
+    const [age, setAge] = useState('');
+    const [ages, setAges] = useState([]);
+    const [agePrice, setAgePrice] = useState(0);
+    const [agesPrices, setAgesPrices] = useState([]);
 
-    // status
-    const empStatus = { msg: "", type: "success", toggle: "close" }
-    const [status, setStatus] = useState(empStatus);
+    const [ledName, setLedName] = useState('');
+    const [ageName, setAgeName] = useState('');
+
+    const [ledOption, setLedOption] = useState('No');
+    const [ageOption, setAgeOption] = useState('No');
 
 
-    // Slick
-    const [refreshKey, setRefreshKey] = useState(0);
+
+    function settingTotal(curValue, updatedValue) {
+        var totalParam = parseFloat(price) + parseFloat(photoShootPrice) + parseFloat(photoPrintPrice)
+            + parseFloat(flowerPrice) + parseFloat(firePrice) + parseFloat(ledPrice) + parseFloat(agePrice) + parseFloat(cakeShapePrice);
+        console.log(totalParam);
+        console.log(curValue);
+        var settingValue = (totalParam - parseFloat(curValue)) + parseFloat(updatedValue);
+        console.log("settingValue");
+        console.log(settingValue);
+        setTotal(settingValue);
+        setIsUpdated(true);
+    }
+
+    const handlePhotoShoots = (event, index) => {
+        console.log(index);
+        setIsUpdated(false);
+        const { value, checked } = event.target;
+        if (checked) {
+            setPhotoShoot(value);
+            setPhotoShootPrice(() => {
+                const updatedTotal = photoShootPrices[index];
+                // setTotal(parseFloat(price) + parseFloat(updatedTotal) + parseFloat(photoPrintPrice) + parseFloat(flowerPrice))
+                settingTotal(photoShootPrice, updatedTotal)
+                return updatedTotal;
+            });
+        } else {
+            setPhotoShoot("");
+            setPhotoShootPrice(() => {
+                setTotal(parseFloat(total) - parseFloat(photoShootPrice))
+                return 0;
+            });
+        }
+    };
+
+    const handlePhotoPrints = (event, index) => {
+        const { value, checked } = event.target;
+        if (checked) {
+            setPhotoPrint(value);
+            setPhotoPrintPrice(() => {
+                const updatedTotal = photoPrintPrices[index];
+                settingTotal(photoPrintPrice, updatedTotal)
+                return updatedTotal;
+            });
+        } else {
+            setPhotoPrint("");
+            setPhotoPrintPrice(() => {
+                setTotal(parseFloat(total) - parseFloat(photoPrintPrice))
+                return 0;
+            });
+        }
+    };
+
+    const handleFlowers = (event, index) => {
+        const { value, checked } = event.target;
+        if (checked) {
+            setFlower(value);
+            setFlowerPrice(() => {
+                const updatedTotal = flowersPrices[index];
+                settingTotal(flowerPrice, updatedTotal)
+                return updatedTotal;
+            });
+        } else {
+            setFlower("");
+            setFlowerPrice(() => {
+                setTotal(parseFloat(total) - parseFloat(flowerPrice))
+                return 0;
+            });
+        }
+    };
+
+
+    const handleFires = (event, index) => {
+        const { value, checked } = event.target;
+        if (checked) {
+            setFire(value);
+            setFirePrice(() => {
+                const updatedTotal = firesPrices[index];
+                settingTotal(firePrice, updatedTotal)
+                return updatedTotal;
+            });
+        } else {
+            setFire("");
+            setFirePrice(() => {
+                setTotal(parseFloat(total) - parseFloat(firePrice))
+                return 0;
+            });
+        }
+    };
+
+    const handleLeds = (event, index) => {
+        const { value, checked } = event.target;
+        if (checked) {
+            setLed(value);
+            setLedPrice(() => {
+                const updatedTotal = ledsPrices[index];
+                settingTotal(ledPrice, updatedTotal)
+                return updatedTotal;
+            });
+        } else {
+            setLed(value);
+            // setLedPrice(() => {
+            //     setTotal(parseFloat(total) - parseFloat(ledPrice))
+            //     return 0;
+            // });
+        }
+    };
+
+
+    const handleAges = (event, index) => {
+        const { value, checked } = event.target;
+        if (checked) {
+            setAge(value);
+            setAgePrice(() => {
+                const updatedTotal = agesPrices[index];
+                settingTotal(agePrice, updatedTotal)
+                return updatedTotal;
+            });
+        } else {
+            setAge(value);
+            // setAgePrice(() => {
+            //     setTotal(parseFloat(total) - parseFloat(agePrice))
+            //     return 0;
+            // });
+        }
+    };
+
+    const handleLedChange = (event) => {
+        setLedOption(event.target.value);
+        if (event.target.value === "No") {
+            setLedName("")
+            setLed("")
+            setLedPrice(0)
+            setTotal(parseFloat(total) - parseFloat(ledPrice))
+        } else {
+            setLed(leds[0])
+            setLedPrice(ledsPrices[0])
+            settingTotal(ledPrice, ledsPrices[0])
+        }
+    };
+
+    const handleAgeChange = (event) => {
+        setAgeOption(event.target.value);
+        if (event.target.value === "No") {
+            setAgeName("")
+            setAge("")
+            setAgePrice(0)
+            setTotal(parseFloat(total) - parseFloat(agePrice))
+        } else {
+            setAge(ages[0])
+            setAgePrice(agesPrices[0])
+            settingTotal(agePrice, agesPrices[0])
+        }
+    };
+
 
 
     const fetchData = async () => {
@@ -115,9 +311,14 @@ const BtbCart = () => {
                     }
                     setMainImages([...arrr]);
 
-                    setTotal(parseFloat(reservation_subcategory[0].sub_cat_price_range))
-                    setPrice(parseFloat(reservation_subcategory[0].sub_cat_price_range))
-                    var arr_cakes = (reservation_subcategory[0].cakes.length > 0) ? reservation_subcategory[0].cakes : cakesArr;
+                    var arr_cakes = [];
+                    if (reservation_subcategory[0].cakes.length > 0) {
+                        arr_cakes = reservation_subcategory[0].cakes;
+                        setCakes([...arr_cakes]);
+                    } else {
+                        setCakes([...cakesArr]);
+                    }
+
 
                     var arr_photoShoots = (reservation_subcategory[0].photoShoots.length > 0) ? reservation_subcategory[0].photoShoots : photoShootsArr;
                     var arr_photoShootPrices = (reservation_subcategory[0].photoShootPrices.length > 0) ? reservation_subcategory[0].photoShootPrices : photoShootPricesArr;
@@ -125,16 +326,44 @@ const BtbCart = () => {
                     var arr_photoPrintPrices = (reservation_subcategory[0].photoPrintPrices.length > 0) ? reservation_subcategory[0].photoPrintPrices : photoPrintPricesArr;
                     var arr_flowers = (reservation_subcategory[0].flowers.length > 0) ? reservation_subcategory[0].flowers : flowersArr;
                     var arr_flowersPrices = (reservation_subcategory[0].flowersPrices.length > 0) ? reservation_subcategory[0].flowersPrices : flowersPricesArr;
+                    // var arr_fires = (reservation_subcategory[0].fires.length > 0) ? reservation_subcategory[0].fires : firesArr;
+                    // var arr_firesPrices = (reservation_subcategory[0].firesPrices.length > 0) ? reservation_subcategory[0].firesPrices : firesPricesArr;
+                    var arr_fires = firesArr;
+                    var arr_firesPrices = firesPricesArr;
+                    var arr_leds = ledArr;
+                    var arr_ledsPrices = ledPricesArr;
+                    var arr_ages = ageArr;
+                    var arr_agesPrices = agePricesArr;
 
-                    setCakes([...arr_cakes]);
+                    var arr_timeSlots = timeSlotsArr;
+                    setTimeSlots([...arr_timeSlots]);
+
+                    if(res_cat_code=="silver"){
+                        setPeoples([...noPeoplesSilverArr])
+                    }else if(res_cat_code=="gold"){
+                        setPeoples([...noPeoplesGoldArr])
+                    }else{
+                        setPeoples([...noPeoplesEliteArr])
+                    }
+
+                    // setCakes([...arr_cakes]);
                     setPhotoShoots([...arr_photoShoots]);
                     setPhotoShootPrices([...arr_photoShootPrices]);
                     setPhotoPrints([...arr_photoPrints]);
                     setPhotoPrintPrices([...arr_photoPrintPrices]);
                     setFlowers([...arr_flowers]);
                     setFlowersPrices([...arr_flowersPrices]);
+                    setFires([...arr_fires]);
+                    setFiresPrices([...arr_firesPrices]);
 
+                    setLeds([...arr_leds]);
+                    setLedsPrices([...arr_ledsPrices]);
 
+                    setAges([...arr_ages]);
+                    setAgesPrices([...arr_agesPrices]);
+
+                    setTotal(parseFloat(reservation_subcategory[0].sub_cat_price_range))
+                    setPrice(parseFloat(reservation_subcategory[0].sub_cat_price_range))
                 }
                 else {
                     console.log("No data found.");
@@ -148,14 +377,17 @@ const BtbCart = () => {
         }
     };
 
-
+    function changeWhatsapp(v) {
+        console.log(validator.indianPhoneNo(v));
+        (validator.indianPhoneNo(v)) ? setHasPhoneError(true) : setHasPhoneError(false); setGuestWhatsapp(v);
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('userid', user_id);
 
         (date == "") ? setDateError(true) : setDateError(false);
-        (time == "") ? setTimeError(true) : setTimeError(false);
+        (timeSlot == "") ? setTimeSlotError(true) : setTimeSlotError(false);
         (guestName == "") ? setGuestNameError(true) : setGuestNameError(false);
 
         (cake == "") ? setCakeError(true) : setCakeError(false);
@@ -165,15 +397,22 @@ const BtbCart = () => {
 
         console.log('guestNameError', guestNameError);
         console.log('dateError', dateError);
-        console.log('timeError', timeError);
+        console.log('time', time);
+        console.log('timeSlotError', timeSlotError);
+        console.log('guestWhatsapp', guestWhatsapp);
 
-        if (guestName == "" || time == "" || date == "") {
+        if (guestWhatsapp != "" && (validator.indianPhoneNo(guestWhatsapp))) {
+            setHasPhoneError(true)
+            return;
+        }
+
+        if (guestName == "" || timeSlot == "" || date == "") {
             setStatus({ msg: "Please fill all required (*) fields", type: "error", toggle: "open" })
             return;
         }
 
-        if (cake == "" || cakeMsg == "" || cakeWeight == "" || cakeShape=="") {
-            setStatus({ msg: "Please fill Cake's required (*) fields", type: "error", toggle: "open" })
+        if (cake == "" || cakeMsg == "" || cakeWeight == "" || cakeShape == "") {
+            setStatus({ msg: "Please fill all Cake's required (*) fields", type: "error", toggle: "open" })
             return;
         }
 
@@ -191,8 +430,19 @@ const BtbCart = () => {
         let currentTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
 
         // Check if selected time is in the future
-        if ((time <= currentTime) && selected <= today) {
+        // if ((time <= currentTime) && selected <= today) {
+        if (selected <= today) {
             setStatus({ msg: "Please select a future time.", type: "error", toggle: "open" })
+            return;
+        }
+
+        if ((ledOption === "Yes") && ledName == "") {
+            setStatus({ msg: "Enter the Name for LED", type: "error", toggle: "open" })
+            return;
+        }
+
+        if ((ageOption === "Yes") && ageName == "") {
+            setStatus({ msg: "Enter the Age for LED", type: "error", toggle: "open" })
             return;
         }
 
@@ -201,26 +451,45 @@ const BtbCart = () => {
         formData.append('reser_id', res_id);
         formData.append('reser_catid', res_cat_id);
         formData.append('resersubcatid', res_scat_id);
-        formData.append('type', "BP");
+        formData.append('type', res_code);
 
         formData.append("date", date);
-        formData.append("time", time);
+        formData.append("time", currentTime);
+        formData.append("time_slot", timeSlot);
         formData.append("peoples", numOfPeople);
         formData.append("guest_name", guestName);
         formData.append("cake", cake);
         formData.append("cake_msg", cakeMsg);
         formData.append("cake_weight", cakeWeight);
         formData.append("cake_shape", cakeShape);
+        formData.append("cakeShapePrice", cakeShapePrice);
         formData.append("remarks", comment);
+        formData.append("guest_whatsapp", guestWhatsapp);
+        formData.append("balloon_theme", balloonTheme);
 
+        formData.append("total", total);
+        formData.append("price", price);
+
+
+        //additional info
         formData.append("photoShoot", photoShoot);
         formData.append("photoShootPrice", photoShootPrice);
         formData.append("photoPrint", photoPrint);
         formData.append("photoPrintPrice", photoPrintPrice);
         formData.append("flower", flower);
         formData.append("flowerPrice", flowerPrice);
-        formData.append("total", total);
-        formData.append("price", price);
+        formData.append("fire", fire);
+        formData.append("firePrice", firePrice);
+
+        formData.append("ledOption", ledOption);
+        formData.append("ledName", ledName);
+        formData.append("led", led);
+        formData.append("ledPrice", ledPrice);
+
+        formData.append("ageOption", ageOption);
+        formData.append("ageName", ageName);
+        formData.append("age", age);
+        formData.append("agePrice", agePrice);
 
 
         try {
@@ -268,317 +537,356 @@ const BtbCart = () => {
         setMinTime(currentTime);
     }, []);
 
-    console.log(photoShoots);
 
 
-    const handlePhotoShoots = (event, index) => {
-        console.log(index);
-        const { value, checked } = event.target;
-        if (checked) {
-            setPhotoShoot(value);
-            setPhotoShootPrice(() => {
-                const updatedTotal = photoShootPrices[index];
-                setTotal(parseFloat(price) + parseFloat(updatedTotal) + parseFloat(photoPrintPrice) + parseFloat(flowerPrice))
-                return updatedTotal;
-            });
-        } else {
-            setPhotoShoot("");
-            setPhotoShootPrice(() => {
-                setTotal(parseFloat(total) - parseFloat(photoShootPrice))
-                return 0;
-            });
-        }
-    };
-
-    const handlePhotoPrints = (event, index) => {
-        const { value, checked } = event.target;
-        if (checked) {
-            setPhotoPrint(value);
-            setPhotoPrintPrice(() => {
-                const updatedTotal = photoPrintPrices[index];
-                setTotal(parseFloat(price) + parseFloat(photoShootPrice) + parseFloat(updatedTotal) + parseFloat(flowerPrice))
-                return updatedTotal;
-            });
-        } else {
-            setPhotoPrint("");
-            setPhotoPrintPrice(() => {
-                setTotal(parseFloat(total) - parseFloat(photoPrintPrice))
-                return 0;
-            });
-        }
-    };
-
-    const handleFlowers = (event, index) => {
-        const { value, checked } = event.target;
-        if (checked) {
-            setFlower(value);
-            setFlowerPrice(() => {
-                const updatedTotal = flowersPrices[index];
-                setTotal(parseFloat(price) + parseFloat(photoShootPrice) + parseFloat(photoPrintPrice) + parseFloat(updatedTotal))
-                return updatedTotal;
-            });
-        } else {
-            setFlower("");
-            setFlowerPrice(() => {
-                setTotal(parseFloat(total) - parseFloat(flowerPrice))
-                return 0;
-            });
-        }
-    };
-
-
-
-
-
-    // =============================================
     return (
         <>
-            <div className='container-fluid '>
+            <div className='container-fluid candle-div'>
                 <div className='row' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
                     <div className='col-lg-12'>
                         <div className='row'>
                             <Navbar />
-
                         </div>
-
-                        <div className='row BTB_cart_row1'>
-
-                        </div>
-                        <div className='row'>
-                            <div className='col-lg-12 mt-4'>
-                                <h1 className='text-center'
-                                    style={{ color: 'orange', fontFamily: '"Bebas Neue", sans-serif' }}>
-                                    {subcatres.reser_main_title}</h1>
-                                <h6>{subcatres.reser_title}</h6>
-                            </div>
+                        <div className='row CLT_cart_row1'>
 
                             <div className='col-lg-12'>
-                                <h4 className='text-center'
+                                <h3 className='text-center'
                                     style={{ color: 'orange', fontFamily: '"Bebas Neue", sans-serif' }}>
-                                    {subcatres.cat_title}</h4>
+                                    {subcatres.reser_main_title}
+                                    {/* <h6 className='text-center'>
+                                        {subcatres.reser_title}
+                                    </h6> */}
+                                    &nbsp;-&nbsp;<span className='text-center'
+                                        style={{ color: 'orange', fontFamily: '"Bebas Neue", sans-serif' }}>
+                                        {subcatres.cat_title}</span>
+                                </h3>
                             </div>
                         </div>
                         <div className='row BTB_cart_row12'>
-                            <div className='col-lg-12 p-5'>
+                            <div className='col-lg-12'>
                                 <h2>
                                     {subcatres.description}
                                 </h2>
                             </div>
                         </div>
 
-                        <div className='row BTB_cart_row2'>
-                            <div className='col-sm-4 BTB_cart_row2_1 customsubslide'>
+                        <div className='row CLT_cart_row2' style={{ fontFamily: ' "Abel", sans-serif' }}>
+
+                            <div className='col-lg-4 CLT_cart_row2_1 customsubslide'>
+                                {/* <img style={{ border: '1px solid orange', borderRadius: '10%' }}
+                                    src={subcatres.sub_img} alt="res sub cat image" /> */}
+
+
                                 {(refreshKey != 0 && mainImages.length > 0) ?
                                     // <MenuSlider menuImages={menuImages} />
                                     <CustomSubSlider images={mainImages} />
                                     : ""}
-                                <h3 className='orange'>CODE : {subcatres.sub_tilte}</h3>
-                                <h2 className='green'>₹{price}</h2>
+                                <h3 className='orange text-center'>CODE : {subcatres.sub_tilte}</h3>
+                                <h2 className='green text-center'>₹{price}</h2>
                             </div>
-
-                            <div className="col-sm-4">
-                                <Status msg={status.msg} type={status.type} toggle={status.toggle}
-                                    onClose={() => setStatus(empStatus)} />
-                                <div style={{ marginTop: '1%', width: '100%' }}>
-                                    <div className="BTB_cart_row2_2_1 ">
-
-                                        <div className='p-3'>
-                                            <h4>Date <span className='green'>*</span></h4>
-                                            <input type="date" min={minDate} className="required form-control"
-                                                onChange={(e) => { setDateError(false); setDate(e.target.value) }} />
+                            <div className="col-lg-8 CLT_cart_row2_2">
+                                <div className='CLT_cart_row2_2_div'>
+                                    <Status msg={status.msg} type={status.type} toggle={status.toggle} onClose={() => setStatus(empStatus)} />
+                                    <div className="row p-2">
+                                        <div className='col-sm'>
+                                            <label className='required'>Date </label>
+                                            <input type="date" min={minDate} className="required form-control p-2" onChange={(e) => { setDateError(false); setDate(e.target.value) }} />
                                             {(dateError) ? <span className='error'>This is field required</span> : ""}
                                         </div>
-                                        <div className='p-3'>
-                                            <h4>Time <span className='green'>*</span></h4>
-                                            <input type="time" min={minTime} className="form-control"
-                                                onChange={(e) => { setTimeError(false); setTime(e.target.value) }} />
+                                        {/* <div className='col-lg-2'>
+                                            <label className='required'>Time </label>
+                                            <input type="time" min={minTime} className="form-control p-2" onChange={(e) => { setTimeError(false); setTime(e.target.value) }} />
                                             {(timeError) ? <span className='error'>This is field required</span> : ""}
+                                        </div> */}
+                                        <div className='col-sm'>
+                                            <label className='required'>Time Slot</label>
+                                            <select className="form-control p-2" onChange={(e) => { setTimeSlot(e.target.value) }}>
+                                                <option value="">Choose Time Slot</option>
+                                                {timeSlots.map((item, index) => {
+                                                    return (
+                                                        <option value={item}>{item}</option>
+                                                    )
+                                                })}
+                                            </select>
+                                            {(timeSlotError) ? <span className='error'>This is field required</span> : ""}
                                         </div>
-                                        <div className='p-3'>
-                                            <h4>No. of People</h4>
-                                            <select className="form-control" onChange={(e) => setNumOfPeople(e.target.value)}>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
+                                        {/* </div> */}
+
+                                        {/* <div className="row p-2"> */}
+                                        <div className='col-sm'>
+                                            <label className='required'>Guest Name</label>
+                                            <input type="text" className="form-control p-2" required onChange={(e) => { setGuestNameError(false); setGuestName(e.target.value); }} />
+                                            {(guestNameError) ? <span className='error'>This is field required</span> : ""}
+                                        </div>
+                                        <div className='col-sm'>
+                                            <label className=''>Guest Whatsapp No</label>
+                                            <input type="number" className="form-control p-2" onChange={(e) => { changeWhatsapp(e.target.value) }} />
+                                            {(hasPhoneError) ? <span className='error'>Wrong Phone no format</span> : ""}
+                                        </div>
+
+                                        <div className='col-sm'>
+                                            <label className='required'>No. of People</label>
+                                            <select className="form-control p-2" onChange={(e) => setNumOfPeople(e.target.value)}>
+                                                {peoples.map((item, index) => {
+                                                    return (
+                                                        <option value={item}>{item}</option>
+                                                    )
+                                                })}
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div className='p-3'>
-                                        <label className='required'>Guest Name</label>
-                                        <input type="text" className="form-control p-2" required onChange={(e) => { setGuestNameError(false); setGuestName(e.target.value); }} />
-                                        {(guestNameError) ? <span className='error'>This is field required</span> : ""}
+
+
+                                    <div className="row p-2">
+
+
                                     </div>
 
+                                    <div className="row p-2">
+                                        <div className='col-md-2'>
+                                            <label>Choose Cake <span className='green'>*</span></label>
+                                            <select className="form-control p-2" onChange={(e) => setCake(e.target.value)}>
+                                                <option value="">Choose Cake</option>
+                                                {cakes.map((item, index) => {
+                                                    return (
+                                                        <option value={item}>{item}</option>
+                                                    )
+                                                })}
+                                            </select>
+                                            {(cakeError) ? <span className='error'>This is field required</span> : ""}
 
+                                        </div>
 
-
-                                    {/* ========================================= */}
-
-                                    <div className='row'>
-                                        <div className='col-lg-12 BTB_cart_row2_2_3'>
-                                            <div className='p-3 col-sm-4'>
-                                                <h4 style={{ fontFamily: ' "Abel", sans-serif' }}>Select Cake <span className='green'>*</span></h4>
-                                                <select style={{ width: "80%", fontFamily: ' "Abel", sans-serif' }} required className="form-control p-2"
-                                                    onChange={(e) => setCake(e.target.value)}>
-                                                    <option value="">Choose Cake</option>
-                                                    {cakes.map((item, index) => {
-                                                        return (
-                                                            <option value={item}>{item}</option>
-                                                        )
-                                                    })}
-                                                </select>
-                                                {(cakeError) ? <span className='error'>This is field required</span> : ""}
-
-                                            </div>
-                                            <div className='p-3 col-sm-8'>
-                                                <h4 style={{ fontFamily: ' "Abel", sans-serif' }}>Cake Message <span className='green'>*</span></h4>
-                                                <input type="text" required style={{ width: "100%", color: "orange", backgroundColor: 'black', fontFamily: ' "Abel", sans-serif' }}
-                                                    className="form-control p-2" onChange={(e) => setCakeMsg(e.target.value)} />
-                                                {(cakeMsgError) ? <span className='error'>This is field required</span> : ""}
-                                            </div>
+                                        <div className='col-sm-2'>
+                                            <label>Cake Weight <span className='green'>*</span></label>
+                                            <select style={{ fontFamily: ' "Abel", sans-serif' }} className="form-control p-2"
+                                                onChange={(e) => setCakeWeight(e.target.value)}>
+                                                <option value="">Choose Cake Weight</option>
+                                                {cakeWeightArr.map((item, index) => {
+                                                    return (
+                                                        <option value={item}>{item}</option>
+                                                    )
+                                                })}
+                                            </select>
+                                            {(cakeWeightError) ? <span className='error'>This is field required</span> : ""}
+                                        </div>
+                                        <div className='col-sm-3'>
+                                            <label>Cake Shape <span className='green'>*</span></label>
+                                            <select style={{ fontFamily: ' "Abel", sans-serif' }} className="form-control p-2"
+                                                onChange={(e) => {
+                                                    const selectedText = e.target.selectedOptions[0].text; setCakeShape(selectedText.split('-')[0]);
+                                                    settingTotal(cakeShapePrice, e.target.value)
+                                                    setCakeShapePrice(e.target.value);
+                                                }}>
+                                                <option value="0">Choose Cake Shape</option>
+                                                {cakeShapeArr.map((item, index) => {
+                                                    return (
+                                                        <option value={cakeShapePricesArr[index]}>{item} - <span className='green'>₹{cakeShapePricesArr[index]}</span></option>
+                                                    )
+                                                })}
+                                            </select>
+                                            {(cakeShapeError) ? <span className='error'>This is field required</span> : ""}
+                                        </div>
+                                        <div className='col-md-5'>
+                                            <label>Cake Message <span className='green'>*</span></label>
+                                            <input type="text" className="form-control p-2" onChange={(e) => setCakeMsg(e.target.value)} />
+                                            {(cakeMsgError) ? <span className='error'>This is field required</span> : ""}
                                         </div>
                                     </div>
 
-                                    <div className='row'>
-                                        <div className='col-lg-12 BTB_cart_row2_2_3'>
 
-                                            <div className='p-3  col-sm-6'>
-                                                <h4 style={{ fontFamily: ' "Abel", sans-serif' }}>Cake Weight <span className='green'>*</span></h4>
-                                                <select style={{ fontFamily: ' "Abel", sans-serif' }} required className="form-control"
-                                                    onChange={(e) => setCakeWeight(e.target.value)}>
-                                                    <option value="">Choose Cake Weight</option>
-                                                    {cakeWeightArr.map((item, index) => {
-                                                        return (
-                                                            <option value={item}>{item}</option>
-                                                        )
-                                                    })}
-                                                </select>
-                                                {(cakeWeightError) ? <span className='error'>This is field required</span> : ""}
-                                            </div>
-                                            <div className='p-3  col-sm-6'>
-                                                <h4 style={{ fontFamily: ' "Abel", sans-serif' }} >Cake Shape <span className='green'>*</span></h4>
-                                                <select style={{ fontFamily: ' "Abel", sans-serif' }}  className="form-control"
-                                                    onChange={(e) => setCakeShape(e.target.value)}>
-                                                    <option value="">Choose Cake Shape</option>
-                                                    {cakeShapeArr.map((item, index) => {
-                                                        return (
-                                                            <option value={item}>{item}</option>
-                                                        )
-                                                    })}
-                                                </select>
-                                                {(cakeShapeError) ? <span className='error'>This is field required</span> : ""}
+                                    <div className="p-2 fs-12 row">
+                                        <div className='col-sm'>
+                                            <h6 style={{ fontFamily: ' "Abel", sans-serif' }}>Photo Shoot</h6>
+                                            <div className='btn_select row'>
+                                                {photoShoots.length > 0 && photoShoots.map((item, index) => {
+                                                    return (
+                                                        <>
+                                                            <div className='non-breaking-text'>
+                                                                <span key={index} className="" style={{ fontFamily: ' "Abel", sans-serif', color: '#fcb713', marginLeft: '0px' }}>
+                                                                    {photoShoots[index]}:
+                                                                    <span className="green">{`  `}₹{photoShootPrices[index]}</span>
+                                                                </span>&nbsp;
+                                                                <input
+                                                                    name='PhotoShootCheckbox'
+                                                                    value={photoShoots[index]}
+                                                                    type="checkbox"
+                                                                    checked={photoShoot === item}
+                                                                    onChange={(e) => handlePhotoShoots(e, index)}
+                                                                />
+                                                            </div>
+                                                        </>)
+                                                })}
+
                                             </div>
                                         </div>
+
+                                        <div className='col-sm fs-12'>
+                                            <h6 style={{ fontFamily: ' "Abel", sans-serif' }}>Photo Print</h6>
+                                            <div className='btn_select row'>
+                                                {photoPrints.length > 0 && photoPrints.map((item, index) => {
+                                                    return (
+                                                        <>
+                                                            <div className='non-breaking-text'>
+                                                                <span key={index} className="" style={{ fontFamily: ' "Abel", sans-serif', color: '#fcb713', marginLeft: '0px' }}>
+                                                                    {photoPrints[index]}: <span className="green">{`  `}₹{photoPrintPrices[index]}</span>
+                                                                </span>&nbsp;
+                                                                <input
+                                                                    name='PhotoShootCheckbox'
+                                                                    value={photoPrints[index]}
+                                                                    type="checkbox"
+                                                                    checked={photoPrint === item}
+                                                                    onChange={(e) => handlePhotoPrints(e, index)}
+                                                                />
+                                                            </div>
+                                                        </>)
+                                                })}
+
+                                            </div>
+                                        </div>
+
+
+                                        <div className='col-sm'>
+                                            <h6 style={{ fontFamily: ' "Abel", sans-serif' }}>Flower Bouquet</h6>
+                                            <div className='btn_select row'>
+                                                {flowers.length > 0 && flowers.map((item, index) => {
+                                                    return (
+                                                        <>
+                                                            <div className='non-breaking-text'>
+                                                                <span key={index} className="non-breaking-text" style={{ fontFamily: ' "Abel", sans-serif', color: '#fcb713', marginLeft: '0px' }}>
+                                                                    {flowers[index]}: <span className="green">{`  `}₹{flowersPrices[index]}</span>
+                                                                </span>&nbsp;
+                                                                <input
+                                                                    name='PhotoShootCheckbox'
+                                                                    value={flowers[index]}
+                                                                    type="checkbox"
+                                                                    checked={flower === item}
+                                                                    onChange={(e) => handleFlowers(e, index)}
+                                                                />
+                                                            </div>
+                                                        </>)
+                                                })}
+                                            </div>
+                                        </div>
+
+
+                                        <div className='col-sm'>
+                                            <h6 style={{ fontFamily: ' "Abel", sans-serif' }}>Fire Crackers</h6>
+                                            <div className='btn_select row'>
+                                                {fires.length > 0 && fires.map((item, index) => {
+                                                    return (
+                                                        <>
+                                                            <div className='non-breaking-text'>
+                                                                <span key={index} className="non-breaking-text" style={{ fontFamily: ' "Abel", sans-serif', color: '#fcb713', marginLeft: '0px' }}>
+                                                                    {fires[index]}: <span className="green">{`  `}₹{firesPrices[index]}</span>
+                                                                </span>&nbsp;
+                                                                <input
+                                                                    name='PhotoShootCheckbox'
+                                                                    value={fires[index]}
+                                                                    type="checkbox"
+                                                                    checked={fire === item}
+                                                                    onChange={(e) => handleFires(e, index)}
+                                                                />
+                                                            </div>
+                                                        </>)
+                                                })}
+                                            </div>
+                                        </div>
+
+
+                                        <div className='col-sm'>
+                                            <h6 style={{ fontFamily: ' "Abel", sans-serif' }}>LED With Name</h6>
+                                            <label className='fs-12'><input type="radio" value="Yes" checked={ledOption === 'Yes'} onChange={handleLedChange} /> Yes</label>
+                                            <label className='fs-12'><input type="radio" value="No" checked={ledOption === 'No'} onChange={handleLedChange} /> No</label>
+                                            {(ledOption === "Yes") ?
+                                                <div>
+                                                    <label className='required'>Name</label>
+                                                    <input type="text" maxLength={50} className="form-control p-1" required onChange={(e) => { setLedName(e.target.value); }} />
+
+                                                    <div className='btn_select row'>
+                                                        {leds.length > 0 && leds.map((item, index) => {
+                                                            return (
+                                                                <>
+                                                                    <div className='non-breaking-text'>
+                                                                        <span key={index} className="non-breaking-text" style={{ fontFamily: ' "Abel", sans-serif', color: '#fcb713', marginLeft: '0px' }}>
+                                                                            {leds[index]}: <span className="green">{`  `}₹{ledsPrices[index]}</span>
+                                                                        </span>&nbsp;
+                                                                        <input name='ledCheckbox' value={leds[index]} type="checkbox" checked={led === item} onChange={(e) => handleLeds(e, index)} />
+                                                                    </div>
+                                                                </>)
+                                                        })}
+                                                    </div>
+                                                </div> : ""}
+                                        </div>
+
+                                        <div className='col-sm'>
+                                            <h6 style={{ fontFamily: ' "Abel", sans-serif' }}>Age</h6>
+                                            <label className='fs-12'><input type="radio" value="Yes" checked={ageOption === 'Yes'} onChange={handleAgeChange} /> Yes</label>
+                                            <label className='fs-12'><input type="radio" value="No" checked={ageOption === 'No'} onChange={handleAgeChange} /> No</label>
+                                            {(ageOption === "Yes") ?
+                                                <div>
+                                                    <label className='required'>Age</label>
+                                                    <input type="number" className="form-control p-1" required onChange={(e) => { setAgeName(e.target.value); }} />
+
+                                                    <div className='btn_select row'>
+                                                        {ages.length > 0 && ages.map((item, index) => {
+                                                            return (
+                                                                <>
+                                                                    <div className='non-breaking-text'>
+                                                                        <span key={index} className="non-breaking-text" style={{ fontFamily: ' "Abel", sans-serif', color: '#fcb713', marginLeft: '0px' }}>
+                                                                            {ages[index]}: <span className="green">{`  `}₹{agesPrices[index]}</span>
+                                                                        </span>&nbsp;
+                                                                        <input name='ageCheckbox' value={ages[index]} type="checkbox" checked={age === item} onChange={(e) => handleAges(e, index)} />
+                                                                    </div>
+                                                                </>)
+                                                        })}
+                                                    </div>
+                                                </div> : ""}
+                                        </div>
+
+
+
+
                                     </div>
-                                </div>
+                                    <div className='p-2 row'>
+                                        {(res_cat_code != "BP") ? //silver not applicable
+                                            <div className='col-sm-4'>
+                                                <label>Balloon Theme</label>
+                                                <select className="form-control p-2" onChange={(e) => setBalloonTheme(e.target.value)}>
+                                                    <option value=''>Choose Balloon</option>
+                                                    {balloonThemeArr.map((item, index) => {
+                                                        return (
+                                                            <option value={item}>{item}</option>
+                                                        )
+                                                    })}
+                                                </select>
+                                            </div>
+                                            : ""}
+                                        <div className='col-sm-8'>
+                                            <label>Additional Comments</label>
+                                            <input type="text" className="form-control p-2" onChange={(e) => setComment(e.target.value)} />
+                                        </div>
+                                    </div>
 
-
-                                <div className='p-3 mt-5' style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                    <button type='button' className='btn home_action2_btn ' onClick={handleSubmit}>Book NOW for <span className='fs-24 green'>₹{total} </span></button>
+                                    {/* <div className='p-2' style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: "30px" }}>
+                                        <button type='button' className='btn home_action2_btn' onClick={handleSubmit} >Book NOW</button>
+                                    </div> */}
+                                    <div className='p-3 mt-4' style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                        <button type='button' className='btn home_action2_btn ' onClick={handleSubmit}>Book NOW for <span className={`fs-24 green ${isUpdated ? 'price-updated' : ''}`}>₹{total} </span></button>
+                                    </div>
                                 </div>
                             </div>
-                            <div className='col-sm-4'>
 
-                                <div className="mt-2">
-                                    <div className='p-3'>
-                                        <h4 style={{ fontFamily: ' "Abel", sans-serif' }}>Photo Shoot</h4>
-                                        <div className='btn_select row'>
-                                            {photoShoots.length > 0 && photoShoots.map((item, index) => {
-                                                return (
-                                                    <>
-                                                        <div className='col-sm-4 non-breaking-text'>
-                                                            <span key={index} className="" style={{ fontFamily: ' "Abel", sans-serif', color: '#fcb713', marginLeft: '0px' }}>
-                                                                {photoShoots[index]}:
-                                                                <span className="green">{`  `}₹{photoShootPrices[index]}</span>
-                                                            </span>&nbsp;
-                                                            <input
-                                                                name='PhotoShootCheckbox'
-                                                                value={photoShoots[index]}
-                                                                type="checkbox"
-                                                                checked={photoShoot === item}
-                                                                onChange={(e) => handlePhotoShoots(e, index)}
-                                                            />
-                                                        </div>
-                                                    </>)
-                                            })}
-                                        </div>
-                                    </div>
-
-                                    <div className='p-3'>
-                                        <h4 style={{ fontFamily: ' "Abel", sans-serif' }}>Photo Print</h4>
-                                        <div className='btn_select row'>
-                                            {photoPrints.length > 0 && photoPrints.map((item, index) => {
-                                                return (
-                                                    <>
-                                                        <div className='col-sm-5 non-breaking-text'>
-                                                            <span key={index} className="" style={{ fontFamily: ' "Abel", sans-serif', color: '#fcb713', marginLeft: '0px' }}>
-                                                                {photoPrints[index]}: <span className="green">{`  `}₹{photoPrintPrices[index]}</span>
-                                                            </span>&nbsp;
-                                                            <input
-                                                                name='PhotoShootCheckbox'
-                                                                value={photoPrints[index]}
-                                                                type="checkbox"
-                                                                checked={photoPrint === item}
-                                                                onChange={(e) => handlePhotoPrints(e, index)}
-                                                            />
-                                                        </div>
-                                                    </>)
-                                            })}
-
-                                        </div>
-                                    </div>
-
-
-                                    <div className='p-3'>
-                                        <h4 style={{ fontFamily: ' "Abel", sans-serif' }}>Flower Bouquet</h4>
-                                        <div className='btn_select row'>
-                                            {flowers.length > 0 && flowers.map((item, index) => {
-                                                return (
-                                                    <>
-                                                        <div className='col-sm-4 non-breaking-text'>
-                                                            <span key={index} className="non-breaking-text" style={{ fontFamily: ' "Abel", sans-serif', color: '#fcb713', marginLeft: '0px' }}>
-                                                                {flowers[index]}: <span className="green">{`  `}₹{flowersPrices[index]}</span>
-                                                            </span>&nbsp;
-                                                            <input
-                                                                name='PhotoShootCheckbox'
-                                                                value={flowers[index]}
-                                                                type="checkbox"
-                                                                checked={flower === item}
-                                                                onChange={(e) => handleFlowers(e, index)}
-                                                            />
-                                                        </div>
-                                                    </>)
-                                            })}
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div className='row'>
-                                    <div className='col-sm-12'>
-                                        <div className='p-3'>
-                                            <h4 style={{ fontFamily: ' "Abel", sans-serif' }}>Add Comments</h4>
-                                            <input type="text" style={{ width: '100%', color: "orange", backgroundColor: 'black', fontFamily: ' "Abel", sans-serif' }} className="form-control p-2" onChange={(e) => setComment(e.target.value)} />
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
+                        {/* ===================================================================================== */}
                         <Footer />
                     </div>
                 </div>
             </div >
+
         </>
     )
 }
 
-
-
-
-
-
-export default BtbCart
+export default BtbCart;

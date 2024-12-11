@@ -1,23 +1,39 @@
 .cart-title {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .cart-head {
     margin-bottom: 50px;
-    margin-left: 75px;
-    margin-right: 75px;
+    /* margin-left: 75px;
+    margin-right: 75px; */
 }
 
 .cart-row {
     margin-bottom: 20px;
     padding: 20px;
-    color: #fff;
+    color: orange;
+}
+
+.orangered{
+    color: orangered
+}
+
+.greenyellow{
+    color: greenyellow
+}
+
+.brown{
+    color: brown
 }
 
 .cart-border {
     border: 2px solid orange;
     border-radius: 50px;
+}
+
+.cart-label {
+    margin-bottom: 5px;
 }
 
 .cart-label1 {
@@ -27,8 +43,10 @@
 
 .sub-cat-part{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     color:orange;
+    margin-top: 10px;
+    font-size: 16px;
 }
 
 .text-cente{
@@ -36,8 +54,8 @@
 }
 
 .sub-img {
-    width:180px;
-    height:200px;
+    width:140px;
+    height:160px;
     border-radius: 10%;
     border: 1px solid orange;
 }

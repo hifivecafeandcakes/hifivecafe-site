@@ -5,7 +5,8 @@ const empty = (v: string) => {
     return v.toString().replace(/\s/g, '').length ? false : true
   };
   const email = (v: string) => (reg(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, v));
-  const indianPhoneNo = (v: string) => (reg(/^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([ -]?)\d{3}([ -]?)\d{4})$/, v));
+  // const indianPhoneNo = (v: string) => (reg(/^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([ -]?)\d{3}([ -]?)\d{4})$/, v));
+  const indianPhoneNo = (v: string) => !( /^[6-9]\d{9}$/.test(v));
   const landLineNo = (v: string) => (reg(/^(\d{5}([- ]*)\d{6})$/, v))
   const rupee = (v: number) => (v <= 99999999) ? false : true;
   const quantity = (v: number) => (v <= 9999) ? false : true;

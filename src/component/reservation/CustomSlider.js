@@ -43,7 +43,7 @@ const CustomSlider = ({ images, menus }) => {
       <div className="slider-container">
         <div className={`slide ${animating ? 'slide-animate' : ''}`} style={{ backgroundImage: `url(${images[currentSlide]})` }}>
           <div className="slide-content">
-            <h2>{(menus.length > 0 && menus[currentSlide]) ? menus[currentSlide] : `Menu-${currentSlide + 1}`}</h2>
+            <h4>{(menus.length > 0 && menus[currentSlide]) ? menus[currentSlide] : `Menu-${currentSlide + 1}`}</h4>
           </div>
         </div>
         <button className="prev" onClick={prevSlide}>❮</button>

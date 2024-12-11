@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import Navbar from "../Navbar";
-import TextField from '@mui/material/TextField';
 import '../../theme/css-component/CLT_cart.css'
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import axios from 'axios';
-import MenuSlider from './MenuSlider';
 import Status from './Status';
 import { useNavigate } from "react-router-dom";
 import CustomSlider from './CustomSlider';
 import CustomSubSlider from './CustomSubSlider';
-import { cakesArr } from '../common/Cakes';
-import { vegmenus } from '../common/Vegmenu';
-import { nonvegmenus } from '../common/Nonvegmenu';
 import Footer from './Footer';
+import validator from '../validate.ts';
 
 
 
@@ -24,6 +19,12 @@ const TbCart = () => {
     const res_id = localStorage.getItem('res_id');
     const res_cat_id = localStorage.getItem('res_cat_id');
     const res_scat_id = localStorage.getItem('res_scat_id');
+
+    const res_code = localStorage.getItem('res_code');
+    const res_cat_code = localStorage.getItem('res_cat_code');
+
+
+    const [isUpdated, setIsUpdated] = useState(false);
 
     const navigate = useNavigate();
     // console.log(user_id);
@@ -43,29 +44,20 @@ const TbCart = () => {
     // form parameter
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
-    const [guestName, setGuestName] = useState('');
     const [numOfPeople, setNumOfPeople] = useState(1);
-    const [vegOrNon, setVegOrNon] = useState('Veg');
-    const [menu, setMenu] = useState(1);
-    const [cake, setCake] = useState('');
-    const [cakeMsg, setCakeMsg] = useState('');
     const [comment, setComment] = useState('');
 
     const [total, setTotal] = useState(0);
     const [price, setPrice] = useState(0);
 
-    const [menus, setMenus] = useState([]);
-    const [vegMenus, setVegMenus] = useState([]);
-    const [nonVegMenus, setNonVegMenus] = useState([]);
-    const [cakes, setCakes] = useState([]);
-
-    const [vegImages, setVegImages] = useState([]);
-    const [nonVegImages, setNonVegImages] = useState([]);
+    const [guestName, setGuestName] = useState('');
+    const [guestWhatsapp, setGuestWhatsapp] = useState('');
+    const [guestNameError, setGuestNameError] = useState(false);
+    const [hasPhoneError, setHasPhoneError] = useState(false);
 
     //Error
     const [dateError, setDateError] = useState(false);
     const [timeError, setTimeError] = useState(false);
-    const [guestNameError, setGuestNameError] = useState(false);
 
     // status
     const empStatus = { msg: "", type: "success", toggle: "close" }
@@ -129,6 +121,11 @@ const TbCart = () => {
     //     slidesToScroll: 1,
     // };
 
+    function changeWhatsapp(v) {
+        console.log(validator.indianPhoneNo(v));
+        (validator.indianPhoneNo(v)) ? setHasPhoneError(true) : setHasPhoneError(false); setGuestWhatsapp(v);
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('userid', user_id);
@@ -140,6 +137,12 @@ const TbCart = () => {
 
         if (time == "" || date == "") {
             setStatus({ msg: "Please fill all required (*) fields", type: "error", toggle: "open" })
+            return;
+        }
+
+        (guestName == "") ? setGuestNameError(true) : setGuestNameError(false);
+        if (guestWhatsapp != "" && (validator.indianPhoneNo(guestWhatsapp))) {
+            setHasPhoneError(true)
             return;
         }
 
@@ -167,7 +170,9 @@ const TbCart = () => {
         formData.append('reser_id', res_id);
         formData.append('reser_catid', res_cat_id);
         formData.append('resersubcatid', res_scat_id);
-        formData.append('type', "TB");
+        formData.append('type', res_code);
+        formData.append("guest_name", guestName);
+        formData.append("guest_whatsapp", guestWhatsapp);
 
         formData.append("date", date);
         formData.append("time", time);
@@ -181,13 +186,8 @@ const TbCart = () => {
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/website/reservation/booking/create`, formData)
             console.log("RESPONSE :", res.data);
             if (res?.data?.Response?.Success == '1') {
-                let results = res?.data?.Response?.RazorpayOrder;
-                results.booking_id = res?.data?.Response?.ReservationId;
-                results.user = res?.data?.Response?.user[0];
-                results.totalPrice = total;
                 setStatus({ msg: "Booked Successfully!", type: "success", toggle: "open" });
-                navigate('/checkout', { state: results });
-                // window.location.href = '/reservation';
+                navigate('/order', { state: { status: status } });
             } else if (res.data.message == 'Give Valid Id') {
                 setStatus({ msg: "Give Valid Id", type: "error", toggle: "open" })
                 console.log('Give Valid Id');
@@ -233,23 +233,21 @@ const TbCart = () => {
                         </div>
                         <div className='row CLT_cart_row1'>
 
-                        </div>
-                        <div className='row'>
-                            <div className='col-lg-12 mt-4'>
-                                <h1 className='text-center'
-                                    style={{ color: 'orange', fontFamily: '"Bebas Neue", sans-serif' }}>
-                                    {subcatres.reser_main_title}</h1>
-                                <h6>{subcatres.reser_title}</h6>
-                            </div>
-
                             <div className='col-lg-12'>
-                                <h4 className='text-center'
+                                <h3 className='text-center'
                                     style={{ color: 'orange', fontFamily: '"Bebas Neue", sans-serif' }}>
-                                    {subcatres.cat_title}</h4>
+                                    {subcatres.reser_main_title}
+                                    {/* <h6 className='text-center'>
+                                        {subcatres.reser_title}
+                                    </h6> */}
+                                    &nbsp;-&nbsp;<span className='text-center'
+                                        style={{ color: 'orange', fontFamily: '"Bebas Neue", sans-serif' }}>
+                                        {subcatres.cat_title}</span>
+                                </h3>
                             </div>
                         </div>
                         <div className='row BTB_cart_row12'>
-                            <div className='col-lg-12 p-5'>
+                            <div className='col-lg-12'>
                                 <h2>
                                     {subcatres.description}
                                 </h2>
@@ -267,10 +265,10 @@ const TbCart = () => {
                                     // <MenuSlider menuImages={menuImages} />
                                     <CustomSubSlider images={mainImages} />
                                     : ""}
-                                <h3 className='orange'>CODE : {subcatres.sub_tilte}</h3>
-                                <h2 className='green'>₹{price}</h2>
+                                <h3 className='orange text-center'>CODE : {subcatres.sub_tilte}</h3>
+                                <h2 className='green text-center'>₹{price}</h2>
                             </div>
-                            <div className="col-lg-4 CLT_cart_row2_2 ">
+                            <div className="col-lg-6 ">
                                 <div className='CLT_cart_row2_2_div'>
                                     <Status msg={status.msg} type={status.type} toggle={status.toggle} onClose={() => setStatus(empStatus)} />
                                     <div className="row p-2">
@@ -287,8 +285,17 @@ const TbCart = () => {
                                     </div>
 
                                     <div className="row p-2">
-
-                                        <div className='col-md-6'>
+                                        <div className='col-sm'>
+                                            <label className='required'>Your Name</label>
+                                            <input type="text" className="form-control p-2" required onChange={(e) => { setGuestNameError(false); setGuestName(e.target.value); }} />
+                                            {(guestNameError) ? <span className='error'>This is field required</span> : ""}
+                                        </div>
+                                        <div className='col-sm'>
+                                            <label className=''>Whatsapp No</label>
+                                            <input type="number" className="form-control p-2" onChange={(e) => { changeWhatsapp(e.target.value) }} />
+                                            {(hasPhoneError) ? <span className='error'>Wrong Phone no format</span> : ""}
+                                        </div>
+                                        <div className='col-md-2'>
                                             <label className='required'>No. of People</label>
                                             <select className="form-control p-2" onChange={(e) => setNumOfPeople(e.target.value)}>
                                                 <option value="1">1</option>
@@ -314,13 +321,6 @@ const TbCart = () => {
 
                             {/* =================================== */}
 
-                            <div className='col-lg-4 CLT_cart_row2_3 customslide'>
-                                {(refreshKey != 0 && menuImages.length > 0) ?
-                                    // <MenuSlider menuImages={menuImages} />
-                                    <CustomSlider images={menuImages} menus={menus} />
-                                    : ""}
-
-                            </div>
 
                         </div>
                         {/* ===================================================================================== */}

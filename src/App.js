@@ -20,6 +20,7 @@ import Order from "./component/Order";
 import Checkout from "./component/razorpay/Checkout";
 // import ProceedPage from "./component/menu/ProceedPage";
 
+import './theme/css-component/style.css';
 // ==========================
 
 function App() {

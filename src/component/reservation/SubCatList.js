@@ -1,66 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import Navbar from "../Navbar";
-import '../../theme/css-component/sub_cat_list.css'
+import '../../theme/css-component/sub_cat.css'
 import Sidebar from '../Sidebar';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import XIcon from '@mui/icons-material/X';
-import { IconButton } from '@mui/material';
-import axios from 'axios';
+import axios from 'axios'
 
-
-
-import ReactPlayer from 'react-player'
-import vid1 from '../../theme/video/vid1.webm'
-import vid2 from '../../theme/video/vid2.mp4'
-import vid3 from '../../theme/video/vid3.mp4'
 import { Link } from 'react-router-dom';
 
 const SubCatList = () => {
 
-
-    const video = [
-        {
-            id: 1,
-            src: vid1
-        }, {
-            id: 2,
-            src: vid2
-        }, {
-            id: 3,
-            src: vid3
-        }
-    ]
-
-    const [videoid, setVideoid] = useState(0);
-    const nextvid = (i) => {
-
-        if (i == 2 || i == 1 || i == 0) {
-            setVideoid(i)
-        } else {
-
-            setVideoid(0)
-        }
-
-    }
-
-
-
-    // -------------------------------------------------------------------
-
-
     const res_cat_id = localStorage.getItem('res_cat_id');
     const res_id = localStorage.getItem('res_id');
+    const res_code = localStorage.getItem('res_code');
+    const res_cat_code = localStorage.getItem('res_cat_code');
+
 
     let RedirectURL = '/clt_cart';
-    if (res_id == 1) {
+    if (res_code == "CL") {
         RedirectURL = '/clt_cart';
     }
-    else if (res_id == 2) {
+    else if (res_code == "BP") {
         RedirectURL = '/btb_cart';
     }
-    else{
+    else {
         RedirectURL = '/tb_cart';
     }
 
@@ -69,6 +31,10 @@ const SubCatList = () => {
     const [res_scat_list, setRes_scat_list] = useState([])
     const [title, setTitle] = useState()
     const [sub_title, setSub_title] = useState()
+
+    const device = localStorage.getItem('device');
+
+    console.log(device);
 
     useEffect(() => {
 
@@ -79,9 +45,7 @@ const SubCatList = () => {
                     setSub_title(res.data.Response?.result[0].reser_subtitle);
                     setTitle(res.data.Response?.result[0].reser_main_title)
                     setRes_scat_list(res.data.Response?.result[0].reservation_subcategory_list)
-
                 }
-
             })
             .catch((err) => {
                 console.log(err);
@@ -101,71 +65,47 @@ const SubCatList = () => {
         console.log("res_id", res_id);
         console.log("res_cat_id", res_cat_id);
         console.log("res_scat_id", e);
-
-        // if (res_id == '1') {
-        //     window.location.href = "clt_cart";
-        // }
-
-        // if (res_id == '2') {
-        //     window.location.href = "btb_cart";
-        // }
-
-        // if (res_id == '3') {
-        //     window.location.href = "tb_cart";
-        // }
     }
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    };
 
     return (
         <>
-            <div className='container-fluid ' >
+            <div className='container-fluid subcat-list-div' >
                 <div className='row'>
                     <div className='col-lg-12'>
                         <div className='row nav_bar'>
                             <Navbar />
                         </div>
 
-                        <div className='row'>
-                            <div className='col-lg-3  sidebar ' >
+                        <div className='row mt-4'>
+                            <div className='col-lg-3 sidebar'>
                                 <Sidebar />
                             </div>
-
-                            <div className='col-lg-9  home_col_2'>
-                                <ReactPlayer
-                                    url={video[videoid].src}
-                                    width='100vw'
-                                    height='100vh'
-                                    pip={true}
-                                    controls={false}
-                                    playing={true}
-                                    playbackRate={1}
-                                    volume={0}
-                                    onEnded={() => nextvid(videoid + 1)}
-                                />
-
-                            </div>
-
-
-                            <div className='col-lg-9  sub_cat_list_1'>
-                                <h1 className='text-center' style={{ color: 'orange' }}>{title} ({sub_title})</h1>
+                            <div className='col-lg-9  mob-mt-40'>
+                                <div><h3 className='text-center'>{title}</h3></div>
+                                <div><h1 className='text-center'>{sub_title}</h1></div>
                             </div>
                         </div>
-                        <div className='row'>
-                            <div className='col-lg-3  sidebar ' >
 
-                            </div>
-                            <div className='col-lg-9 '>
+                        <div className='row mt-4'>
+                            <div className='col-sm-3' ></div>
+                            <div className='col-sm-9'>
                                 <div className='row'>
                                     {
                                         res_scat_list?.map((item, i) => (
-                                            <div className='col-lg-3 sub_cat_list_2 ' key={i}>
-
-                                                <Link onClick={() => route_cat(item.reser_sub_id)} to={RedirectURL}><img src={item.sub_img} alt={`Image ${i}`} /> </Link>
-
-
-                                                <div>
-                                                    <h5>{item.sub_tilte}</h5>
-                                                    <h5>{item.sub_cat_price_range}</h5>
-                                                </div>
+                                            <div className='col-lg-4  mb-4 sub_cat_2' key={i}>
+                                                <Link onClick={() => route_cat(item.reser_sub_id)}
+                                                    to={RedirectURL}>
+                                                    <img className='img' src={item.sub_img} alt={`Image ${i}`} /> </Link>
+                                                <h3 className='text-center orange' style={{ marginTop: '2vh' }}>{item.sub_tilte}</h3>
+                                                <h4 className='text-center green'>{item.sub_cat_price_range}</h4>
                                             </div>
                                         ))
                                     }

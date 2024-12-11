@@ -283,6 +283,13 @@ body::-webkit-scrollbar {
 
 /* =========================================PHONE VIEW ====================================================================== */
 
+@media (max-width: 768px) {
+  .nav_bar {
+    display: block;
+  }
+}
+
+
 @media(max-width:320px) {
   .home_row_1 {
     margin-top: 10%;
