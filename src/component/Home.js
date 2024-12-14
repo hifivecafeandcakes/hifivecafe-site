@@ -8,14 +8,13 @@ import Sidebar from './Sidebar'
 import ReactPlayer from 'react-player'
 import Slider from 'react-slick';
 
-import vidWeb1 from '../theme/video/vid1.mp4'
-import vidWeb2 from '../theme/video/vid2.mp4'
-import vidWeb3 from '../theme/video/vid3.mp4'
+import vidWeb1 from '../theme/home/video/vidWeb1.mp4'
+import vidWeb2 from '../theme/home/video/vidWeb2.MOV'
+import vidWeb3 from '../theme/home/video/vidWeb3.MOV'
 
-
-import vidMob1 from '../theme/video/vid2.mp4'
-import vidMob2 from '../theme/video/vid2.mp4'
-import vidMob3 from '../theme/video/vid3.mp4'
+import vidMob1 from '../theme/home/video/vidMob1.mp4'
+import vidMob2 from '../theme/home/video/vidMob2.mp4'
+import vidMob3 from '../theme/home/video/vidMob1.mp4'
 
 import LOGO from '../theme/image/logo.png'
 

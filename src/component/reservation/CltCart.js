@@ -337,7 +337,7 @@ const CltCart = () => {
                         setCakes([...arr_cakes]);
                     } else {
                         setCakes([...cakesArr]);
-                        arr_cakes = arr_cakes;
+                        arr_cakes = cakesArr;
                     }
 
 

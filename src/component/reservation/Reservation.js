@@ -3,9 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Navbar from "../Navbar";
 import '../../theme/css-component/reservation.css'
 import Sidebar from '../Sidebar';
-import vid1 from '../../theme/video/vid1.webm'
-import vid2 from '../../theme/video/vid2.mp4'
-import vid3 from '../../theme/video/vid3.mp4'
+// import vid1 from '../../theme/video/vid1.webm'
+// import vid2 from '../../theme/video/vid2.mp4'
+// import vid3 from '../../theme/video/vid3.mp4'
 import BgGrey from '../../theme/image/site/bg-grey.jpg'
 
 

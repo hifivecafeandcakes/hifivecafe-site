@@ -61,21 +61,21 @@ const Navbar = () => {
 
                 {/* <div className="text-center"  style={{ display: 'flex', justifyContent: 'space-between', width: '30%' }}> */}
 
-                    <ul className='hero'>
-                        <li><Link to="/">HOME</Link></li>
-                        <li><Link to="/galary">GALLERY</Link></li>
-                        <li><Link to="/reservation">RESERVATION</Link></li>
-                        <li><Link onClick={upcoming} href="#"> CAKE</Link></li>
-                        <li><Link onClick={upcoming} href="#">MENU</Link></li>
-                        <li><Link onClick={upcoming} href="#">CONTACT US</Link></li>
-                        <li><Link onClick={upcoming} href="#"><FontAwesomeIcon icon={faCartShopping} /></Link></li>
-                    </ul>
+                <ul className='hero'>
+                    <li><Link to="/">HOME</Link></li>
+                    <li><Link to="/galary">GALLERY</Link></li>
+                    <li><Link to="/reservation">RESERVATION</Link></li>
+                    <li><Link onClick={upcoming} href="#"> CAKE</Link></li>
+                    <li><Link onClick={upcoming} href="#">MENU</Link></li>
+                    <li><Link onClick={upcoming} href="#">CONTACT US</Link></li>
+                    <li><Link to="/order" href="#"><FontAwesomeIcon icon={faCartShopping} /></Link></li>
+                </ul>
 
-                    {(userid) ?
-                        <>
-                            <h4 className='green'>Hi, {username}</h4>
-                        </> :
-                        <Link href="/login"><button className='action_btn'> Login</button></Link>}
+                {(userid) ?
+                    <>
+                        <h4 className='green'>Hi, {username}</h4>
+                    </> :
+                    <Link href="/login"><button className='action_btn'> Login</button></Link>}
 
                 {/* </div> */}
                 <div className="toggle_btn" >
