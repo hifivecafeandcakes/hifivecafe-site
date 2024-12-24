@@ -48,7 +48,7 @@ const CltCart = () => {
     const [timeSlot, setTimeSlot] = useState('');
     const [guestName, setGuestName] = useState('');
     const [guestWhatsapp, setGuestWhatsapp] = useState('');
-    const [numOfPeople, setNumOfPeople] = useState(1);
+    const [numOfPeople, setNumOfPeople] = useState(2);
     const [vegOrNon, setVegOrNon] = useState('Veg');
     const [menu, setMenu] = useState(1);
     const [cake, setCake] = useState('');
