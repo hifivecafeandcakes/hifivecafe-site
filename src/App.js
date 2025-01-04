@@ -22,6 +22,11 @@ import Checkout from "./component/razorpay/Checkout";
 
 import './theme/css-component/style.css';
 // ==========================
+import ScrollToBottom from "./component/ScrollToBottom";
+import BackToTop from "./component/BackToTop";
+import Footer from "./component/reservation/Footer";
+import Contact from "./component/Contact";
+
 
 function App() {
   return (
@@ -45,8 +50,10 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
-
+      <ScrollToBottom />
+      <BackToTop />
 
       {/* <Cake_cart/> */}
       {/* <Menu_cart/> */}

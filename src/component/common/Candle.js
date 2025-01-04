@@ -22,7 +22,7 @@ export const ledPricesArr = [100,200]
 export const ageArr = ["AGE-1","AGE-2"]
 export const agePricesArr = [100,200]
 
-export const photoPrintsArr = ["Photoprint-1","Photoprint-2","Photoprint-3","Photoprint-4","Photoprint-5"]
+export const photoPrintsArr = ["Print-1","Print-2","Print-3","Print-4","Print-5"]
 export const photoPrintPricesArr = [100,200,300,400,500]
 
 export const flowersArr = ["Flower-1","Flower-2","Flower-3","Flower-4","Flower-5"]

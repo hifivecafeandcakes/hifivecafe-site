@@ -1,0 +1,24 @@
+.scroll-to-bottom {
+    position: fixed; /* Fixed position on the screen */
+    bottom: 20px;    /* 20px from the bottom */
+    right: 20px;      /* 20px from the right */
+    width: 50px;     /* Width of the button */
+    height: 50px;    /* Height of the button */
+    background-color: #28a745; /* Green background color */
+    color: white;    /* White arrow color */
+    font-size: 24px; /* Font size for the arrow */
+    text-align: center; /* Center align text horizontally */
+    line-height: 50px; /* Center align text vertically */
+    border-radius: 50%; /* Rounded button */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    z-index: 1000; /* Ensure it appears on top of other elements */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.scroll-to-bottom:hover {
+    background-color: #1e7e34; /* Darker green on hover */
+}

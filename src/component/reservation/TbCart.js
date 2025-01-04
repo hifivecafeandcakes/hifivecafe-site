@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import axios from 'axios';
 import Status from './Status';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CustomSlider from './CustomSlider';
 import CustomSubSlider from './CustomSubSlider';
 import Footer from './Footer';
@@ -234,7 +234,7 @@ const TbCart = () => {
                         <div className='row CLT_cart_row1'>
 
                             <div className='col-lg-12'>
-                                <h3 className='text-center'
+                                <h6 className='text-center'
                                     style={{ color: 'orange', fontFamily: '"Bebas Neue", sans-serif' }}>
                                     {subcatres.reser_main_title}
                                     {/* <h6 className='text-center'>
@@ -243,7 +243,11 @@ const TbCart = () => {
                                     &nbsp;-&nbsp;<span className='text-center'
                                         style={{ color: 'orange', fontFamily: '"Bebas Neue", sans-serif' }}>
                                         {subcatres.cat_title}</span>
-                                </h3>
+                                </h6>
+                                <h5 className='text-center'
+                                    style={{ color: 'orangered', fontFamily: '"Bebas Neue", sans-serif' }}>
+                                    {subcatres.sub_tilte}
+                                </h5>
                             </div>
                         </div>
                         <div className='row BTB_cart_row12'>
@@ -251,6 +255,18 @@ const TbCart = () => {
                                 <h2>
                                     {subcatres.description}
                                 </h2>
+                            </div>
+                        </div>
+
+                        <div className='row mb-2'>
+                            <div style={{ display: "flex" }}>
+                                <div><Link to="/reservation" className='breadcrums'>Reservation</Link></div>
+                                <div className='grey'>&nbsp;-&nbsp;</div>
+                                <div><Link to="/sub_cat" className='breadcrums'>{subcatres.reser_main_title}</Link></div>
+                                <div className='grey'>&nbsp;-&nbsp;</div>
+                                <div><Link to="/sub_cat_list" className='breadcrums'>{subcatres.cat_title}</Link></div>
+                                <div className='grey'>&nbsp;-&nbsp;</div>
+                                <div className='breadcrums-active'> {subcatres.sub_tilte}</div>
                             </div>
                         </div>
 
@@ -287,7 +303,7 @@ const TbCart = () => {
                                     <div className="row p-2">
                                         <div className='col-sm'>
                                             <label className='required'>Your Name</label>
-                                            <input type="text" className="form-control p-2" required onChange={(e) => { setGuestNameError(false); setGuestName(e.target.value); }} />
+                                            <input type="text" maxLength={30} className="form-control p-2" required onChange={(e) => { setGuestNameError(false); setGuestName(e.target.value); }} />
                                             {(guestNameError) ? <span className='error'>This is field required</span> : ""}
                                         </div>
                                         <div className='col-sm'>
@@ -309,7 +325,7 @@ const TbCart = () => {
 
                                     <div className='p-2'>
                                         <label>Additional Comments</label>
-                                        <input type="text" className="form-control p-2" onChange={(e) => setComment(e.target.value)} />
+                                        <input type="text" maxLength={200} className="form-control p-2" onChange={(e) => setComment(e.target.value)} />
                                     </div>
 
                                     <div className='p-2' style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: "30px" }}>

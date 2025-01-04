@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import axios from 'axios';
 import Status from './Status.js';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CustomSubSlider from './CustomSubSlider.js';
 import {
     cakesArr, timeSlotsArr, ledArr,
@@ -70,8 +70,8 @@ const BtbCart = () => {
     const [cakes, setCakes] = useState([]);
     const [timeSlots, setTimeSlots] = useState([]);
 
-    const [peoples, setPeoples] = useState([]); 
-    
+    const [peoples, setPeoples] = useState([]);
+
 
     //Error
     const [dateError, setDateError] = useState(false);
@@ -338,11 +338,11 @@ const BtbCart = () => {
                     var arr_timeSlots = timeSlotsArr;
                     setTimeSlots([...arr_timeSlots]);
 
-                    if(res_cat_code=="silver"){
+                    if (res_cat_code == "silver") {
                         setPeoples([...noPeoplesSilverArr])
-                    }else if(res_cat_code=="gold"){
+                    } else if (res_cat_code == "gold") {
                         setPeoples([...noPeoplesGoldArr])
-                    }else{
+                    } else {
                         setPeoples([...noPeoplesEliteArr])
                     }
 
@@ -550,7 +550,7 @@ const BtbCart = () => {
                         <div className='row CLT_cart_row1'>
 
                             <div className='col-lg-12'>
-                                <h3 className='text-center'
+                                <h6 className='text-center'
                                     style={{ color: 'orange', fontFamily: '"Bebas Neue", sans-serif' }}>
                                     {subcatres.reser_main_title}
                                     {/* <h6 className='text-center'>
@@ -559,7 +559,11 @@ const BtbCart = () => {
                                     &nbsp;-&nbsp;<span className='text-center'
                                         style={{ color: 'orange', fontFamily: '"Bebas Neue", sans-serif' }}>
                                         {subcatres.cat_title}</span>
-                                </h3>
+                                </h6>
+                                <h5 className='text-center'
+                                    style={{ color: 'orangered', fontFamily: '"Bebas Neue", sans-serif' }}>
+                                    {subcatres.sub_tilte}
+                                </h5>
                             </div>
                         </div>
                         <div className='row BTB_cart_row12'>
@@ -567,6 +571,18 @@ const BtbCart = () => {
                                 <h2>
                                     {subcatres.description}
                                 </h2>
+                            </div>
+                        </div>
+
+                        <div className='row mb-2'>
+                            <div style={{ display: "flex" }}>
+                                <div><Link to="/reservation" className='breadcrums'>Reservation</Link></div>
+                                <div className='grey'>&nbsp;-&nbsp;</div>
+                                <div><Link to="/sub_cat" className='breadcrums'>{subcatres.reser_main_title}</Link></div>
+                                <div className='grey'>&nbsp;-&nbsp;</div>
+                                <div><Link to="/sub_cat_list" className='breadcrums'>{subcatres.cat_title}</Link></div>
+                                <div className='grey'>&nbsp;-&nbsp;</div>
+                                <div className='breadcrums-active'> {subcatres.sub_tilte}</div>
                             </div>
                         </div>
 
@@ -615,7 +631,7 @@ const BtbCart = () => {
                                         {/* <div className="row p-2"> */}
                                         <div className='col-sm'>
                                             <label className='required'>Guest Name</label>
-                                            <input type="text" className="form-control p-2" required onChange={(e) => { setGuestNameError(false); setGuestName(e.target.value); }} />
+                                            <input type="text" maxLength={30} className="form-control p-2" required onChange={(e) => { setGuestNameError(false); setGuestName(e.target.value); }} />
                                             {(guestNameError) ? <span className='error'>This is field required</span> : ""}
                                         </div>
                                         <div className='col-sm'>
@@ -690,7 +706,7 @@ const BtbCart = () => {
                                         </div>
                                         <div className='col-md-5'>
                                             <label>Cake Message <span className='green'>*</span></label>
-                                            <input type="text" className="form-control p-2" onChange={(e) => setCakeMsg(e.target.value)} />
+                                            <input type="text" maxLength={100} className="form-control p-2" onChange={(e) => setCakeMsg(e.target.value)} />
                                             {(cakeMsgError) ? <span className='error'>This is field required</span> : ""}
                                         </div>
                                     </div>
@@ -865,7 +881,7 @@ const BtbCart = () => {
                                             : ""}
                                         <div className='col-sm-8'>
                                             <label>Additional Comments</label>
-                                            <input type="text" className="form-control p-2" onChange={(e) => setComment(e.target.value)} />
+                                            <input type="text" maxLength={200} className="form-control p-2" onChange={(e) => setComment(e.target.value)} />
                                         </div>
                                     </div>
 

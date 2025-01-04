@@ -80,7 +80,7 @@ const Reservation = () => {
                             <div className='col-lg-3 home_col_1 sidebar ' >
                                 <Sidebar />
                             </div>
-                            <div className='col-lg-9 home_col_2 mob-mb-40'>
+                            <div className='col-lg-9 home_col_2 mob-mt-40'>
 
                                 <Slider {...settings} style={{ width: '90%' }}>
                                     <div><img style={{ width: '100%', height: '90vh' }} className="responsive-image" src={(device == 'mobile') ? reservationMob1 : reservationWeb1} ></img></div>
@@ -90,31 +90,22 @@ const Reservation = () => {
                             </div>
                         </div>
 
-                        <div className='row mob-mb-20 '>
+                        <div className='row mob-mt-20 '>
                             <div className='col-lg-3' >
                             </div>
                             <div className='col-lg-9'>
-                                <h1 className='text-center white'>RESERVATION</h1>
+                                <h1 className='text-center orange'>RESERVATION</h1>
                             </div>
                         </div>
 
                         <div className='row home_row2'>
                             <div className='col-lg-3' >
                             </div>
-
-
                             {res_list?.map((item, index) => (
-                                <div className='col-lg-3 home_row2_1 mob-mb-20'>
-
-                                    <div style={{ display: 'flex' }}>
-
-                                        <img className='img1' alt="img" src={BgGrey} />
-
-                                        <img className='img2' alt="img" src={item.reser_image} style={{ position: 'absolute' }} />
-
-                                    </div>
-                                    <h4>{item.reser_main_title}</h4>
-                                    <h4>{item.reser_title}</h4>
+                                <div className='col-lg-3 home_row2_1 mob-mt-20'>
+                                    <img className='img2' alt="img" src={item.reser_image} />
+                                    <h4 className='pt-2'>{item.reser_main_title}</h4>
+                                    <h5>{item.reser_title}</h5>
                                     {/* <button style={{ textAlign: 'center' }} className='home_action2_btn ' onClick={() => route_cat(res_list[0]?.reser_id)}>BOOK NOW</button> */}
                                     <Link to="/sub_cat" style={{ textAlign: 'center' }} className='home_action2_btn '
                                         onClick={() => { route_cat(item.reser_id); route_code(item.reser_code) }}>BOOK NOW</Link>

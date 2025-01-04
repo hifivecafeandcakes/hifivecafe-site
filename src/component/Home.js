@@ -113,15 +113,12 @@ const Home = () => {
                         <div className='nav_bar'>
                             <Navbar />
                         </div>
-
-
                         <div className='row home_row_1'>
-
                             <div className='col-lg-3 home_col_1 sidebar '>
-
                                 <Sidebar />
                             </div>
-                            <div className='col-lg-9  home_col_2' style={{ backgroundImage: LOGO }}>
+                            {/* <div className='col-lg-9 home_col_2 home_image_center' style={{ backgroundImage: LOGO }}> */}
+                            <div className='col-lg-9 home_col_2 home_image_center'>
                                 <ReactPlayer
                                     url={video[videoid].src}
                                     width='100vw'

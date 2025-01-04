@@ -74,18 +74,18 @@ const Sidebar = ({ openSidebar = 'hide' }) => {
                 <div className='row'>
                     <div className={device == "mobile" ? `col-lg-3 mob-sidebar-content ${openSidebar}` : 'col-lg-3 web-sidebar-content'}>
                         <div className={device == "mobile" ? `sidebar_one mob-mt-20 ${openSidebar}` : 'sidebar_one'}>
-                            <Link href="/">
+                            <Link to="/">
                                 <img src={LOGO} className='logo-image' alt="Hifive Logo" />
                             </Link>
                         </div>
-                        <div className={device == "mobile" ? `sidebar_two mob-mt-80 ${openSidebar}` : 'sidebar_two show'}>
+                        <div className={device == "mobile" ? `sidebar_two mob-mt-40 ${openSidebar}` : 'sidebar_two show'}>
                             <ul >
                                 <div data-aos='fade-left'><Link to="/">HOME</Link></div>
                                 <div data-aos='fade-left'><Link to="/galary">GALLERY</Link></div>
                                 <div data-aos='fade-left'><Link to="/reservation">RESERVATION</Link></div>
                                 <div data-aos='fade-left'><a onClick={upcoming} href="#"> CAKE</a></div>
                                 <div data-aos='fade-left'><a onClick={upcoming} href="#">MENU</a></div>
-                                <div data-aos='fade-left'><a onClick={upcoming} href="#">CONTACT US</a></div>
+                                <div data-aos='fade-left'><Link to="/contact">CONTACT US</Link></div>
                                 <div data-aos='fade-left' style={{ display: 'flex', justifyContent: 'space-between' }}>
                                     <Link to="/order" href="#"><FontAwesomeIcon icon={faCartShopping} /></Link>
                                     {(userid) ?

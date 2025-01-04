@@ -7,8 +7,9 @@ import 'aos/dist/aos.css';
 import axios from 'axios'
 import Status from './reservation/Status';
 import validator from './validate.ts';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
+import LOGO from '../theme/image/logo.png'
 
 
 const Login = () => {
@@ -19,6 +20,11 @@ const Login = () => {
   const res_scat_id = localStorage.getItem('res_scat_id');
 
   const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    setClickBack(true);
+    navigate(-1); // -1 tells the browser to go back one step
+  };
 
   // status
   const empStatus = { msg: "", type: "success", toggle: "close" }
@@ -31,6 +37,7 @@ const Login = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [hasEmailError, setHasEmailError] = useState(false);
   const [clickSubmit, setClickSubmit] = useState(false);
+  const [clickBack, setClickBack] = useState(false);
 
 
 
@@ -95,12 +102,12 @@ const Login = () => {
     try {
       const res = await axios.post(`${process.env.REACT_APP_API_URL}/website/register`, formData)
       console.log(res);
-      if (res?.data?.Response?.success == '1') {
+      if (res?.data?.Response?.Success == '1') {
         localStorage.setItem('user_id', res?.data?.Response?.result[0].user_id);
         localStorage.setItem('user_email', res?.data?.Response?.result[0].email);
         localStorage.setItem('user_phoneno', res?.data?.Response?.result[0].mobile);
         localStorage.setItem('user_name', res?.data?.Response?.result[0].name);
-        setStatus({ msg: res?.data?.Response?.message, type: "success", toggle: "open" })
+        setStatus({ msg: res?.data?.Response?.Message, type: "success", toggle: "open" })
         setTimeout(function () {
           if (res_id && res_cat_id && res_scat_id) {
             localStorage.setItem("res_id", res_id);
@@ -117,7 +124,7 @@ const Login = () => {
         localStorage.setItem('user_email', "");
         localStorage.setItem('user_phoneno', "");
         localStorage.setItem('user_name', "");
-        setStatus({ msg: res?.data?.Response?.message, type: "error", toggle: "open" })
+        setStatus({ msg: res?.data?.Response?.Message, type: "error", toggle: "open" })
       }
     } catch (err) {
       console.log(err);
@@ -158,13 +165,13 @@ const Login = () => {
     try {
       const res = await axios.post(`${process.env.REACT_APP_API_URL}/website/signin`, formData)
       console.log(res);
-      if (res?.data?.Response?.success == '1') {
+      if (res?.data?.Response?.Success == '1') {
         localStorage.setItem('user_id', res?.data?.Response?.result[0].user_id);
         localStorage.setItem('user_email', res?.data?.Response?.result[0].email);
         localStorage.setItem('user_phoneno', res?.data?.Response?.result[0].mobile);
         localStorage.setItem('user_name', res?.data?.Response?.result[0].name);
-        setStatus({ msg: res?.data?.Response?.message, type: "success", toggle: "open" })
-        console.log(res_id+"-"+res_cat_id+"-"+res_scat_id);
+        setStatus({ msg: res?.data?.Response?.Message, type: "success", toggle: "open" })
+        console.log(res_id + "-" + res_cat_id + "-" + res_scat_id);
 
         setTimeout(function () {
           if (res_id && res_cat_id && res_scat_id) {
@@ -183,7 +190,7 @@ const Login = () => {
         localStorage.setItem('user_email', "");
         localStorage.setItem('user_phoneno', "");
         localStorage.setItem('user_name', "");
-        setStatus({ msg: res?.data?.Response?.message, type: "error", toggle: "open" })
+        setStatus({ msg: res?.data?.Response?.Message, type: "error", toggle: "open" })
       }
     } catch (err) {
       console.log(err);
@@ -195,13 +202,27 @@ const Login = () => {
   return (
     <>
       <div className='container-fluid '>
+
         <div className='row ' >
           <Status msg={status.msg} type={status.type} toggle={status.toggle} onClose={() => setStatus(empStatus)} />
+
+
           <div className='col-lg-12 col-md-12 col-sm-12 full '>
-            <div className='loginbox '>
-              <div className='buttonbox'>
-                <div id='btn' className={toggle ? 'regbtn' : 'logbtn'}></div>
-                <button className='btn l_togglebtn' onClick={() => { setName(""); setEmailId(""); setPassword1(""); setPhone(""); setToggle(false); setClickSubmit(false); }} >LOGIN</button>
+            <div className='loginbox'
+            >
+
+              {/* style={{
+              backgroundImage: `url(${LOGO})`,
+              backgroundSize: 'contain', // Ensures the entire image fits within the div
+              backgroundPosition: 'center', // Centers the image in the div
+              backgroundRepeat: 'no-repeat', // Prevents the image from repeating
+            }} */}
+              <Link to="/">
+                <img src={LOGO} className='login-logo-image' alt="Hifive Logo" />
+              </Link>
+              <div className='buttonbox text-center'>
+                <div id='btn' className={toggle ? 'regbtn  text-center' : 'logbtn  text-center'}></div>
+                <button className='btn l_togglebtn text-center' onClick={() => { setName(""); setEmailId(""); setPassword1(""); setPhone(""); setToggle(false); setClickSubmit(false); }} >LOGIN</button>
                 <button className='btn l_togglebtn' onClick={() => { setEmail(""); setPassword(""); setToggle(true); setClickSubmit(false); }}>REGISTER</button>
               </div>
 
@@ -216,10 +237,19 @@ const Login = () => {
                       data-aos='fade-down' onChange={(e) => { setPasswordError(false); setPassword(e.target.value) }} />
                     {(passwordError) ? <span className='error ps-3'>This is field required</span> : ""}
 
-                    <button type='button' className='btn submitbtn' onClick={signin}
-                      disabled={(clickSubmit) ? true : false}>
-                      {(clickSubmit) ? <i class="fa fa-spinner fa-spin"></i> : ""}&nbsp;
-                      Login</button>
+                    <div className='d-flex'>
+                      <button type='button' className='btn submitbtn white' onClick={handleGoBack}
+                        disabled={(clickBack) ? true : false}>
+                        {(clickBack) ? <i class="fa fa-spinner fa-spin"></i> : ""}&nbsp;
+                        Back
+                      </button>
+
+                      <button type='button' className='btn submitbtn' onClick={signin}
+                        disabled={(clickSubmit) ? true : false}>
+                        {(clickSubmit) ? <i class="fa fa-spinner fa-spin"></i> : ""}&nbsp;
+                        Login
+                      </button>
+                    </div>
                   </form>
                 ) : (
                   <form id='reg' className='regforminput'>
@@ -240,10 +270,16 @@ const Login = () => {
                       data-aos='fade-down' onChange={(e) => { setPassword1Error(false); setPassword1(e.target.value) }} />
                     {(password1Error) ? <span className='error ps-3'>This is field required</span> : ""}
 
-
-                    <button type='button' className='btn regsubmitbtn' onClick={register}
-                      disabled={(clickSubmit) ? true : false}>
-                      {(clickSubmit) ? <i class="fa fa-spinner fa-spin"></i> : ""}&nbsp;Register</button>
+                    <div className='d-flex'>
+                      <button type='button' className='btn regsubmitbtn white' onClick={handleGoBack}
+                        disabled={(clickBack) ? true : false}>
+                        {(clickBack) ? <i class="fa fa-spinner fa-spin"></i> : ""}&nbsp;
+                        Back
+                      </button>
+                      <button type='button' className='btn regsubmitbtn' onClick={register}
+                        disabled={(clickSubmit) ? true : false}>
+                        {(clickSubmit) ? <i class="fa fa-spinner fa-spin"></i> : ""}&nbsp;Register</button>
+                    </div>
                   </form>
                 )
               }

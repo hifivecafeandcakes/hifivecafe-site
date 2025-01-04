@@ -14,13 +14,18 @@ const SubCat = () => {
     // =============================================catlist
     const [resCatList, setResCatList] = useState([])
     const [title, setTitle] = useState()
+    const [description, setDescription] = useState()
+    const [main_title, setMain_title] = useState()
+
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/website/reservation/category/list?reser_id=${res_id}`)
             .then((res) => {
                 if (res.data.Response.Success == 1) {
                     console.log(res.data.Response?.result[0]);
                     console.log(res.data.Response?.result[0].reservation_category_list);
-                    setTitle(res.data.Response?.result[0].reser_main_title)
+                    setMain_title(res.data.Response?.result[0].reser_main_title)
+                    setTitle(res.data.Response?.result[0].reser_title)
+                    setDescription(res.data.Response?.result[0].description)
                     setResCatList(res.data.Response?.result[0].reservation_category_list)
                 }
             })
@@ -69,8 +74,9 @@ const SubCat = () => {
                                 <Sidebar openSidebar='hide' />
                             </div>
                             <div className='col-lg-9 sub_cat_1 mob-mt-20'>
-                                <h1>{title}</h1>
-
+                                <h1>{main_title}</h1>
+                                <h3>{title}</h3>
+                                <h5>{description}</h5>
                             </div>
                         </div>
 
@@ -79,6 +85,13 @@ const SubCat = () => {
                             <div className='col-sm-3'></div>
                             <div className='col-sm-9'>
                                 <div className='row'>
+                                    <div style={{ display: "flex" }}>
+                                        <div><Link to="/reservation" className='breadcrums'>Reservation</Link></div>
+                                        <div className='grey'>&nbsp;-&nbsp;</div>
+                                        <div className='breadcrums-active'> {main_title}</div>
+                                    </div>
+                                </div>
+                                <div className='row mt-3'>
                                     {
                                         resCatList?.map((item, i) => (
                                             <div className='col-lg-4 mb-4 sub_cat_2' key={i}>

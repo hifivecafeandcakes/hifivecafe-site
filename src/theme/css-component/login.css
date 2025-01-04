@@ -28,9 +28,14 @@
 
 }
 
+.login-logo-image {
+    width: 100px;
+    height: 100px;
+}
+
 .buttonbox {
     width: 220px;
-    margin: 35px auto;
+    margin: 5px auto;
     position: relative;
     box-shadow: 0px 0px 20px 9px #ff61241f;
     display: flex;
@@ -46,8 +51,8 @@
     border: 0;
     position: relative;
     font-family: 'Lora', serif;
+    font-size: 14px;
     outline: none;
-
 }
 
 .logbtn {
@@ -89,9 +94,9 @@
 } */
 
 .input {
-    width: 97%;
+    width: 100%;
     margin: 5px;
-    padding: 6%;
+    padding: 4%;
     border: 1px solid white;
     border-radius: 25px;
     font-family: 'Lora', serif;
@@ -99,9 +104,9 @@
 }
 
 .input2 {
-    width: 97%;
+    width: 100%;
     margin: 5px;
-    padding: 6%;
+    padding: 4%;
     border: 1px solid white;
     border-radius: 25px;
     font-family: 'Lora', serif;
@@ -111,8 +116,8 @@
 .submitbtn {
     top: 40px;
     position: relative;
-    width: 35%;
-    padding: 10px 30px;
+    width: 30%;
+    padding: 5px 5px;
     cursor: pointer;
     display: block;
     margin: auto;
@@ -123,8 +128,8 @@
 .regsubmitbtn {
     top: 30px;
     position: relative;
-    width: 40%;
-    padding: 10px 30px;
+    width: 30%;
+    padding: 10px 10px;
     cursor: pointer;
     display: block;
     margin: auto;
@@ -158,11 +163,13 @@
 @media (max-width: 1600px) {
 
     .forminput {
-        margin-left: 10%;
+        margin-left: 5%;
+        margin-right: 5%;
     }
 
     .regforminput {
-        margin-left: 10%;
+        margin-left: 5%;
+        margin-right: 5%;
     }
 
 
@@ -359,13 +366,13 @@
     }
 
     .input2 {
-        
+
         padding: 2%;
         width: 100%;
         height: 10%;
         top: 0%;
         margin-left: 0%;
-       
+
         border: 1px solid white;
 
     }

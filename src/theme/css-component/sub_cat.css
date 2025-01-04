@@ -9,10 +9,12 @@
 
 
 .sub_cat_1 {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
-    height: 150px;
+    padding-top: 20px;
+    /* height: 150px; */
+    /* font-family: "Bebas Neue", sans-serif; */
 }
 
 .sub_cat_1 h1,
@@ -23,13 +25,31 @@
     text-align: center;
 }
 
-.sub_cat_1 h3,
-.subcat-list-div h3 {
+.sub_cat_1 h2,
+.subcat-list-div h2 {
     font-family: "Bebas Neue", sans-serif;
     font-size: 250%;
     color: orange;
     text-align: center;
 }
+
+
+.sub_cat_1 h3,
+.subcat-list-div h3 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 150%;
+    color: orangered;
+    text-align: center;
+}
+
+.sub_cat_1 h5,
+.subcat-list-div h5 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 100%;
+    color: white;
+    text-align: center;
+}
+
 
 .sub_cat_2 h3,
 h4 {

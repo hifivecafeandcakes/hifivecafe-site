@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import axios from 'axios';
 import Status from './Status';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CustomSlider from './CustomSlider';
 import CustomSubSlider from './CustomSubSlider';
 import { cakesArr, timeSlotsArr, ledArr, ledPricesArr, ageArr, agePricesArr, firesArr, firesPricesArr, balloonThemeArr, photoShootsArr, photoShootPricesArr, photoPrintsArr, photoPrintPricesArr, flowersArr, flowersPricesArr, vegmenus, nonvegmenus } from '../common/Candle';
@@ -125,8 +125,6 @@ const CltCart = () => {
 
     const [ledOption, setLedOption] = useState('No');
     const [ageOption, setAgeOption] = useState('No');
-
-
 
     function settingTotal(curValue, updatedValue) {
         var totalParam = parseFloat(price) + parseFloat(photoShootPrice) + parseFloat(photoPrintPrice)
@@ -285,7 +283,7 @@ const CltCart = () => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/website/reservation/category/subcategory?res_id=${res_id}&res_cat_id=${res_cat_id}&reser_sub_id=${res_scat_id}`)
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/website/reservation/category/subcategory?res_id=${res_id}&res_cat_id=${res_cat_id}&reser_sub_id=${res_scat_id}&user_id=${user_id}`)
             if (res.data.Response.Success == 1) {
                 console.log(res.data.Response.result);
                 let reservation_subcategory = res.data.Response.result[0].reservation_subcategory;
@@ -384,7 +382,8 @@ const CltCart = () => {
                 }
             }
             else {
-                console.log("No data found.");
+                setStatus({ msg: res?.data?.Response?.Message, type: "error", toggle: "open" })
+                console.log("Error fetching data");
             }
         } catch (err) {
             console.error("Error fetching data:", err);
@@ -526,11 +525,8 @@ const CltCart = () => {
                 setStatus({ msg: "Booked Successfully!", type: "success", toggle: "open" });
                 navigate('/checkout', { state: results });
                 // window.location.href = '/reservation';
-            } else if (res.data.message == 'Give Valid Id') {
-                setStatus({ msg: "Give Valid Id", type: "error", toggle: "open" })
-                console.log('Give Valid Id');
             } else {
-                setStatus({ msg: "Error in Booking. Try Again", type: "error", toggle: "open" })
+                setStatus({ msg: res?.data?.Response?.Message, type: "error", toggle: "open" })
                 console.log('Execution Error');
             }
         } catch (err) {
@@ -586,7 +582,7 @@ const CltCart = () => {
                         <div className='row CLT_cart_row1'>
 
                             <div className='col-lg-12'>
-                                <h3 className='text-center'
+                                <h6 className='text-center'
                                     style={{ color: 'orange', fontFamily: '"Bebas Neue", sans-serif' }}>
                                     {subcatres.reser_main_title}
                                     {/* <h6 className='text-center'>
@@ -595,7 +591,11 @@ const CltCart = () => {
                                     &nbsp;-&nbsp;<span className='text-center'
                                         style={{ color: 'orange', fontFamily: '"Bebas Neue", sans-serif' }}>
                                         {subcatres.cat_title}</span>
-                                </h3>
+                                </h6>
+                                <h5 className='text-center'
+                                    style={{ color: 'orangered', fontFamily: '"Bebas Neue", sans-serif' }}>
+                                    {subcatres.sub_tilte}
+                                </h5>
                             </div>
                         </div>
                         <div className='row BTB_cart_row12'>
@@ -603,6 +603,18 @@ const CltCart = () => {
                                 <h2>
                                     {subcatres.description}
                                 </h2>
+                            </div>
+                        </div>
+
+                        <div className='row mb-2'>
+                            <div style={{ display: "flex" }}>
+                                <div><Link to="/reservation" className='breadcrums'>Reservation</Link></div>
+                                <div className='grey'>&nbsp;-&nbsp;</div>
+                                <div><Link to="/sub_cat" className='breadcrums'>{subcatres.reser_main_title}</Link></div>
+                                <div className='grey'>&nbsp;-&nbsp;</div>
+                                <div><Link to="/sub_cat_list" className='breadcrums'>{subcatres.cat_title}</Link></div>
+                                <div className='grey'>&nbsp;-&nbsp;</div>
+                                <div className='breadcrums-active'> {subcatres.sub_tilte}</div>
                             </div>
                         </div>
 
@@ -651,7 +663,7 @@ const CltCart = () => {
                                         {/* <div className="row p-2"> */}
                                         <div className='col-lg-3'>
                                             <label className='required'>Guest Name</label>
-                                            <input type="text" className="form-control p-2" required onChange={(e) => { setGuestNameError(false); setGuestName(e.target.value); }} />
+                                            <input type="text" maxLength={50} className="form-control p-2" required onChange={(e) => { setGuestNameError(false); setGuestName(e.target.value); }} />
                                             {(guestNameError) ? <span className='error'>This is field required</span> : ""}
                                         </div>
                                         <div className='col-lg-3'>
@@ -705,7 +717,7 @@ const CltCart = () => {
                                         </div>
                                         <div className='col-md-8'>
                                             <label>Cake Message</label>
-                                            <input type="text" className="form-control p-2" onChange={(e) => setCakeMsg(e.target.value)} />
+                                            <input type="text" maxLength={100} className="form-control p-2" onChange={(e) => setCakeMsg(e.target.value)} />
                                         </div>
                                     </div>
 
@@ -816,7 +828,7 @@ const CltCart = () => {
                                             {(ledOption === "Yes") ?
                                                 <div>
                                                     <label className='required'>Name</label>
-                                                    <input type="text" maxLength={50} className="form-control p-1" required onChange={(e) => { setLedName(e.target.value); }} />
+                                                    <input type="text" maxLength={30} className="form-control p-1" required onChange={(e) => { setLedName(e.target.value); }} />
 
                                                     <div className='btn_select row'>
                                                         {leds.length > 0 && leds.map((item, index) => {
@@ -879,7 +891,7 @@ const CltCart = () => {
                                             : ""}
                                         <div className='col-sm-8'>
                                             <label>Additional Comments</label>
-                                            <input type="text" className="form-control p-2" onChange={(e) => setComment(e.target.value)} />
+                                            <input type="text" maxLength={200} className="form-control p-2" onChange={(e) => setComment(e.target.value)} />
                                         </div>
                                     </div>
 

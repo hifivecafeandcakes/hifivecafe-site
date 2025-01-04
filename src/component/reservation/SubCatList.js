@@ -84,20 +84,30 @@ const SubCatList = () => {
                             <Navbar />
                         </div>
 
-                        <div className='row mt-4'>
+                        <div className='row'>
                             <div className='col-lg-3 sidebar'>
                                 <Sidebar />
                             </div>
-                            <div className='col-lg-9  mob-mt-40'>
-                                <div><h3 className='text-center'>{title}</h3></div>
-                                <div><h1 className='text-center'>{sub_title}</h1></div>
+                            <div className='col-lg-9 sub_cat_1 mob-mt-40'>
+                                <div><h1 className='text-center'>{title}</h1></div>
+                                <div><h3 className='text-center'>{sub_title}</h3></div>
                             </div>
                         </div>
 
-                        <div className='row mt-4'>
+                        <div className='row mt-1'>
                             <div className='col-sm-3' ></div>
                             <div className='col-sm-9'>
+
                                 <div className='row'>
+                                    <div style={{ display: "flex" }}>
+                                        <div><Link to="/reservation" className='breadcrums'>Reservation</Link></div>
+                                        <div className='grey'>&nbsp;-&nbsp;</div>
+                                        <div><Link to="/sub_cat" className='breadcrums'>{title}</Link></div>
+                                        <div className='grey'>&nbsp;-&nbsp;</div>
+                                        <div className='breadcrums-active'> {sub_title}</div>
+                                    </div>
+                                </div>
+                                <div className='row mt-3'>
                                     {
                                         res_scat_list?.map((item, i) => (
                                             <div className='col-lg-4  mb-4 sub_cat_2' key={i}>

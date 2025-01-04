@@ -1,0 +1,24 @@
+.back-to-top {
+    position: fixed; /* Fixed position on the screen */
+    bottom: 20px;    /* 20px from the bottom */
+    right: 20px;     /* 20px from the right */
+    width: 50px;     /* Width of the button */
+    height: 50px;    /* Height of the button */
+    background-color: #007BFF; /* Blue background color */
+    color: white;    /* White arrow color */
+    font-size: 24px; /* Font size for the arrow */
+    text-align: center; /* Center align text horizontally */
+    line-height: 50px; /* Center align text vertically */
+    border-radius: 50%; /* Rounded button */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    z-index: 1000; /* Ensure it appears on top of other elements */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-top:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
