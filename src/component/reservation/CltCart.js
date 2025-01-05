@@ -415,6 +415,38 @@ const CltCart = () => {
         (validator.indianPhoneNo(v)) ? setHasPhoneError(true) : setHasPhoneError(false); setGuestWhatsapp(v);
     }
 
+
+    const changeTimeSlot = async (v) => {
+        try {
+            const formData = new FormData();
+            formData.append('userid', user_id);
+            formData.append("date", date);
+            formData.append("time_slot", v);
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/website/check/booking/time_slot`, formData)
+            console.log(res.data.Response);
+            if (res.data.Response.Success == 1) {
+                let bkd_count = res.data.Response.Result.count;
+                console.log(bkd_count);
+                if (bkd_count > 0) {
+                    console.log(bkd_count);
+                    setTimeSlot(() => {
+                        setStatus({ msg: `The slot for ${date} during ${v} has already been booked. Please use other table in ${subcatres.reser_main_title} - ${subcatres.cat_title}`, type: "error", toggle: "open" })
+                        return ''; // Return the new state for timeSlot
+                    });
+
+                } else {
+                    setTimeSlot(v);
+                }
+            }
+            else {
+                console.error("Error fetching data1");
+                setTimeSlot(v);
+            }
+        } catch (err) {
+            console.error("Error fetching data:", err);
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('userid', user_id);
@@ -648,7 +680,7 @@ const CltCart = () => {
                                         </div> */}
                                         <div className='col-lg-3'>
                                             <label className='required'>Time Slot</label>
-                                            <select className="form-control p-2" onChange={(e) => { setTimeSlot(e.target.value) }}>
+                                            <select className="form-control p-2" value={timeSlot} onChange={(e) => { changeTimeSlot(e.target.value); }}>
                                                 <option value="">Choose Time Slot</option>
                                                 {timeSlots.map((item, index) => {
                                                     return (

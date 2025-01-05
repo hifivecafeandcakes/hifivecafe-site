@@ -76,7 +76,7 @@ const TbCart = () => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/website/reservation/category/subcategory?res_id=${res_id}&res_cat_id=${res_cat_id}&reser_sub_id=${res_scat_id}`)
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/website/reservation/category/subcategory?res_id=${res_id}&res_cat_id=${res_cat_id}&reser_sub_id=${res_scat_id}&user_id=${user_id}`)
             if (res.data.Response.Success == 1) {
                 console.log(res.data.Response.result);
                 let reservation_subcategory = res.data.Response.result[0].reservation_subcategory;

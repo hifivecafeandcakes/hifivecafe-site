@@ -25,8 +25,12 @@ const Sidebar = ({ openSidebar = 'hide' }) => {
         localStorage.setItem('user_email', "");
         localStorage.setItem('user_phoneno', "");
         localStorage.setItem('user_name', "");
+        localStorage.setItem("res_id", "");
+        localStorage.setItem("res_cat_id", "");
+        localStorage.setItem("res_scat_id", "");
         setUserid("")
         setUsername("")
+        window.location.reload();
     }
 
     useEffect(() => {

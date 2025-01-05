@@ -27,8 +27,13 @@ const Navbar = () => {
         localStorage.setItem('user_email', "");
         localStorage.setItem('user_phoneno', "");
         localStorage.setItem('user_name', "");
+        localStorage.setItem("res_id", "");
+        localStorage.setItem("res_cat_id", "");
+        localStorage.setItem("res_scat_id", "");
+        localStorage.setItem("res_code", "")
         setUserid("")
         setUsername("")
+        window.location.reload();
     }
 
     const handleToggle = () => {
