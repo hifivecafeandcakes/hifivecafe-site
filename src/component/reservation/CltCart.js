@@ -421,6 +421,7 @@ const CltCart = () => {
             const formData = new FormData();
             formData.append('userid', user_id);
             formData.append("date", date);
+            formData.append("res_scat_id", res_scat_id);
             formData.append("time_slot", v);
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/website/check/booking/time_slot`, formData)
             console.log(res.data.Response);
