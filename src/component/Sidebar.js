@@ -11,14 +11,20 @@ import AOS from 'aos'
 import 'aos/dist/aos.css';
 import { WhatsappIcon } from "react-share";
 import LOGO from '../theme/image/logo.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import InstagramLink from './social/InstagramLink';
+import FacebookLink from './social/FacebookLink';
+import WhatsAppLink from './social/WhatsAppLink';
 
 
 const Sidebar = ({ openSidebar = 'hide' }) => {
 
     const [username, setUsername] = useState(localStorage.getItem('user_name'));
     const [userid, setUserid] = useState(localStorage.getItem('user_id'));
+
+    const navigate = useNavigate();
+
 
     const logout = async (e) => {
         localStorage.setItem('user_id', "");
@@ -31,7 +37,7 @@ const Sidebar = ({ openSidebar = 'hide' }) => {
         localStorage.setItem("res_code", "")
         setUserid("")
         setUsername("")
-        window.location.reload();
+        navigate('/');
     }
 
     useEffect(() => {
@@ -88,40 +94,41 @@ const Sidebar = ({ openSidebar = 'hide' }) => {
                                 <div data-aos='fade-left'><Link to="/">HOME</Link></div>
                                 <div data-aos='fade-left'><Link to="/galary">GALLERY</Link></div>
                                 <div data-aos='fade-left'><Link to="/reservation">RESERVATION</Link></div>
-                                <div data-aos='fade-left'><a onClick={upcoming} href="#"> CAKE</a></div>
-                                <div data-aos='fade-left'><a onClick={upcoming} href="#">MENU</a></div>
+                                <div data-aos='fade-left'><Link to="/cake">CAKE</Link></div>
+                                <div data-aos='fade-left'><Link to="/menu">MENU</Link></div>
                                 <div data-aos='fade-left'><Link to="/contact">CONTACT US</Link></div>
                                 <div data-aos='fade-left' style={{ display: 'flex', justifyContent: 'space-between' }}>
                                     <Link to="/order" href="#"><FontAwesomeIcon icon={faCartShopping} /></Link>
                                     {(userid) ?
-                                        <><h5 className='green'>Hi, {username}</h5> <Link to="/" onClick={logout}>Logout</Link></> :
+                                        <>
+                                            <h5 className='green'>Hi, {username}</h5> <Link to="/" onClick={logout}>Logout</Link>
+                                        </> :
                                         <Link to="/login">LOGIN</Link>
                                     }
                                 </div>
                             </ul>
                         </div>
-                        <div className={device == "mobile" ? `mob-sidebar_three  ${openSidebar}` : 'sidebar_three show'}>
-                            <a
+                        <div className={device == "mobile" ? `mob-sidebar_three mob-mt-20 mob-ms-20 ${openSidebar}` : 'sidebar_three'}>
+                            {/* <a
                                 href="https://api.whatsapp.com/send?phone=919585135049" // Make sure the phone number is in the correct format
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                
+                                style={{ textDecoration: 'none' }}
+
                             >
                                 <WhatsappIcon
                                     size={60}
                                     round={true}
-                                    style={{ position: 'relative', top: '0%', left: '5%', color: 'green' }}
+                                    style={{ position: 'relative', top: '18%', left: '2%', color: 'green' }}
                                 />
-                            </a>
-                            <IconButton style={{ color: 'white' }} className='ms-4'>
-                                <InstagramIcon />
-                            </IconButton>
+                            </a> */}
+                            <WhatsAppLink />
+                            <InstagramLink />
+                            <FacebookLink />
 
-                            <IconButton style={{ color: 'white' }}>
-                                <FacebookIcon />
-                            </IconButton><IconButton style={{ color: 'white' }}>
+                            {/* <IconButton style={{ color: 'white' }}>
                                 <XIcon />
-                            </IconButton>
+                            </IconButton> */}
 
                         </div>
 

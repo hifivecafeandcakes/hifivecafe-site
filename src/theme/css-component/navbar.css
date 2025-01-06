@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif
+    /* font-family: 'Times New Roman', Times, serif */
+    font-family: "Abel", sans-serif;    
 }
 
 /* body{
@@ -31,7 +32,7 @@ header {
 }
 
 .navbar {
-    background-color: black;
+    background-color: grey;
     width: 100%;
     height: 50px;
     position: absolute;
@@ -44,6 +45,7 @@ header {
     justify-content: space-between;
     border-bottom: 5px solid orangered;
     z-index: 2000;
+    color: orangered
 }
 
 .navbar-web {
@@ -72,8 +74,9 @@ header {
     padding-top: 5px;
     display: flex;
     gap: 4.5rem;
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 18px;
+    /* font-family: "Bebas Neue", sans-serif; */
+    font-family: "Abel", sans-serif;
+    font-size: 20px;
 }
 
 
@@ -250,8 +253,8 @@ header {
     .dropdown_menu.open {
         height: 90vh;
         z-index: 1000;
-        border-bottom: 4px solid orangered;
-        border-right: 4px solid orangered;
+        border-bottom: 8px solid grey;
+        border-right: 8px solid grey;
     }
 
     .dropdown_menu {

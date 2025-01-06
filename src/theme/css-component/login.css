@@ -149,6 +149,11 @@
     left: 15px;
 }
 
+.regforminput {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 
 /* =============================================================================================== *
 
@@ -368,7 +373,7 @@
     .input2 {
 
         padding: 2%;
-        width: 100%;
+        width: 80%;
         height: 10%;
         top: 0%;
         margin-left: 0%;
@@ -384,7 +389,7 @@
     }
 
     .regforminput {
-        margin-left: 7%;
+        margin-left: 6%;
         top: 90px;
         height: 100%;
         width: 80%;

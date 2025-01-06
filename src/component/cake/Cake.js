@@ -5,7 +5,7 @@ import '../../theme/css-component/galary.css'
 import Sidebar from '../Sidebar';
 
 
-const Menu = () => {
+const Cake = () => {
 
     return (
         <>
@@ -21,7 +21,7 @@ const Menu = () => {
                                 <Sidebar />
                             </div>
                             <div className='col-lg-9 galary_row1_1'>
-                                <h1>MENU</h1>
+                                <h1>CAKES</h1>
                             </div>
 
                         </div>
@@ -44,4 +44,4 @@ const Menu = () => {
     )
 }
 
-export default Menu
+export default Cake

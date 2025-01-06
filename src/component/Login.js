@@ -117,7 +117,7 @@ const Login = () => {
           } else {
             navigate(`/`);
           }
-        }, 6000);
+        }, 4000);
       } else {
         setClickSubmit(false);
         localStorage.setItem('user_id', "");
@@ -182,7 +182,7 @@ const Login = () => {
           } else {
             navigate(`/`);
           }
-        }, 6000);
+        }, 4000);
 
       } else {
         setClickSubmit(false);

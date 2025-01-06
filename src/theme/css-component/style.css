@@ -29,9 +29,9 @@
       border-color: orangered;
   }
 
-  .footet-logo-image{
-    width: 300px;
-    height: 300px;
+  .footet-logo-image {
+      width: 300px;
+      height: 300px;
   }
 
   @media (max-width: 768px) {
@@ -41,12 +41,20 @@
           margin-top: 10px;
       }
 
+      .mob-ms-10 {
+          margin-top: 10px !important;
+      }
+
+      .mob-ms-20 {
+          margin-top: 20px !important;
+      }
+
       .mob-mt-10 {
-          margin-top: 10px;
+          margin-top: 10px !important;
       }
 
       .mob-mt-20 {
-          margin-top: 20px;
+          margin-top: 20px !important;
       }
 
       .mob-mt-40 {
@@ -149,10 +157,28 @@
       }
   }
 
-
+  .black {
+      color: black;
+  }
 
   .green {
       color: green;
+  }
+
+  .aqua {
+      color: aqua;
+  }
+
+  .blue {
+      color: blue;
+  }
+
+  .darkgreen {
+      color: darkgreen;
+  }
+
+  .darkred {
+      color: darkred;
   }
 
   .white {
@@ -170,6 +196,10 @@
   .red,
   .error {
       color: red;
+  }
+
+  .orangered {
+      color: orangered;
   }
 
 
@@ -209,4 +239,11 @@
 
   .fs-20 {
       font-size: 20px;
+  }
+
+  .instagram-gradient {
+      /* display: inline-block; */
+      color: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+      /* -webkit-background-clip: text; */
+      /* -webkit-text-fill-color: transparent; */
   }

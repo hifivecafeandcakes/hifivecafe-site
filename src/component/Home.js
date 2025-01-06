@@ -67,11 +67,38 @@ const Home = () => {
     const backendURL = process.env.REACT_APP_API_URL;
 
 
-
-
     let video = [{ src: vidMob1 }, { src: vidMob2 }, { src: vidMob3 }]
 
-    const device = localStorage.getItem('device');
+
+    let dev = (localStorage.getItem("device") == null || localStorage.getItem("device") == "") ? "desktop" : localStorage.getItem("device");
+    const [device, setDevice] = useState(dev);
+
+    console.log(device);
+
+
+    const handleResize = () => {
+        if (window.innerWidth < 768) {
+            setDevice("mobile");
+            localStorage.setItem("device", "mobile")
+        } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+            setDevice("tablet");
+            localStorage.setItem("device", "tablet")
+        } else {
+            setDevice("desktop");
+            localStorage.setItem("device", "desktop")
+        }
+    };
+
+    useEffect(() => {
+        // Call once on mount to set the initial device type
+        handleResize();
+
+        // Add event listener for window resize
+        window.addEventListener("resize", handleResize);
+
+        // Clean up event listener on component unmount
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     if (device != "mobile") {
         video = [{ src: vidWeb1 }, { src: vidWeb2 }, { src: vidWeb3 }]

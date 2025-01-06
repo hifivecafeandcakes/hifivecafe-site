@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../theme/css-component/navbar.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faBars, faCaretUp, faCartShopping, faTimes, faPowerOff, faUserCircle, faSignIn } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faBars, faCaretUp, faCartShopping, faTimes, faPowerOff, faUserCircle, faSignIn }
+    from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LOGO from '../theme/image/logo.png'
 import LOGO1 from '../theme/image/logo1.jpg'
@@ -20,7 +21,7 @@ const Navbar = () => {
     const [userid, setUserid] = useState(localStorage.getItem('user_id'));
 
 
-    const device = localStorage.getItem("device");
+    const navigate = useNavigate();
 
     const logout = async (e) => {
         localStorage.setItem('user_id', "");
@@ -33,7 +34,7 @@ const Navbar = () => {
         localStorage.setItem("res_code", "")
         setUserid("")
         setUsername("")
-        window.location.reload();
+        navigate('/');
     }
 
     const handleToggle = () => {
@@ -41,7 +42,33 @@ const Navbar = () => {
         console.log(isDropdownOpen);
     };
 
-    const navigate = useNavigate();
+    let dev = (localStorage.getItem("device") == null || localStorage.getItem("device") == "") ? "desktop" : localStorage.getItem("device");
+    const [device, setDevice] = useState(dev);
+
+
+    const handleResize = () => {
+        if (window.innerWidth < 768) {
+            setDevice("mobile");
+            localStorage.setItem("device", "mobile")
+        } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+            setDevice("tablet");
+            localStorage.setItem("device", "tablet")
+        } else {
+            setDevice("desktop");
+            localStorage.setItem("device", "desktop")
+        }
+    };
+
+    useEffect(() => {
+        // Call once on mount to set the initial device type
+        handleResize();
+
+        // Add event listener for window resize
+        window.addEventListener("resize", handleResize);
+
+        // Clean up event listener on component unmount
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     const handleGoBack = () => {
         navigate(-1); // -1 tells the browser to go back one step
@@ -61,54 +88,52 @@ const Navbar = () => {
             {/* <div className='navbar container-fluid' style={{ justifyContent: 'space-between', marginLeft: "0px", paddingRight: "40px" }}> */}
             {(device == "mobile") ?
 
-                <div className='navbar container-fluid'>
-
+                <div className='navbar container-fluid '>
                     <>
+                        <div className='d-flex w-40 justify-content-around text-center'>
+                            <div className='pt-3'>
+                                <FontAwesomeIcon onClick={handleGoBack} icon={faArrowLeft} className='fs-20 red' />
+                            </div>
+
+                            <div>
+                                <Link to="/order" href="#"><FontAwesomeIcon icon={faCartShopping} className='fs-20  pt-3 orange' /></Link>
+                            </div>
+
+                        </div>
+
                         <div className='w-20 text-center'>
                             <Link to="/"> <img className='logoCenterImg' src={LOGO2} /></Link>
                         </div>
 
-                        <div className='d-flex w-40 justify-content-around text-center'>
-                            <div className='pt-3'>
-                                <FontAwesomeIcon onClick={handleGoBack} icon={faArrowLeft} className='white fs-20' />
-                            </div>
+                        <div className="d-flex w-40 justify-content-evenly text-center ">
+
                             {(userid) ?
                                 <>
                                     <div className='text-center pt-1'>
-                                        <FontAwesomeIcon icon={faUserCircle} className='fs-18 white' />
-                                        <h4 className='white mob-font-14 pt-0'>
+                                        <FontAwesomeIcon icon={faUserCircle} className='fs-18 aqua' />
+                                        <h4 className=' mob-font-14 pt-0 white'>
                                             {username.length > 8 ? username.substring(0, 8) + '...' : username}</h4>
                                     </div>
                                 </>
                                 :
-                                <Link to="/login" className='fs-20 pt-1'><FontAwesomeIcon icon={faSignIn} /></Link>
+
+                                <>
+                                    <div className='text-center pt-1'>
+                                        <Link to="/login"> <FontAwesomeIcon icon={faSignIn} className='fs-18 aqua' />
+                                            <h4 className=' mob-font-14 pt-0 white'>Login</h4></Link>
+                                    </div>
+                                </>
                             }
 
-                            {/* <div>
-                    <Link to="/" onClick={logout}><FontAwesomeIcon icon={faPowerOff} /></Link>
-                </div> */}
-                        </div>
-
-
-
-                        <div className="d-flex w-40 justify-content-evenly text-center white">
-
-
-
-                            <div>
-                                <Link to="/order" href="#"><FontAwesomeIcon icon={faCartShopping} className='fs-20  pt-3' /></Link>
-                            </div>
-
-                            <div className="pt-3">
-                                {/* <button > */}
-                                <FontAwesomeIcon onClick={() => handleToggle()}
-                                    icon={isDropdownOpen ? faTimes : faBars} color='white' />
-                                {/* </button> */}
+                            <div className="pt-3 darkred">
+                                <FontAwesomeIcon onClick={() => handleToggle()} className='fs-20'
+                                    icon={isDropdownOpen ? faTimes : faBars} color='' />
                             </div>
 
                         </div>
                     </>
 
+                    {/* <div><Link to="/" onClick={logout}><FontAwesomeIcon icon={faPowerOff} /></Link></div> */}
                 </div > :
                 <div className='navbar navbar-web container-fluid'>
 
@@ -121,12 +146,22 @@ const Navbar = () => {
                             <li><Link to="/">HOME</Link></li>
                             <li><Link to="/galary">GALLERY</Link></li>
                             <li><Link to="/reservation">RESERVATION</Link></li>
-                            <li><Link onClick={upcoming} href="#"> CAKE</Link></li>
-                            <li><Link onClick={upcoming} href="#">MENU</Link></li>
+                            <li><Link to="/cake">CAKE</Link></li>
+                            <li><Link to="/menu">MENU</Link></li>
                             <li><Link to="/contact">CONTACT US</Link></li>
                             <li><Link to="/order" href="#"><FontAwesomeIcon icon={faCartShopping} /></Link></li>
-                            <li><h4 className='green mob-font-14 pt-0'>
-                                Hi&nbsp;{username.length > 8 ? username.substring(0, 8) + '...' : username}</h4></li>
+                            {(userid) ?
+                                <li>
+                                    <h4 className='green mob-font-14 pt-0'>
+                                        Hi&nbsp;{(username) && (username.length > 8) ? username.substring(0, 8) + '...' : username}
+                                    </h4>
+                                </li> :
+                                <li>
+                                    <Link to="/login" className='green mob-font-14 pt-0'>
+                                        Login
+                                    </Link>
+                                </li>
+                            }
                             <li><Link to="/" className='grey' onClick={logout}><FontAwesomeIcon icon={faPowerOff} /></Link></li>
                         </ul>
                     </div>

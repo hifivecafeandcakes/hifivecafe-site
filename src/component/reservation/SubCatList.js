@@ -98,8 +98,8 @@ const SubCatList = () => {
                             <div className='col-sm-3' ></div>
                             <div className='col-sm-9'>
 
-                                <div className='row'>
-                                    <div style={{ display: "flex" }}>
+                                <div className='row ms-1'>
+                                    <div style={{ display: "contents" }}>
                                         <div><Link to="/reservation" className='breadcrums'>Reservation</Link></div>
                                         <div className='grey'>&nbsp;-&nbsp;</div>
                                         <div><Link to="/sub_cat" className='breadcrums'>{title}</Link></div>

@@ -389,6 +389,7 @@ const BtbCart = () => {
             formData.append('userid', user_id);
             formData.append("date", date);
             formData.append("time_slot", v);
+            formData.append("res_scat_id", res_scat_id);
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/website/check/booking/time_slot`, formData)
             console.log(res.data.Response);
             if (res.data.Response.Success == 1) {
@@ -579,7 +580,7 @@ const BtbCart = () => {
                         <div className='row'>
                             <Navbar />
                         </div>
-                        <div className='row CLT_cart_row1'>
+                        <div className='row CLT_cart_row1 mob-mt-90'>
 
                             <div className='col-lg-12'>
                                 <h6 className='text-center'
@@ -606,8 +607,8 @@ const BtbCart = () => {
                             </div>
                         </div>
 
-                        <div className='row mb-2'>
-                            <div style={{ display: "flex" }}>
+                        <div className='row mb-2 ms-1'>
+                            <div style={{ display: "contents" }}>
                                 <div><Link to="/reservation" className='breadcrums'>Reservation</Link></div>
                                 <div className='grey'>&nbsp;-&nbsp;</div>
                                 <div><Link to="/sub_cat" className='breadcrums'>{subcatres.reser_main_title}</Link></div>

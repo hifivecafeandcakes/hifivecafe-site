@@ -60,7 +60,7 @@ const Order = () => {
                 setStatus1({ msg: "Order details get Successfully!", type: "success", toggle: "open" });
             } else {
                 setDatas([])
-                setStatus1({ msg: "Error in fetching data", type: "error", toggle: "open" })
+                setStatus1({ msg: "No Records Found", type: "error", toggle: "open" })
                 console.log('Execution Error');
             }
         } catch (err) {
@@ -85,7 +85,7 @@ const Order = () => {
                                 <Sidebar />
                             </div>
 
-                            <div className='col-lg-9 mob-mt-40'>
+                            <div className='col-lg-9 mob-mt-20'>
                                 <div className='container-fluid'>
                                     <Status msg={status1.msg} type={status1.type} toggle={status1.toggle} onClose={() => setStatus1(empStatus)} />
                                     <div className='cart-title'>

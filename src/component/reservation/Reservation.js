@@ -80,7 +80,7 @@ const Reservation = () => {
                             <div className='col-lg-3 home_col_1 sidebar ' >
                                 <Sidebar />
                             </div>
-                            <div className='col-lg-9 home_col_2 mob-mt-40'>
+                            <div className='col-lg-9 home_col_2'>
 
                                 <Slider {...settings} style={{ width: '90%' }}>
                                     <div><img style={{ width: '100%', height: '90vh' }} className="responsive-image" src={(device == 'mobile') ? reservationMob1 : reservationWeb1} ></img></div>

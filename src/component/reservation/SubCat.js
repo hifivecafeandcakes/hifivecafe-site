@@ -3,9 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Navbar from "../Navbar";
 import '../../theme/css-component/sub_cat.css'
 import Sidebar from '../Sidebar';
+import Status from './Status';
 import axios from 'axios'
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const SubCat = () => {
 
@@ -17,6 +18,15 @@ const SubCat = () => {
     const [description, setDescription] = useState()
     const [main_title, setMain_title] = useState()
 
+    const location = useLocation();
+    console.log(location.state)
+    const { status } = location.state || { status: { msg: "", type: "success", toggle: "close" } }; // Access the passed data
+    console.log(status)
+
+    // status
+    const empStatus = { msg: "", type: "success", toggle: "close" }
+    const [status1, setStatus1] = useState(empStatus);
+
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/website/reservation/category/list?reser_id=${res_id}`)
             .then((res) => {
@@ -27,6 +37,8 @@ const SubCat = () => {
                     setTitle(res.data.Response?.result[0].reser_title)
                     setDescription(res.data.Response?.result[0].description)
                     setResCatList(res.data.Response?.result[0].reservation_category_list)
+                } else {
+                    setStatus1({ msg: "No Records Found", type: "error", toggle: "open" })
                 }
             })
             .catch((err) => {
@@ -34,7 +46,11 @@ const SubCat = () => {
             })
     }, [])
 
-
+    useEffect(() => {
+        if (status && status != null) {
+            setStatus1(status);
+        }
+    }, [])
 
     const route_cat = (e) => {
         localStorage.removeItem('res_cat_id')
@@ -74,6 +90,7 @@ const SubCat = () => {
                                 <Sidebar openSidebar='hide' />
                             </div>
                             <div className='col-lg-9 sub_cat_1 mob-mt-20'>
+                                <Status msg={status1.msg} type={status1.type} toggle={status1.toggle} onClose={() => setStatus1(empStatus)} />
                                 <h1>{main_title}</h1>
                                 <h3>{title}</h3>
                                 <h5>{description}</h5>
@@ -84,8 +101,8 @@ const SubCat = () => {
                         <div className='row'>
                             <div className='col-sm-3'></div>
                             <div className='col-sm-9'>
-                                <div className='row'>
-                                    <div style={{ display: "flex" }}>
+                                <div className='row ms-1'>
+                                    <div style={{ display: "contents" }}>
                                         <div><Link to="/reservation" className='breadcrums'>Reservation</Link></div>
                                         <div className='grey'>&nbsp;-&nbsp;</div>
                                         <div className='breadcrums-active'> {main_title}</div>

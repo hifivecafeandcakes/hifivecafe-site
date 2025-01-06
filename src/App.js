@@ -26,6 +26,7 @@ import ScrollToBottom from "./component/ScrollToBottom";
 import BackToTop from "./component/BackToTop";
 import Footer from "./component/reservation/Footer";
 import Contact from "./component/Contact";
+import Cake from "./component/cake/Cake";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Route path="/navbar" element={<Navbar />} />
         <Route path="/login" element={<Login />} />
         <Route path="/galary" element={<Galary />} />
+        <Route path="/cake" element={<Cake />} />
         <Route path="/galary_list" element={<GalaryList />} />
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/sub_cat" element={<SubCat />} />
