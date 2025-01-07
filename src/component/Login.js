@@ -18,7 +18,8 @@ const Login = () => {
   const res_id = localStorage.getItem('res_id');
   const res_cat_id = localStorage.getItem('res_cat_id');
   const res_scat_id = localStorage.getItem('res_scat_id');
-  const reser_code = localStorage.getItem('reser_code');
+  const res_code = localStorage.getItem('res_code');
+  console.log(res_code);
 
   const navigate = useNavigate();
 
@@ -114,10 +115,10 @@ const Login = () => {
             localStorage.setItem("res_id", res_id);
             localStorage.setItem("res_cat_id", res_cat_id);
             localStorage.setItem("res_scat_id", res_scat_id);
-            localStorage.setItem("reser_code", reser_code);
-            if (reser_code == "CL") {
+            localStorage.setItem("res_code", res_code);
+            if (res_code == "CL") {
               navigate('/clt_cart');
-            } else if (reser_code == "BP") {
+            } else if (res_code == "BP") {
               navigate('/btb_cart');
             } else {
               navigate('/tb_cart');
@@ -186,10 +187,10 @@ const Login = () => {
             localStorage.setItem("res_id", res_id);
             localStorage.setItem("res_cat_id", res_cat_id);
             localStorage.setItem("res_scat_id", res_scat_id);
-            localStorage.setItem("reser_code", reser_code);
-            if (reser_code == "CL") {
+            localStorage.setItem("res_code", res_code);
+            if (res_code == "CL") {
               navigate('/clt_cart');
-            } else if (reser_code == "BP") {
+            } else if (res_code == "BP") {
               navigate('/btb_cart');
             } else {
               navigate('/tb_cart');

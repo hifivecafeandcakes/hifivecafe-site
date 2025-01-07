@@ -183,7 +183,7 @@ const Home = () => {
                                         <h2>The long tradition</h2>
                                         <h1>CANDLE LIGHT DINNER</h1>
                                         <p>Enrich the romantic mood and share the joy with candle lights surrounded by lovely elements.</p>
-                                        <Link to="/reservation" className='btn btn-primary home_btn'>BOOK NOW</Link>
+                                        <Link to="/reservation" className='btn btn-primary home_btn'>Go to Reservation</Link>
                                     </div>
 
                                 </div>
@@ -206,7 +206,7 @@ const Home = () => {
                                         <h2>The long tradition</h2>
                                         <h1>BIRTHDAY PARTY</h1>
                                         <p>Amuse your friends and family members with a surprising birthday party at an economical cost.</p>
-                                        <Link to="/reservation" className='btn btn-primary home_btn'>BOOK NOW</Link>
+                                        <Link to="/reservation" className='btn btn-primary home_btn'>Go to Reservation</Link>
                                     </div>
                                 </div>
 
@@ -227,7 +227,7 @@ const Home = () => {
                                         <h2>The long tradition</h2>
                                         <h1>Table Booking</h1>
                                         <p>Enrich the romantic mood and share the joy with candle lights surrounded by lovely elements.</p>
-                                        <Link to="/reservation" className='btn btn-primary home_btn'>BOOK NOW</Link>
+                                        <Link to="/reservation" className='btn btn-primary home_btn'>Go to Reservation</Link>
                                     </div>
 
                                 </div>
