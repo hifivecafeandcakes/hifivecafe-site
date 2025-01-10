@@ -27,6 +27,7 @@ import BackToTop from "./component/BackToTop";
 import Footer from "./component/reservation/Footer";
 import Contact from "./component/Contact";
 import Cake from "./component/cake/Cake";
+import ForgotPassword from "./component/ForgotPassword";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/navbar" element={<Navbar />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/galary" element={<Galary />} />
         <Route path="/cake" element={<Cake />} />
         <Route path="/galary_list" element={<GalaryList />} />
