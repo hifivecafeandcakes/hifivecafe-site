@@ -25,7 +25,11 @@ const Login = () => {
 
   const handleGoBack = () => {
     setClickBack(true);
-    navigate(-1); // -1 tells the browser to go back one step
+    if (res_id && res_cat_id && res_scat_id) {
+      navigate('/sub_cat_list');
+    } else {
+      navigate(-1);
+    } // -1 tells the browser to go back one step
   };
 
   // status
@@ -245,11 +249,15 @@ const Login = () => {
               {
                 toggle === false ? (
                   <form id="log" className='forminput'>
-                    <input type="email" className='input' placeholder='Enter your email' maxLength={50} value={email}
+                    <input type="email" className='input'
+                      autoComplete='off'
+                      placeholder='Enter your email' maxLength={50} value={email}
                       data-aos='fade-down' onChange={(e) => { setEmailError(false); setEmail(e.target.value) }} />
                     {(emailError) ? <span className='error ps-3'>This is field required</span> : ""}
 
-                    <input type="password" className='input' placeholder='password' minLength={6} maxLength={10} value={password}
+                    <input type="password" className='input' placeholder='password'
+                      autoComplete='off'
+                      minLength={6} maxLength={10} value={password}
                       data-aos='fade-down' onChange={(e) => { setPasswordError(false); setPassword(e.target.value) }} />
                     {(passwordError) ? <span className='error ps-3'>This is field required</span> : ""}
 
@@ -266,6 +274,12 @@ const Login = () => {
                         Login
                       </button>
                     </div>
+
+                    <Link className='btn submitbtn w-75' to='/forgotpassword'
+                      disabled={(clickSubmit) ? true : false}>
+                      {(clickSubmit) ? <i class="fa fa-spinner fa-spin"></i> : ""}&nbsp;
+                      Forgot Password
+                    </Link>
                   </form>
                 ) : (
                   <form id='reg' className='regforminput'>

@@ -9,10 +9,14 @@ import Sidebar from '../Sidebar';
 import BgGrey from '../../theme/image/site/bg-grey.jpg'
 
 
-import reservationMob1 from '../../theme/image/reservation/reservation-mob1.jpeg'
-import reservationMob2 from '../../theme/image/reservation/reservation-mob2.jpeg'
-import reservationWeb1 from '../../theme/image/reservation/reservation-web.jpeg'
-import reservationWeb2 from '../../theme/image/reservation/reservation-web.jpeg'
+import reservationMob1 from '../../theme/image/reservation/res-mob1.png'
+import reservationMob2 from '../../theme/image/reservation/res-mob2.png'
+import reservationMob3 from '../../theme/image/reservation/res-mob3.png'
+import reservationMob4 from '../../theme/image/reservation/res-mob4.png'
+import reservationWeb1 from '../../theme/image/reservation/res-web1.png'
+import reservationWeb2 from '../../theme/image/reservation/res-web2.png'
+import reservationWeb3 from '../../theme/image/reservation/res-web3.png'
+import reservationWeb4 from '../../theme/image/reservation/res-web4.png'
 
 // import InstagramIcon from '@mui/icons-material/Instagram';
 // import FacebookIcon from '@mui/icons-material/Facebook';
@@ -85,6 +89,8 @@ const Reservation = () => {
                                 <Slider {...settings} style={{ width: '90%' }}>
                                     <div><img style={{ width: '100%', height: '90vh' }} className="responsive-image" src={(device == 'mobile') ? reservationMob1 : reservationWeb1} ></img></div>
                                     <div><img style={{ width: '100%', height: '90vh' }} className="responsive-image" src={(device == 'mobile') ? reservationMob2 : reservationWeb2} ></img></div>
+                                    <div><img style={{ width: '100%', height: '90vh' }} className="responsive-image" src={(device == 'mobile') ? reservationMob3 : reservationWeb3} ></img></div>
+                                    <div><img style={{ width: '100%', height: '90vh' }} className="responsive-image" src={(device == 'mobile') ? reservationMob4 : reservationWeb4} ></img></div>
                                 </Slider>
 
                             </div>

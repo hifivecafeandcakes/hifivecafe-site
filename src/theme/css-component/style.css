@@ -41,6 +41,19 @@
           margin-top: 10px;
       }
 
+      .mob-fs-6 {
+          font-size: 6px;
+      }
+
+      .mob-fs-8 {
+          font-size: 8px;
+      }
+
+      .mob-fs-10 {
+          font-size: 10px;
+      }
+
+
       .mob-ms-10 {
           margin-top: 10px !important;
       }
@@ -134,6 +147,8 @@
           justify-content: center;
           align-content: center;
       }
+
+
   }
 
 
@@ -155,6 +170,60 @@
           background-attachment: fixed;
           background-color: #f0f0f0; */
       }
+
+      .web-mt-20 {
+          margin-top: 20px;
+      }
+
+      .web-mt-30 {
+          margin-top: 30px;
+      }
+  }
+
+  /* tabs */
+  .tab-app {
+      width: 100%;
+      position: relative;
+  }
+
+  .tabs {
+      display: flex;
+      justify-content: center;
+      background-color: black;
+      flex-wrap: wrap;
+  }
+
+  .tab-button {
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: 1px solid white;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-left: 10px;
+      margin-bottom: 10px;
+  }
+
+  .tab-button:hover {
+      background-color: #ddd;
+  }
+
+  .tab-button.active {
+      background-color: #4CAF50;
+      color: white;
+  }
+
+  .tab-content {
+      padding: 20px;
+  }
+
+  .tab-pane {
+      display: none;
+  }
+
+  .tab-pane.active {
+      display: block;
   }
 
   .black {
@@ -202,6 +271,26 @@
       color: orangered;
   }
 
+  .bg-red {
+      background-color: red;
+  }
+
+  .bg-lightcoral {
+      background-color: lightcoral;
+  }
+
+  .bg-grey {
+      background-color: grey;
+  }
+
+  .bg-green {
+      background-color: green;
+  }
+
+  .bg-white {
+      background-color: white;
+  }
+
 
   .fade,
   .hide {
@@ -246,4 +335,53 @@
       color: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
       /* -webkit-background-clip: text; */
       /* -webkit-text-fill-color: transparent; */
+  }
+
+  .overlay {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      color: white;
+      z-index: 1;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      text-align: center;
+      font-weight: bolder;
+      border-radius: 50%;
+      border: 2px solid orange;
+      background: orange;
+  }
+
+  .booking_id {
+      width: auto;
+      height: auto;
+      color: white;
+      text-align: center;
+      padding: 5px 5px;
+      cursor: pointer;
+      display: block;
+      margin: auto;
+      background: linear-gradient(to right, #ff105f, #ffad06);
+      font-weight: bolder;
+      border-radius: 25px;
+  }
+
+  .buttioning {
+      width: auto;
+      height: auto;
+      color: white;
+      text-align: center;
+      padding: 5px 5px;
+      cursor: pointer;
+      display: block;
+      margin: auto;
+      font-weight: bolder;
+      border-radius: 25px;
+  }
+
+  .imgbr {
+      margin-top: -20px;
   }

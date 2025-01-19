@@ -99,7 +99,7 @@ button {
   color: white;
 }
 
-button {
+button.next, button.prev {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

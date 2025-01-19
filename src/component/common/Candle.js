@@ -4,32 +4,33 @@ export const vegimages = ["veg1.png","veg2.png","veg3.png","veg4.png"]
 export const nonvegmenus = ["Non Veg Menu-1","Non Veg Menu-2","Non Veg Menu-3","Non Veg Menu-4"]
 export const nonvegimages = ["nonveg1.png","nonveg2.png","nonveg3.png","nonveg4.png"]
 
-export const cakesArr = ["Red velvet cake", "Carrot cake", "Chocolate cake", "Cheesecake", "Pound cake", "Angel food cake", "Sponge cake", "Black Forest cake", "Chiffon cake", "Flourless Cake (baked & unbaked)"]
+export const cakesArr = ["Red velvet cake", "Chocolate cake", "Black Forest cake","caramel Butterscotch"]
 
 // Additional
-export const photoShootsArr = ["Photo-1","Photo-2","Photo-3","Photo-4","Photo-5"]
-export const photoShootPricesArr = [100,200,300,400,500]
 
-export const balloonThemeArr = ["balloon-1","balloon-2","balloon-3","balloon-4","balloon-5"]
+export const photoShootsArr = ["Silver(30mins)","Gold(60mins)","Elite(120mins)"]
+export const photoShootPricesArr = [1500,3000,5000]
+
+export const balloonThemeArr =  ["Red","Blue","Purple","Double Mix","Multi Colors"]
 
 
 export const timeSlotsArr = ["11.30 pm to 1.30 pm","2 pm to 4 pm","5 pm to 7 pm","8 pm to 10 pm"]
 
 
-export const ledArr = ["LED-1","LED-2"]
-export const ledPricesArr = [100,200]
+export const ledArr = ["Silver(Only Name)","Gold(with Celebration Words)"]
+export const ledPricesArr = [300,600]
 
-export const ageArr = ["AGE-1","AGE-2"]
-export const agePricesArr = [100,200]
+export const ageArr = ["Silver"]
+export const agePricesArr = [300]
 
-export const photoPrintsArr = ["Print-1","Print-2","Print-3","Print-4","Print-5"]
-export const photoPrintPricesArr = [100,200,300,400,500]
+export const photoPrintsArr = ["Silver(30 Images)","Gold(60 Images)","Elite(100 Images)"]
+export const photoPrintPricesArr = [300,500,800]
 
-export const flowersArr = ["Flower-1","Flower-2","Flower-3","Flower-4","Flower-5"]
-export const flowersPricesArr = [100,200,300,400,500]
+export const flowersArr = ["Silver","Elite"]
+export const flowersPricesArr = [400,1000]
 
-export const firesArr = ["Fire-1","Fire-2","Fire-3","Fire-4","Fire-5"]
-export const firesPricesArr = [100,200,300,400,500]
+export const firesArr = ["Silver(2crackers)","Gold(4crackers)","Elite(6crackers)"]
+export const firesPricesArr = [500,1000,1500]
 
 
 

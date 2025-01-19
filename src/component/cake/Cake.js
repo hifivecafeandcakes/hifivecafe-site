@@ -4,6 +4,14 @@ import Navbar from "../Navbar";
 import '../../theme/css-component/galary.css'
 import Sidebar from '../Sidebar';
 
+import cake1 from '../../theme/image/cake/1.png'
+import cake2 from '../../theme/image/cake/2.png'
+import cake3 from '../../theme/image/cake/3.png'
+import cake4 from '../../theme/image/cake/4.png'
+import cake5 from '../../theme/image/cake/5.png'
+import cake6 from '../../theme/image/cake/6.png'
+import cake7 from '../../theme/image/cake/7.png'
+
 
 const Cake = () => {
 
@@ -31,7 +39,13 @@ const Cake = () => {
                             </div>
                             <div className='col-lg-9 galary_row1_2'>
                                 <div>
-                                    <h5>This part is something where our work speaks and not words. Have a look at our gallery that has a collection of events conducted, arrangements, and decorations done by our innovative team. Come celebrate with us and get added to our gallery space.</h5>
+                                <img className="w-100 h-75 mb-4" width="" height="" src={cake1}></img>
+                                <img className="w-100 h-75 mb-4" width="" height="" src={cake2}></img>
+                                <img className="w-100 h-75 mb-4" width="" height="" src={cake3}></img>
+                                <img className="w-100 h-75 mb-4" width="" height="" src={cake4}></img>
+                                <img className="w-100 h-75 mb-4" width="" height="" src={cake5}></img>
+                                <img className="w-100 h-75 mb-4" width="" height="" src={cake6}></img>
+                                <img className="w-100 h-75 mb-4" width="" height="" src={cake7}></img>
                                 </div>
                             </div>
                         </div>

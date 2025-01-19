@@ -24,8 +24,15 @@ const Order = () => {
     const [status1, setStatus1] = useState(empStatus);
 
     useEffect(() => {
-        getCardDetails();
+        getCardDetails(activeTab);
     }, [])
+
+    const [activeTab, setActiveTab] = useState('Booked'); // State to keep track of the active tab
+
+    const changeTab = (tabName) => {
+        setActiveTab(tabName); // Set the active tab when a tab is clicked
+        getCardDetails(tabName)
+    };
 
 
     useEffect(() => {
@@ -46,10 +53,11 @@ const Order = () => {
         localStorage.setItem("res_code", v)
     }
 
-    async function getCardDetails() {
+    async function getCardDetails(tabName) {
         try {
             const formData = new FormData();
             formData.append('userid', user_id);
+            formData.append('activeTab', tabName);
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/website/order/api`, formData)
 
             console.log("RESPONSE :", res.data);
@@ -88,17 +96,68 @@ const Order = () => {
                             <div className='col-lg-9 mob-mt-20'>
                                 <div className='container-fluid'>
                                     <Status msg={status1.msg} type={status1.type} toggle={status1.toggle} onClose={() => setStatus1(empStatus)} />
+
                                     <div className='cart-title'>
                                         <h1 className='text-center' style={{ color: 'orange' }}>Order Booking</h1>
                                     </div>
+
+                                    <div className="tab-app">
+                                        <div className="tabs mob-fs-10">
+                                            <div>
+                                                <button
+                                                    className={`tab-button ${activeTab === 'Booked' ? 'active' : ''}`}
+                                                    onClick={() => changeTab('Booked')}
+                                                >
+                                                    Upcoming Events {(activeTab === 'Booked') ? - datas.length : ""}
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <button
+                                                    className={`tab-button ${activeTab === 'Completed' ? 'active' : ''}`}
+                                                    onClick={() => changeTab('Completed')}
+                                                >
+                                                    Past Events {(activeTab === 'Completed') ? - datas.length : ""}
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <button
+                                                    className={`tab-button ${activeTab === 'Created' ? 'active' : ''}`}
+                                                    onClick={() => changeTab('Created')}
+                                                >
+                                                    Failed Events {(activeTab === 'Created') ? - datas.length : ""}
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <button
+                                                    className={`tab-button ${activeTab === 'Cancelled' ? 'active' : ''}`}
+                                                    onClick={() => changeTab('Cancelled')}
+                                                >
+                                                    Cancelled Events {(activeTab === 'Cancelled') ? - datas.length : ""}
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <button
+                                                    className={`tab-button ${activeTab === 'all' ? 'active' : ''}`}
+                                                    onClick={() => changeTab('all')}
+                                                >
+                                                    All Events {(activeTab === 'all') ? - datas.length : ""}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                     <div className='cart-head'>
+
                                         {(datas.length > 0) ?
                                             <>
                                                 {datas.map((data, index) => (
                                                     <>
                                                         <div key={`cart` + index} className="row cart-row cart-border ">
+                                                            <div class="overlay">{index + 1}</div>
+
                                                             <div className={data.reser_code === "BP" ? "col-lg-2 text-center" : "col-lg-2 text-center"}>
-                                                                <div className="mt-5">
+                                                                <div className="mt-5 mob-mt-20">
                                                                     <img src={data.sub_img} className="sub-img" alt={data.sub_tilte}></img>
                                                                     <Link to="/sub_cat_list" onClick={() => { route_cat(data.reser_id, data.reser_cat_id); route_code(data.reser_code); }} className="sub-cat-part text-center">
                                                                         <div className="">{data.reser_main_title}&nbsp;-&nbsp;{data.cat_title}</div>
@@ -233,28 +292,40 @@ const Order = () => {
                                                             </div>
 
                                                             <div className="col-lg-3">
-                                                                <div className="cart-label"><div className="cart-label1">Booking Id:</div><span className="brown fs-18">{data.booking_id}</span></div>
+                                                                <div className="cart-label"><div className="cart-label1">Booking Id:</div><span className="brown booking_id fs-18">{data.booking_id}</span></div>
                                                                 <div className="cart-label"><div className="cart-label1">Booking At:</div><span className="greenyellow fs-18">{data.booking_date}&nbsp;{data.booking_time_slot}</span></div>
                                                                 <div className="cart-label"><div className="cart-label1">Booking By:</div>{data.user_name} - {data.user_mobile}</div>
                                                                 {(data.reser_code == "TB") ? "" :
                                                                     <>
-                                                                        <div className="cart-label"><div className="cart-label1">Paid status:</div><span className={`${data.booking_payment_status}`}>
+                                                                        <div className="cart-label"><div className="cart-label1">Paid status:</div><span className={data.booking_payment_status ? data.booking_payment_status : 'red'}>
                                                                             {(data.booking_payment_status) ? data.booking_payment_status : "Not Paid"}</span></div>
-                                                                        <div className="cart-label"><div className="cart-label1">Paid Total Amount:</div>{(data.booking_payment_amount) ? <span className="green fs-16">₹{data.booking_payment_amount}</span> : "0.00"}</div>
+                                                                        <div className="cart-label"><div className="cart-label1">Total Amount / Paid Total Amount:</div>
+                                                                            <span className={`fs-18 green`}>
+                                                                                ₹{data.total_amount} /
+                                                                            </span>
+                                                                            <span className={`fs-18 ${data.booking_payment_status ? data.booking_payment_status : 'red'}`}>
+                                                                                &nbsp;₹{(data.booking_payment_amount) ? data.booking_payment_amount : "0.00"}
+                                                                            </span>
+                                                                        </div>
                                                                     </>
                                                                 }
-                                                                <div className="cart-label"><div className="cart-label1">Booking Current status:</div>{data.booking_status}</div>
+                                                                <div className="cart-label"><div className="cart-label1">Booking Current status:</div>
+                                                                    <span className={`buttioning ${(data.booking_status == "Created") ? 'bg-grey' : 'bg-green'}`}>{(data.booking_status == "Created" ? "Booking Failed" : data.booking_status)}</span></div>
                                                                 <div style={{ float: 'right' }}>
                                                                     <div className="cart-label"><div className="cart-label1">Submitted Date:</div>{data.booking_created_at}</div>
                                                                 </div>
                                                             </div>
-
-
+                                                            {
+                                                                (data.booking_status == "Booked" || activeTab == "Completed") ? "" :
+                                                                    <div className={"col-lg-12 fs-14 red text-center"}>
+                                                                        Booking for this event failed due to {(data.booking_payment_status == "success") ? 'network issue' : 'payment failed'}. To rebook the same event, please contact Hifive - {process.env.REACT_APP_CALL_NUMBER}
+                                                                    </div>
+                                                            }
                                                         </div >
                                                     </>
                                                 ))}
                                             </>
-                                            : ""}
+                                            : <h3 className="text-center">No Record Found</h3>}
                                     </div>
                                 </div>
                             </div >

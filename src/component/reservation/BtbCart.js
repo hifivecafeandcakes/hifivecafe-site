@@ -668,7 +668,7 @@ const BtbCart = () => {
                                             {(guestNameError) ? <span className='error'>This is field required</span> : ""}
                                         </div>
                                         <div className='col-sm'>
-                                            <label className=''>Guest Whatsapp No</label>
+                                            <label className=''>Guest Whatsapp Number</label>
                                             <input type="number" className="form-control p-2" onChange={(e) => { changeWhatsapp(e.target.value) }} />
                                             {(hasPhoneError) ? <span className='error'>Wrong Phone no format</span> : ""}
                                         </div>
