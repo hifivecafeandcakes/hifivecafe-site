@@ -11,6 +11,7 @@ import SubCatList from "./component/reservation/SubCatList";
 import CltCart from "./component/reservation/CltCart";
 import TbCart from "./component/reservation/TbCart";
 import BtbCart from "./component/reservation/BtbCart";
+// import Menu from "./component/menu/MenuOLD";
 import Menu from "./component/menu/Menu";
 import MenuCart from "./component/menu/MenuCart";
 import CakeSub from "./component/cake/CakeSub";
@@ -28,6 +29,8 @@ import Footer from "./component/reservation/Footer";
 import Contact from "./component/Contact";
 import Cake from "./component/cake/Cake";
 import ForgotPassword from "./component/ForgotPassword";
+
+import TermsAndConditions from "./component/TermsAndConditions";
 
 
 function App() {
@@ -55,6 +58,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
       </Routes>
       <ScrollToBottom />
       <BackToTop />

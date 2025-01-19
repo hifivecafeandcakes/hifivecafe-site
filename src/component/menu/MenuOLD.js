@@ -36,11 +36,7 @@ import eggKebab4 from '../../theme/image/menu/Egg-kebab/Panner-Kebab.jpg'
 import eggKebab5 from '../../theme/image/menu/Egg-kebab/Scotch-Egg.jpg'
 import eggKebab6 from '../../theme/image/menu/Egg-kebab/Spanis-Omb.jpg'
 
-import MENUPDF from '../../theme/pdf/menu/menu-1.pdf' 
-
-import PdfViewer from '../PdfViewer';
-
-const Menu = () => {
+const MenuOLD = () => {
 
     const [activeTab, setActiveTab] = useState('bread'); // State to keep track of the active tab
 
@@ -256,4 +252,4 @@ const Menu = () => {
     )
 }
 
-export default Menu
+export default MenuOLD

@@ -53,20 +53,29 @@ const Contact = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-sm home_col3_1 ' style={{
-                            display: 'flex', justifyContent: 'center',
+                        <div className='col-sm fs-16 black' style={{
+                            justifyContent: 'center', textAlign: 'center',
                             alignItems: 'center', backgroundColor: '#ffeeda'
                         }}>
-                            <div style={{ textAlign: 'center' }}>
-                                <h1>Wedding Event Hall</h1>
-                                <h1>Candle Light Dinner</h1>
-                                <h1>Book Team Lunch</h1>
-                                <h1>Quick Cake Delivery</h1>
-                                <h1>Birthday Cakes</h1>
+                            <div className="">
+                                <h4 className="black">Wedding Event Hall</h4>
+                                <h4 className="black">Candle Light Dinner</h4>
+                                <h4 className="black">Book Team Lunch</h4>
+                                <h4 className="black">Quick Cake Delivery</h4>
+                                <h4 className="black">Birthday Cakes</h4>
+                            </div>
+
+                            <div className="mt-5">
+                                <Link to='/terms'><h4 className="grey">Terms & Condition</h4></Link>
+                                <h4 className="grey">Candle Light Dinner</h4>
+                                <h4 className="grey">Book Team Lunch</h4>
+                                <h4 className="grey">Quick Cake Delivery</h4>
                             </div>
                         </div>
 
                     </div>
+
+
                 </div>
             </div>
         </>
