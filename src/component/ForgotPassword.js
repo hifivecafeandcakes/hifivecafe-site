@@ -134,7 +134,7 @@ function ForgotPassword() {
                     <h3>Forgot Password</h3>
                   </div>
                   <form id="log" className='forminput'>
-                    <input type="email" className='input' placeholder='Enter your email' maxLength={50} value={email}
+                    <input type="email" className='input w-100' placeholder='Enter your email' maxLength={50} value={email}
                       data-aos='fade-down' onChange={(e) => { setEmailError(false); setEmail(e.target.value) }} />
                     {(emailError) ? <span className='error ps-3'>This is field required</span> : ""}
                     <div className='d-flex'>
@@ -164,7 +164,7 @@ function ForgotPassword() {
                       data-aos='fade-down' onChange={(e) => { setOtpError(false); setOtp(e.target.value) }} />
                     {(otpError) ? <span className='error ps-3'>This is field required</span> : ""}
 
-                    <input type="New password" className='input2' autoComplete='off' placeholder='password'
+                    <input type="password" className='input2' autoComplete='off' placeholder='New password'
                       minLength={6} maxLength={10} value={newPassword}
                       data-aos='fade-down' onChange={(e) => { setNewPasswordError(false); setNewPassword(e.target.value) }} />
                     {(newPasswordError) ? <span className='error ps-3'>This is field required</span> : ""}

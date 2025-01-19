@@ -275,7 +275,7 @@ const Login = () => {
                       </button>
                     </div>
 
-                    <Link className='btn submitbtn w-75' to='/forgotpassword'
+                    <Link className='btn submitbtn w-75 mt-4' to='/forgotpassword'
                       disabled={(clickSubmit) ? true : false}>
                       {(clickSubmit) ? <i class="fa fa-spinner fa-spin"></i> : ""}&nbsp;
                       Forgot Password
