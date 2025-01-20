@@ -9,7 +9,7 @@ const TermsAndConditions = () => {
     return (
 
 
-        <div className='container-fluid' style={{ color: "black", backgroundColor: 'rgb(255, 238, 218)' }}>
+        <div className='container-fluid' style={{ color: "black", backgroundColor: 'black', color: 'white' }}>
             <div style={{ textAlign: 'center' }}>
                 <Link to="/">
                     <img src={LOGO} className='footet-logo-image' alt="Hifive Logo" />

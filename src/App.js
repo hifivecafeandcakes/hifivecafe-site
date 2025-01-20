@@ -31,7 +31,9 @@ import Cake from "./component/cake/Cake";
 import ForgotPassword from "./component/ForgotPassword";
 
 import TermsAndConditions from "./component/TermsAndConditions";
-
+import PrivacyPolicy from "./component/PrivacyPolicy";
+import RefundPolicy from "./component/RefundPolicy";
+import ShippingPolicy from "./component/ShippingPolicy";
 
 function App() {
   return (
@@ -58,7 +60,10 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/terms" element={<TermsAndConditions />} />
+        <Route path="/terms_condition" element={<TermsAndConditions />} />
+        <Route path="/privacy_policy" element={<PrivacyPolicy />} />
+        <Route path="/refund_policy" element={<RefundPolicy />} />
+        <Route path="/shipping_policy" element={<ShippingPolicy />} />
       </Routes>
       <ScrollToBottom />
       <BackToTop />

@@ -248,39 +248,39 @@ const Menu = () => {
 
 
                                 <div className='imgbr '>
-                                    <div className={` ${activeTab === 'soup' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu3}></img></div>
-                                    <div className={` ${activeTab === 'salad' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu4}></img></div>
-                                    <div className={` ${activeTab === 'bread' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu5}></img></div>
-                                    <div className={` ${activeTab === 'burgar' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu6}></img></div>
-                                    <div className={` ${activeTab === 'sandwich' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu7}></img></div>
-                                    <div className={` ${activeTab === 'Egg-kebab' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu8}></img></div>
-                                    <div className={` ${activeTab === 'pizza' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu9}></img></div>
-                                    <div className={` ${activeTab === 'shashlik' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu10}></img></div>
+                                    <div className={` ${activeTab === 'soup' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu3}></img></div>
+                                    <div className={` ${activeTab === 'salad' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu4}></img></div>
+                                    <div className={` ${activeTab === 'bread' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu5}></img></div>
+                                    <div className={` ${activeTab === 'burgar' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu6}></img></div>
+                                    <div className={` ${activeTab === 'sandwich' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu7}></img></div>
+                                    <div className={` ${activeTab === 'Egg-kebab' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu8}></img></div>
+                                    <div className={` ${activeTab === 'pizza' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu9}></img></div>
+                                    <div className={` ${activeTab === 'shashlik' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu10}></img></div>
 
-                                    <div className={` ${activeTab === 'starter' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu11}></img>
-                                    <img className="w-100 h-75 mb-4" width="" height="" src={menu12}></img>
-                                    <img className="w-100 h-75 mb-4" width="" height="" src={menu13}></img></div>
-                                    <div className={` ${activeTab === 'main-course' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu14}></img>
-                                    <img className="w-100 h-75 mb-4" width="" height="" src={menu15}></img>
-                                    <img className="w-100 h-75 mb-4" width="" height="" src={menu16}></img></div>
-                                    <div className={` ${activeTab === 'pasta' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu17}></img></div>
-                                    <div className={` ${activeTab === 'rice' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu18}></img></div>
-                                    <div className={` ${activeTab === 'destes' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu19}></img></div>
-                                    <div className={` ${activeTab === 'coffee' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu20}></img></div>
-                                    <div className={` ${activeTab === 'hot-tea' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu21}></img></div>
-                                    <div className={` ${activeTab === 'ice-tea' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu22}></img></div>
-                                    <div className={` ${activeTab === 'milkshake' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu23}></img></div>
-                                    <div className={` ${activeTab === 'mocktail' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu24}></img></div>
+                                    <div className={` ${activeTab === 'starter' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu11}></img>
+                                    <img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu12}></img>
+                                    <img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu13}></img></div>
+                                    <div className={` ${activeTab === 'main-course' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu14}></img>
+                                    <img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu15}></img>
+                                    <img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu16}></img></div>
+                                    <div className={` ${activeTab === 'pasta' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu17}></img></div>
+                                    <div className={` ${activeTab === 'rice' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu18}></img></div>
+                                    <div className={` ${activeTab === 'destes' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu19}></img></div>
+                                    <div className={` ${activeTab === 'coffee' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu20}></img></div>
+                                    <div className={` ${activeTab === 'hot-tea' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu21}></img></div>
+                                    <div className={` ${activeTab === 'ice-tea' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu22}></img></div>
+                                    <div className={` ${activeTab === 'milkshake' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu23}></img></div>
+                                    <div className={` ${activeTab === 'mocktail' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu24}></img></div>
                                     <div className={` ${activeTab === 'chickenliciuos' ? 'show' : 'hide'}`}>
-                                        <img className="w-100 h-75 mb-4" width="" height="" src={menu25}></img>
-                                        <img className="w-100 h-75 mb-4" width="" height="" src={menu26}></img></div>
-                                    <div className={` ${activeTab === 'fishiliciuos' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu27}></img>
-                                    <img className="w-100 h-75 mb-4" width="" height="" src={menu28}></img></div>
-                                    <div className={` ${activeTab === 'mutolicious' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4" width="" height="" src={menu29}></img>
-                                    <img className="w-100 h-75 mb-4" width="" height="" src={menu30}></img>
-                                    <img className="w-100 h-75 mb-4" width="" height="" src={menu31}></img>
-                                    <img className="w-100 h-75 mb-4" width="" height="" src={menu32}></img>
-                                    <img className="w-100 h-75 mb-4" width="" height="" src={menu33}></img></div>
+                                        <img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu25}></img>
+                                        <img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu26}></img></div>
+                                    <div className={` ${activeTab === 'fishiliciuos' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu27}></img>
+                                    <img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu28}></img></div>
+                                    <div className={` ${activeTab === 'mutolicious' ? 'show' : 'hide'}`}><img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu29}></img>
+                                    <img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu30}></img>
+                                    <img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu31}></img>
+                                    <img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu32}></img>
+                                    <img className="w-100 h-75 mb-4 mob-mt-20" width="" height="" src={menu33}></img></div>
                                 </div>
                             </div>
                         </div>
