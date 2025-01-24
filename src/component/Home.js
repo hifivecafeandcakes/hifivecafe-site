@@ -66,6 +66,7 @@ const Home = () => {
 
     const backendURL = process.env.REACT_APP_API_URL;
 
+    const isMaintenance = process.env.REACT_APP_MAINTENANCE_MODE === "true" || false;
 
     let video = [{ src: vidMob1 }, { src: vidMob2 }, { src: vidMob3 }]
 
@@ -162,120 +163,98 @@ const Home = () => {
                         </div>
 
                         {/* ===================================================================================== */}
-
-                        <div className='row home_row_2 ' >
-                            <div className='col-lg-3 home_col_1 sidebar'>
-
-                            </div>
-                            <div className='col-lg-9 home_col_3'>
-
-                                <div className='row '>
-
-                                    <div className='col-lg-6 home_col_3_1'>
-                                        <Slider {...settings} style={{ width: '90%' }}>
-                                            <div><img src={cl1} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                            <div><img src={cl2} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                            <div><img src={cl3} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                        </Slider>
-                                    </div>
-
-                                    <div className='col-lg-6 home_col_3_2 '>
-                                        <h2>The long tradition</h2>
-                                        <h1>CANDLE LIGHT DINNER</h1>
-                                        <p>Enrich the romantic mood and share the joy with candle lights surrounded by lovely elements.</p>
-                                        <Link to="/reservation" className='btn btn-primary home_btn'>Go to Reservation</Link>
-                                    </div>
+                        {(isMaintenance) ? "" :
+                            <div className='row home_row_2 ' >
+                                <div className='col-lg-3 home_col_1 sidebar'>
 
                                 </div>
+                                <div className='col-lg-9 home_col_3'>
 
-                                {/* ======================== */}
+                                    <div className='row '>
 
-                                <div className='row row2  w_row2'>
-
-                                    <div className='col-lg-6 home_col_3_1 order-lg-2'>
-                                        <Slider {...settings} style={{ width: '90%' }}>
-                                            <div><img src={bp1} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                            <div><img src={bp2} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                            <div><img src={bp3} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                            <div><img src={bp4} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                            <div><img src={bp5} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                        </Slider>
-                                    </div>
-
-                                    <div className='col-lg-6 home_col_3_2 order-lg-1'>
-                                        <h2>The long tradition</h2>
-                                        <h1>BIRTHDAY PARTY</h1>
-                                        <p>Amuse your friends and family members with a surprising birthday party at an economical cost.</p>
-                                        <Link to="/reservation" className='btn btn-primary home_btn'>Go to Reservation</Link>
-                                    </div>
-                                </div>
-
-                                <div className='row row2'>
-
-
-                                    <div className='col-lg-6 home_col_3_1'>
-                                        <Slider {...settings} style={{ width: '90%' }}>
-                                            <div><img src={bp1} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                            <div><img src={bp2} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                            <div><img src={bp3} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                            <div><img src={bp4} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                            <div><img src={bp5} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                        </Slider>
-                                    </div>
-
-                                    <div className='col-lg-6 home_col_3_2'>
-                                        <h2>The long tradition</h2>
-                                        <h1>Table Booking</h1>
-                                        <p>Enrich the romantic mood and share the joy with candle lights surrounded by lovely elements.</p>
-                                        <Link to="/reservation" className='btn btn-primary home_btn'>Go to Reservation</Link>
-                                    </div>
-
-                                </div>
-
-
-                                {/* ========================================================== */}
-
-                                <div className='row row2  w_row2'>
-
-                                    <div className='col-lg-6 home_col_4_1 order-lg-2'>
-                                        <Slider {...settings} style={{ width: '90%' }}>
-                                            <div><img src={ck1} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                            <div><img src={ck1} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
-                                        </Slider>
-                                    </div>
-                                    <div className='col-lg-6 home_col_4_2 order-lg-1'>
-                                        <div className='home_col_4_2_1'>
-                                            <h2>Our choice</h2>
-                                            <h1>CAKES</h1>
+                                        <div className='col-lg-6 home_col_3_1'>
+                                            <Slider {...settings} style={{ width: '90%' }}>
+                                                <div><img src={cl1} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                                <div><img src={cl2} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                                <div><img src={cl3} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                            </Slider>
                                         </div>
 
-                                        <div className='home_col_4_2_2'>
-                                            <div>
-                                                <p>BLUE DONOT CHOCO  TRUFFLE</p>
-                                                <p>₹1260</p>
-                                            </div>
-                                            <div>
-                                                <p>BLACK PANTHER</p>
-                                                <p>₹1680</p>
-                                            </div>
-                                            <div>
-                                                <p>BLUE MOUNTAIN</p>
-                                                <p>₹1680</p>
-                                            </div>
-                                            <div>
-                                                <p>PINK BLUE BUTTERFLY</p>
-                                                <p>₹1417.5</p>
-                                            </div>
+                                        <div className='col-lg-6 home_col_3_2 '>
+                                            <h2>The long tradition</h2>
+                                            <h1>CANDLE LIGHT DINNER</h1>
+                                            <p>Enrich the romantic mood and share the joy with candle lights surrounded by lovely elements.</p>
+                                            <Link to="/reservation" className='btn btn-primary home_btn'>Go to Reservation</Link>
                                         </div>
-                                        <div className='home_col_4_2_3'>
-                                            <a href="/cake_cat"><button className='btn btn-primary home_btn mob-mt-10'>ALL CAKES</button></a>
+
+                                    </div>
+
+                                    {/* ======================== */}
+
+                                    <div className='row row2  w_row2'>
+
+                                        <div className='col-lg-6 home_col_3_1 order-lg-2'>
+                                            <Slider {...settings} style={{ width: '90%' }}>
+                                                <div><img src={bp1} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                                <div><img src={bp2} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                                <div><img src={bp3} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                                <div><img src={bp4} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                                <div><img src={bp5} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                            </Slider>
+                                        </div>
+
+                                        <div className='col-lg-6 home_col_3_2 order-lg-1'>
+                                            <h2>The long tradition</h2>
+                                            <h1>BIRTHDAY PARTY</h1>
+                                            <p>Amuse your friends and family members with a surprising birthday party at an economical cost.</p>
+                                            <Link to="/reservation" className='btn btn-primary home_btn'>Go to Reservation</Link>
                                         </div>
                                     </div>
 
+                                    <div className='row row2'>
 
+
+                                        <div className='col-lg-6 home_col_3_1'>
+                                            <Slider {...settings} style={{ width: '90%' }}>
+                                                <div><img src={bp1} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                                <div><img src={bp2} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                                <div><img src={bp3} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                                <div><img src={bp4} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                                <div><img src={bp5} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                            </Slider>
+                                        </div>
+
+                                        <div className='col-lg-6 home_col_3_2'>
+                                            <h2>The long tradition</h2>
+                                            <h1>Table Booking</h1>
+                                            <p>Enrich the romantic mood and share the joy with candle lights surrounded by lovely elements.</p>
+                                            <Link to="/reservation" className='btn btn-primary home_btn'>Go to Reservation</Link>
+                                        </div>
+
+                                    </div>
+
+
+                                    {/* ========================================================== */}
+
+                                    <div className='row row2  w_row2'>
+
+                                        <div className='col-lg-6 home_col_4_1 order-lg-2'>
+                                            <Slider {...settings} style={{ width: '90%' }}>
+                                                <div><img src={ck1} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                                <div><img src={ck1} style={{ width: '100%', height: '70vh' }} className="responsive-image" /></div>
+                                            </Slider>
+                                        </div>
+                                        <div className='col-lg-6 home_col_3_2'>
+                                            <h2>Delicious Cakes for Every Celebration!</h2>
+                                            <h1>Cakes</h1>
+                                            <p>Whether it’s a birthday, anniversary, or just because, our handcrafted cakes are made to delight</p>
+                                            <Link to="/cake" className='btn btn-primary home_btn'>Go to Cake</Link>
+                                        </div>
+
+
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div>}
                     </div>
                 </div>
             </div>

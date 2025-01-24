@@ -77,7 +77,8 @@ body::-webkit-scrollbar {
 .home_col_3_2 p {
   font-size: 30px;
   color: white;
-  font-family: "Abel", sans-serif;
+  /* font-family: "Abel", sans-serif; */
+  font-family: "Bebas Neue", sans-serif;
 }
 
 

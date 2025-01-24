@@ -24,7 +24,7 @@
   }
 
   .home-div .slick-list {
-      border: 10px solid;
+      border: 2px solid;
       border-radius: 50px;
       border-color: orangered;
   }
@@ -51,6 +51,14 @@
 
       .mob-fs-10 {
           font-size: 10px;
+      }
+
+      .mob-fs-14 {
+        font-size: 14px;
+      }
+
+      .mob-fs-18 {
+        font-size: 18px;
       }
 
 
@@ -178,6 +186,19 @@
       .web-mt-30 {
           margin-top: 30px;
       }
+
+      .web-mt-40 {
+          margin-top: 50px;
+      }
+
+      .web-mt-60 {
+          margin-top: 60px;
+      }
+
+      .web-mt-150 {
+        margin-top: 150px;
+    }
+
   }
 
   /* tabs */

@@ -20,6 +20,8 @@ const Navbar = () => {
     const [username, setUsername] = useState(localStorage.getItem('user_name'));
     const [userid, setUserid] = useState(localStorage.getItem('user_id'));
 
+    const isMaintenance = process.env.REACT_APP_MAINTENANCE_MODE === "true" || false;
+
 
     const navigate = useNavigate();
 
@@ -90,47 +92,56 @@ const Navbar = () => {
 
                 <div className='navbar container-fluid '>
                     <>
-                        <div className='d-flex w-40 justify-content-around text-center'>
-                            <div className='pt-3'>
-                                <FontAwesomeIcon onClick={handleGoBack} icon={faArrowLeft} className='fs-20 red' />
-                            </div>
+                        {(isMaintenance) ? "" :
 
-                            <div>
-                                <Link to="/order" href="#"><FontAwesomeIcon icon={faCartShopping} className='fs-20  pt-3 orange' /></Link>
-                            </div>
+                            <div className='d-flex w-40 justify-content-around text-center'>
+                                <div className='pt-3'>
+                                    <FontAwesomeIcon onClick={handleGoBack} icon={faArrowLeft} className='fs-20 red' />
+                                </div>
 
-                        </div>
+                                <div>
+                                    <Link to="/order" href="#"><FontAwesomeIcon icon={faCartShopping} className='fs-20  pt-3 orange' /></Link>
+                                </div>
+
+                            </div>}
 
                         <div className='w-20 text-center'>
                             <Link to="/"> <img className='logoCenterImg' src={LOGO2} /></Link>
                         </div>
 
-                        <div className="d-flex w-40 justify-content-evenly text-center ">
-
-                            {(userid) ?
-                                <>
-                                    <div className='text-center pt-1'>
-                                        <FontAwesomeIcon icon={faUserCircle} className='fs-18 aqua' />
-                                        <h4 className=' mob-font-14 pt-0 white'>
-                                            {username.length > 8 ? username.substring(0, 8) + '...' : username}</h4>
-                                    </div>
-                                </>
-                                :
-
-                                <>
-                                    <div className='text-center pt-1'>
-                                        <Link to="/login"> <FontAwesomeIcon icon={faSignIn} className='fs-18 aqua' />
-                                            <h4 className=' mob-font-14 pt-0 white'>Login</h4></Link>
-                                    </div>
-                                </>
-                            }
-
+                        {(isMaintenance) ?
                             <div className="pt-3 darkred">
                                 <FontAwesomeIcon onClick={() => handleToggle()} className='fs-20'
                                     icon={isDropdownOpen ? faTimes : faBars} color='' />
                             </div>
+                            :
 
-                        </div>
+                            <div className="d-flex w-40 justify-content-evenly text-center ">
+
+                                {(userid) ?
+                                    <>
+                                        <div className='text-center pt-1'>
+                                            <FontAwesomeIcon icon={faUserCircle} className='fs-18 aqua' />
+                                            <h4 className=' mob-font-14 pt-0 white'>
+                                                {username.length > 8 ? username.substring(0, 8) + '...' : username}</h4>
+                                        </div>
+                                    </>
+                                    :
+
+                                    <>
+                                        <div className='text-center pt-1'>
+                                            <Link to="/login"> <FontAwesomeIcon icon={faSignIn} className='fs-18 aqua' />
+                                                <h4 className=' mob-font-14 pt-0 white'>Login</h4></Link>
+                                        </div>
+                                    </>
+                                }
+
+                                <div className="pt-3 darkred">
+                                    <FontAwesomeIcon onClick={() => handleToggle()} className='fs-20'
+                                        icon={isDropdownOpen ? faTimes : faBars} color='' />
+                                </div>
+
+                            </div>}
                     </>
 
                     {/* <div><Link to="/" onClick={logout}><FontAwesomeIcon icon={faPowerOff} /></Link></div> */}
@@ -142,28 +153,31 @@ const Navbar = () => {
                     </div>
 
                     <div>
-                        <ul className='hero'>
-                            <li><Link to="/">HOME</Link></li>
-                            <li><Link to="/galary">GALLERY</Link></li>
-                            <li><Link to="/reservation">RESERVATION</Link></li>
-                            <li><Link to="/cake">CAKE</Link></li>
-                            <li><Link to="/menu">MENU</Link></li>
-                            <li><Link to="/contact">CONTACT US</Link></li>
-                            <li><Link to="/order" href="#"><FontAwesomeIcon icon={faCartShopping} /></Link></li>
-                            {(userid) ?
-                                <li>
-                                    <h4 className='green mob-font-14 pt-0'>
-                                        Hi&nbsp;{(username) && (username.length > 8) ? username.substring(0, 8) + '...' : username}
-                                    </h4>
-                                </li> :
-                                <li>
-                                    <Link to="/login" className='green mob-font-14 pt-0'>
-                                        Login
-                                    </Link>
-                                </li>
-                            }
-                            <li><Link to="/" className='grey' onClick={logout}><FontAwesomeIcon icon={faPowerOff} /></Link></li>
-                        </ul>
+                        {(isMaintenance) ? "" :
+
+                            <ul className='hero'>
+                                <li><Link to="/">HOME</Link></li>
+                                <li><Link to="/galary">GALLERY</Link></li>
+                                <li><Link to="/reservation">RESERVATION</Link></li>
+                                <li><Link to="/cake">CAKE</Link></li>
+                                <li><Link to="/menu">MENU</Link></li>
+                                <li><Link to="/contact">CONTACT US</Link></li>
+                                <li><Link to="/order" href="#"><FontAwesomeIcon icon={faCartShopping} /></Link></li>
+                                {(userid) ?
+                                    <li>
+                                        <h4 className='green mob-font-14 pt-0'>
+                                            Hi&nbsp;{(username) && (username.length > 8) ? username.substring(0, 8) + '...' : username}
+                                        </h4>
+                                    </li> :
+                                    <li>
+                                        <Link to="/login" className='green mob-font-14 pt-0'>
+                                            Login
+                                        </Link>
+                                    </li>
+                                }
+                                <li><Link to="/" className='grey' onClick={logout}><FontAwesomeIcon icon={faPowerOff} /></Link></li>
+                            </ul>
+                        }
                     </div>
                 </div>
             }

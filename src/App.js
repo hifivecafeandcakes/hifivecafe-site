@@ -1,5 +1,5 @@
 
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "./component/Login";
 import Navbar from "./component/Navbar";
 import Home from "./component/Home";
@@ -35,35 +35,51 @@ import PrivacyPolicy from "./component/PrivacyPolicy";
 import RefundPolicy from "./component/RefundPolicy";
 import ShippingPolicy from "./component/ShippingPolicy";
 
+
 function App() {
+
+  const isMaintenance = process.env.REACT_APP_MAINTENANCE_MODE === "true" || false;  //true means maintenance mode will on
+  console.log("isMaintenance");
+  console.log(isMaintenance);
+  const ProtectedRoute = ({ children }) => {
+    return isMaintenance ? <Navigate to="/" /> : children;
+  };
+
+
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/navbar" element={<Navbar />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgotpassword" element={<ForgotPassword />} />
-        <Route path="/galary" element={<Galary />} />
-        <Route path="/cake" element={<Cake />} />
-        <Route path="/galary_list" element={<GalaryList />} />
-        <Route path="/reservation" element={<Reservation />} />
-        <Route path="/sub_cat" element={<SubCat />} />
-        <Route path="/sub_cat_list" element={<SubCatList />} />
-        <Route path="/clt_cart" element={<CltCart />} />
-        <Route path="/tb_cart" element={<TbCart />} />
-        <Route path="/btb_cart" element={<BtbCart />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/menu_cart" element={<MenuCart />} />
-        <Route path="/cake_cat" element={<CakeCat />} />
-        <Route path="/cake_sub" element={<CakeSub />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/order" element={<Order />} />
+        <Route path="/navbar" element={<ProtectedRoute><Navbar /></ProtectedRoute>} />
+        <Route path="/login"
+          element={
+            <ProtectedRoute>
+              <Login />
+            </ProtectedRoute>} />
+        <Route path="/forgotpassword" element={<ProtectedRoute><ForgotPassword /></ProtectedRoute>} />
+        <Route path="/galary" element={<ProtectedRoute><Galary /></ProtectedRoute>} />
+        <Route path="/cake" element={<ProtectedRoute><Cake /></ProtectedRoute>} />
+        <Route path="/galary_list" element={<ProtectedRoute><GalaryList /></ProtectedRoute>} />
+        <Route path="/reservation" element={<ProtectedRoute><Reservation /></ProtectedRoute>} />
+        <Route path="/sub_cat" element={<ProtectedRoute><SubCat /></ProtectedRoute>} />
+        <Route path="/sub_cat_list" element={<ProtectedRoute><SubCatList /></ProtectedRoute>} />
+        <Route path="/clt_cart" element={<ProtectedRoute><CltCart /></ProtectedRoute>} />
+        <Route path="/tb_cart" element={<ProtectedRoute><TbCart /></ProtectedRoute>} />
+        <Route path="/btb_cart" element={<ProtectedRoute><BtbCart /></ProtectedRoute>} />
+        <Route path="/menu" element={<ProtectedRoute><Menu /></ProtectedRoute>} />
+        <Route path="/menu_cart" element={<ProtectedRoute><MenuCart /></ProtectedRoute>} />
+        <Route path="/cake_cat" element={<ProtectedRoute><CakeCat /></ProtectedRoute>} />
+        <Route path="/cake_sub" element={<ProtectedRoute><CakeSub /></ProtectedRoute>} />
+        <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+        <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
+        <Route path="/order" element={<ProtectedRoute><Order /></ProtectedRoute>} />
+
         <Route path="/contact" element={<Contact />} />
         <Route path="/terms_condition" element={<TermsAndConditions />} />
         <Route path="/privacy_policy" element={<PrivacyPolicy />} />
         <Route path="/refund_policy" element={<RefundPolicy />} />
         <Route path="/shipping_policy" element={<ShippingPolicy />} />
+
       </Routes>
       <ScrollToBottom />
       <BackToTop />

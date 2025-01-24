@@ -20,6 +20,9 @@ import WhatsAppLink from './social/WhatsAppLink';
 
 const Sidebar = ({ openSidebar = 'hide' }) => {
 
+    const isMaintenance = process.env.REACT_APP_MAINTENANCE_MODE === "true" || false;
+
+
     const [username, setUsername] = useState(localStorage.getItem('user_name'));
     const [userid, setUserid] = useState(localStorage.getItem('user_id'));
 
@@ -90,22 +93,42 @@ const Sidebar = ({ openSidebar = 'hide' }) => {
                             </Link>
                         </div>
                         <div className={device == "mobile" ? `sidebar_two mob-mt-40 ${openSidebar}` : 'sidebar_two show'}>
+                            {(isMaintenance) ?
+                                <>
+                                    <br></br><br></br><br></br>
+                                    <h3 className='text-center'>
+                                        We Are Coming Soon!
+                                    </h3><br></br><br></br>
+                                    <h4>
+                                        Our webiste is opening soon.<br></br>
+                                    </h4><br></br><br></br><br></br>
+                                    <Link className='text-center' to="/contact"><h2 className='text-center blue'>CONTACT US</h2></Link>
+                                </> : ""
+                            }
                             <ul >
-                                <div data-aos='fade-left'><Link to="/">HOME</Link></div>
-                                <div data-aos='fade-left'><Link to="/galary">GALLERY</Link></div>
-                                <div data-aos='fade-left'><Link to="/reservation">RESERVATION</Link></div>
-                                <div data-aos='fade-left'><Link to="/cake">CAKE</Link></div>
-                                <div data-aos='fade-left'><Link to="/menu">MENU</Link></div>
-                                <div data-aos='fade-left'><Link to="/contact">CONTACT US</Link></div>
-                                <div data-aos='fade-left' style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <Link to="/order" href="#"><FontAwesomeIcon icon={faCartShopping} /></Link>
-                                    {(userid) ?
-                                        <>
-                                            <h5 className='green'>Hi, {username}</h5> <Link to="/" onClick={logout}>Logout</Link>
-                                        </> :
-                                        <Link to="/login">LOGIN</Link>
-                                    }
-                                </div>
+                                {(isMaintenance) ? "" :
+                                    <>
+                                        <div data-aos='fade-left'><Link to="/">HOME</Link></div>
+                                        <div data-aos='fade-left'><Link to="/galary">GALLERY</Link></div>
+                                        <div data-aos='fade-left'><Link to="/reservation">RESERVATION</Link></div>
+                                        <div data-aos='fade-left'><Link to="/cake">CAKE</Link></div>
+                                        <div data-aos='fade-left'><Link to="/menu">MENU</Link></div>
+                                        <div data-aos='fade-left'><Link to="/contact">CONTACT US</Link></div>
+
+
+                                        <div data-aos='fade-left' style={{ display: 'flex', justifyContent: 'space-between' }}>
+
+                                            <Link to="/order" href="#"><FontAwesomeIcon icon={faCartShopping} /></Link>
+                                            {(userid) ?
+                                                <>
+                                                    <h5 className='green'>Hi, {username}</h5> <Link to="/" onClick={logout}>Logout</Link>
+                                                </> :
+                                                <Link to="/login">LOGIN</Link>
+                                            }
+                                        </div>
+                                    </>
+
+                                }
                             </ul>
                         </div>
                         <div className={device == "mobile" ? `mob-sidebar_three mob-mt-20 mob-ms-20 ${openSidebar}` : 'sidebar_three'}>

@@ -50,7 +50,7 @@ const Galary = () => {
                                 <Sidebar />
                             </div>
                             <div className='col-lg-9 galary_row1_1'>
-                                <h1>GALARY</h1>
+                                <h1>GALLERY</h1>
 
                             </div>
 
