@@ -27,6 +27,7 @@ const CltCart = () => {
     const [isUpdated, setIsUpdated] = useState(false);  // To trigger animation
 
 
+
     const navigate = useNavigate();
     // console.log(user_id);
     useEffect(() => {
@@ -78,6 +79,7 @@ const CltCart = () => {
     // status
     const empStatus = { msg: "", type: "success", toggle: "close" }
     const [status, setStatus] = useState(empStatus);
+    const [clickSubmit, setClickSubmit] = useState(false);
 
 
     // Slick
@@ -548,22 +550,26 @@ const CltCart = () => {
 
 
         try {
+            setClickSubmit(true);
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/website/reservation/booking/create`, formData)
             console.log("RESPONSE :", res.data);
             if (res?.data?.Response?.Success == '1') {
                 let results = res?.data?.Response?.RazorpayOrder;
                 results.booking_id = res?.data?.Response?.ReservationId;
                 results.user = res?.data?.Response?.user[0];
+                results.booking_info = subcatres.sub_tilte;
                 results.totalPrice = total;
                 setStatus({ msg: "Booked Successfully!", type: "success", toggle: "open" });
                 navigate('/checkout', { state: results });
                 // window.location.href = '/reservation';
             } else {
                 setStatus({ msg: res?.data?.Response?.Message, type: "error", toggle: "open" })
+                setClickSubmit(false);
                 console.log('Execution Error');
             }
         } catch (err) {
             setStatus({ msg: "Error in Booking. Try Again", type: "error", toggle: "open" })
+            setClickSubmit(false);
             console.log('Fetching Error:', err);
         }
     }
@@ -613,6 +619,10 @@ const CltCart = () => {
                             <Navbar />
                         </div>
                         <div className='row CLT_cart_row1 mob-mt-90'>
+                            {(clickSubmit) ?
+                                <div className="loading-container">
+                                    <i className="fa fa-spinner fa-spin custom-spinner"></i>
+                                </div> : ""}
 
                             <div className='col-lg-12'>
                                 <h6 className='text-center'
@@ -932,7 +942,12 @@ const CltCart = () => {
                                         <button type='button' className='btn home_action2_btn' onClick={handleSubmit} >Book NOW</button>
                                     </div> */}
                                     <div className='p-3 mt-4' style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                        <button type='button' className='btn home_action2_btn ' onClick={handleSubmit}>Book NOW for <span className={`fs-24 green ${isUpdated ? 'price-updated' : ''}`}>₹{total} </span></button>
+                                        <button type='button'
+                                            disabled={(clickSubmit) ? true : false}
+                                            className='btn home_action2_btn '
+                                            onClick={handleSubmit}>
+                                            {(clickSubmit) ? <i class="fa fa-spinner fa-spin orangered"></i> : ""}&nbsp;Book NOW for <span className={`fs-24 green ${isUpdated ? 'price-updated' : ''}`}>₹{total} </span>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

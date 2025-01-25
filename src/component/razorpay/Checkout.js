@@ -27,18 +27,18 @@ export default function Checkout() {
 
     const location = useLocation();
 
-    const { id, booking_id, user, totalPrice } = location.state || {}; // Access the passed data
+    const { id, booking_id, booking_info, user, totalPrice } = location.state || {}; // Access the passed data
 
     console.log(id);
     const handlePayment = async (params) => {
 
         const options = {
-            key: "rzp_test_OUh154ABfed3y0", // Enter the Key ID generated from the Dashboard
+            key: process.env.REACT_APP_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
             // DDhNhOXW3EZ5MKexGupUdz9j
             amount: totalPrice, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency: "INR",
-            name: "Hifive Cafe",
-            description: "Test Transaction",
+            name: process.env.REACT_APP_CAFE_NAME,
+            description: `${booking_info} Booking`,
             // image: "",
             order_id: id, //This is a sample Order ID. Pass the `id` obtained in the response of createOrder().
             handler: function (response) {

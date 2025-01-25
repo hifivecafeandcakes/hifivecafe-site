@@ -54,11 +54,11 @@
       }
 
       .mob-fs-14 {
-        font-size: 14px;
+          font-size: 14px;
       }
 
       .mob-fs-18 {
-        font-size: 18px;
+          font-size: 18px;
       }
 
 
@@ -196,8 +196,8 @@
       }
 
       .web-mt-150 {
-        margin-top: 150px;
-    }
+          margin-top: 150px;
+      }
 
   }
 
@@ -414,3 +414,20 @@
   .imgbr {
       margin-top: -20px;
   }
+
+
+  .loading-container {
+      z-index: 10000;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+  }
+
+
+  .custom-spinner {
+    font-size: 100px; /* Adjust size as needed */
+    color: orangered; /* Optional: Cake shop theme color */
+  }
+  
