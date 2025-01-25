@@ -35,7 +35,7 @@ export default function Checkout() {
         const options = {
             key: process.env.REACT_APP_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
             // DDhNhOXW3EZ5MKexGupUdz9j
-            amount: (process.env.REACT_APP_TEST_MODE) ? 1 : totalPrice, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            amount: process.env.REACT_APP_MAINTENANCE_MODE === "true" ? 1 : totalPrice, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency: "INR",
             name: process.env.REACT_APP_CAFE_NAME,
             description: `${booking_info} Booking`,
