@@ -112,7 +112,7 @@ const SubCatList = () => {
                                         res_scat_list?.map((item, i) => (
                                             <div className='col-lg-4  mb-4 sub_cat_2' key={i}>
                                                 <Link onClick={() => route_cat(item.reser_sub_id)}
-                                                    to={RedirectURL}>
+                                                    to={`${RedirectURL}/${res_id}/${res_cat_id}/${item.reser_sub_id}`}>
                                                     <img className='img' src={item.sub_img} alt={`Image ${i}`} /> </Link>
                                                 <h3 className='text-center orange' style={{ marginTop: '2vh' }}>{item.sub_tilte}</h3>
                                                 <h4 className='text-center green'>{item.sub_cat_price_range}</h4>

@@ -121,11 +121,11 @@ const Login = () => {
             localStorage.setItem("res_scat_id", res_scat_id);
             localStorage.setItem("res_code", res_code);
             if (res_code == "CL") {
-              navigate('/clt_cart');
+              navigate(`/clt_cart/${res_id}/${res_cat_id}/${res_scat_id}`);
             } else if (res_code == "BP") {
-              navigate('/btb_cart');
+              navigate(`/btb_cart/${res_id}/${res_cat_id}/${res_scat_id}`);
             } else {
-              navigate('/tb_cart');
+              navigate(`/tb_cart/${res_id}/${res_cat_id}/${res_scat_id}`);
             }
           } else {
             navigate(`/`);
@@ -193,11 +193,11 @@ const Login = () => {
             localStorage.setItem("res_scat_id", res_scat_id);
             localStorage.setItem("res_code", res_code);
             if (res_code == "CL") {
-              navigate('/clt_cart');
+              navigate(`/clt_cart/${res_id}/${res_cat_id}/${res_scat_id}`);
             } else if (res_code == "BP") {
-              navigate('/btb_cart');
+              navigate(`/btb_cart/${res_id}/${res_cat_id}/${res_scat_id}`);
             } else {
-              navigate('/tb_cart');
+              navigate(`/tb_cart/${res_id}/${res_cat_id}/${res_scat_id}`);
             }
           } else {
             navigate(`/`);

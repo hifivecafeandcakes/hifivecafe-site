@@ -17,6 +17,20 @@ export default function Checkout() {
     const res_cat_id = localStorage.getItem('res_cat_id');
     const res_scat_id = localStorage.getItem('res_scat_id');
 
+    const res_code = localStorage.getItem('res_code');
+
+
+    let RedirectURL = '/clt_cart';
+    if (res_code == "CL") {
+        RedirectURL = '/clt_cart';
+    }
+    else if (res_code == "BP") {
+        RedirectURL = '/btb_cart';
+    }
+    else {
+        RedirectURL = '/tb_cart';
+    }
+
     // status
     const empStatus = { msg: "", type: "success", toggle: "close" }
     const [status, setStatus] = useState(empStatus);
@@ -158,7 +172,7 @@ export default function Checkout() {
                         </div>
                         <div className='col-lg-9  home_col_2'>
                             <Status msg={status.msg} type={status.type} toggle={status.toggle} onClose={() => setStatus(empStatus)} />
-                            <Link onClick={() => route_cat(res_scat_id)} to="/clt_cart" className="sub-cat-part">
+                            <Link onClick={() => route_cat(res_scat_id)} to={`${RedirectURL}/${res_id}/${res_cat_id}/${res_scat_id}`} className="sub-cat-part">
                                 Go Back to Booking Page
                             </Link>
                         </div>

@@ -16,13 +16,17 @@ import {
 } from '../common/Birthday';
 import Footer from './Footer.js';
 import validator from '../validate.ts';
+import { useParams } from "react-router-dom";
 
 
 const BtbCart = () => {
     const user_id = localStorage.getItem("user_id")
-    const res_id = localStorage.getItem('res_id');
-    const res_cat_id = localStorage.getItem('res_cat_id');
-    const res_scat_id = localStorage.getItem('res_scat_id');
+    const { res_id: paramResId, res_cat_id: paramResCatId, res_scat_id: paramResScatId } = useParams(); // Get IDs from URL
+    
+        // State to store final values (from params or localStorage)
+        const [res_id, setResId] = useState(localStorage.getItem("res_id") || paramResId);
+        const [res_cat_id, setResCatId] = useState(localStorage.getItem("res_cat_id") || paramResCatId);
+        const [res_scat_id, setResScatId] = useState(localStorage.getItem("res_scat_id") || paramResScatId);
 
     const res_code = localStorage.getItem('res_code');
     const res_cat_code = localStorage.getItem('res_cat_code');
