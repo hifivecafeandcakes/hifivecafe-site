@@ -4,15 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
-
-
+import TrackPageView from './component/TrackPageView';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+const isTestMode = process.env.REACT_APP_TEST_MODE === "true" || false; 
 
 root.render(
   // <React.StrictMode>
   <BrowserRouter>
+    {(isTestMode) ? "" : <TrackPageView />}
     <App />
   </BrowserRouter>
   // </React.StrictMode>

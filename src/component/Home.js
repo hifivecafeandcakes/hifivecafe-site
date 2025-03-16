@@ -60,8 +60,6 @@ import { Link } from 'react-router-dom';
 // import XIcon from '@mui/icons-material/X';
 // import { IconButton } from '@mui/material';
 
-
-
 const Home = () => {
 
     const backendURL = process.env.REACT_APP_API_URL;
@@ -89,6 +87,7 @@ const Home = () => {
             localStorage.setItem("device", "desktop")
         }
     };
+
 
     useEffect(() => {
         // Call once on mount to set the initial device type

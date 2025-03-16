@@ -87,6 +87,7 @@ export default function Checkout() {
         const rzp1 = new Razorpay(options);
 
         rzp1.on("payment.failed", function (response) {
+            console.log(response);
             console.log(response.error.code);
             console.log(response.error.description);
             console.log(response.error.source);
@@ -118,6 +119,7 @@ export default function Checkout() {
                 formData.append('razorpay_payment_id', response.razorpay_payment_id);
                 formData.append('razorpay_signature', response.razorpay_signature);
             } else {
+                formData.append('razorpay_order_id', id);
                 formData.append('razorpay_error_code', response.error.code);
                 formData.append('razorpay_error_description', response.error.description);
                 formData.append('razorpay_error_source', response.error.source);

@@ -34,10 +34,10 @@ import TermsAndConditions from "./component/TermsAndConditions";
 import PrivacyPolicy from "./component/PrivacyPolicy";
 import RefundPolicy from "./component/RefundPolicy";
 import ShippingPolicy from "./component/ShippingPolicy";
+import ReactGA from "react-ga4";
 
 
 function App() {
-
   const isMaintenance = process.env.REACT_APP_MAINTENANCE_MODE === "true" || false;  //true means maintenance mode will on
   console.log("isMaintenance");
   console.log(isMaintenance);
@@ -45,6 +45,7 @@ function App() {
     return isMaintenance ? <Navigate to="/" /> : children;
   };
 
+  ReactGA.initialize(process.env.REACT_APP_GA_MID);
 
   return (
     <>
