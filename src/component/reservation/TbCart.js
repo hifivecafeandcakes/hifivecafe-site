@@ -266,9 +266,9 @@ const TbCart = () => {
                             <div style={{ display: "contents" }}>
                                 <div><Link to="/reservation" className='breadcrums'>Reservation</Link></div>
                                 <div className='grey'>&nbsp;-&nbsp;</div>
-                                <div><Link to="/sub_cat" className='breadcrums'>{subcatres.reser_main_title}</Link></div>
+                                <div><Link to={`/sub_cat/${res_id}`} className='breadcrums'>{subcatres.reser_main_title}</Link></div>
                                 <div className='grey'>&nbsp;-&nbsp;</div>
-                                <div><Link to="/sub_cat_list" className='breadcrums'>{subcatres.cat_title}</Link></div>
+                                <div><Link to={`/sub_cat_list/${res_id}/${res_cat_id}`} className='breadcrums'>{subcatres.cat_title}</Link></div>
                                 <div className='grey'>&nbsp;-&nbsp;</div>
                                 <div className='breadcrums-active'> {subcatres.sub_tilte}</div>
                             </div>

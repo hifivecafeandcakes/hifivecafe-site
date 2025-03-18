@@ -29,7 +29,7 @@ const Cart = () => {
 
 
     useEffect(() => {
-        if (status && status!=null ) {
+        if (status && status != null) {
             setStatus1(status);
         }
     }, [])
@@ -93,7 +93,7 @@ const Cart = () => {
                                                     <>
                                                         <div key={`cart` + index} className="row cart-row cart-border ">
                                                             <div className="col-sm-3">
-                                                                <Link to="/sub_cat_list" onClick={() => route_cat(data.reser_id, data.reser_cat_id)} className="sub-cat-part">
+                                                                <Link to={`/sub_cat_list/${data.reser_id}/${data.reser_cat_id}`} onClick={() => route_cat(data.reser_id, data.reser_cat_id)} className="sub-cat-part">
                                                                     <div className="text-center">
                                                                         <img src={data.sub_img} className="sub-img" alt={data.sub_tilte}></img>
                                                                         <div className="fs-12">{data.reser_main_title}&nbsp;-&nbsp;{data.cat_title}</div>

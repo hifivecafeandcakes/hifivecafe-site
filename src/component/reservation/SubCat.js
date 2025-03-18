@@ -5,12 +5,16 @@ import '../../theme/css-component/sub_cat.css'
 import Sidebar from '../Sidebar';
 import Status from './Status';
 import axios from 'axios'
+import { useParams } from 'react-router-dom';
 
 import { Link, useLocation } from 'react-router-dom';
 
 const SubCat = () => {
 
-    const res_id = localStorage.getItem('res_id');
+    const { res_id: paramResId } = useParams(); // Get IDs from URL
+
+    const [res_id, setResId] = useState(localStorage.getItem("res_id") || paramResId);
+
     const res_code = localStorage.getItem('res_code');
     // =============================================catlist
     const [resCatList, setResCatList] = useState([])
@@ -112,7 +116,7 @@ const SubCat = () => {
                                     {
                                         resCatList?.map((item, i) => (
                                             <div className='col-lg-4 mb-4 sub_cat_2' key={i}>
-                                                <Link to="/sub_cat_list"
+                                                <Link to={`/sub_cat_list/${res_id}/${item.cat_id}`}
                                                     onClick={() => { route_cat(item.cat_id); route_code(item.reser_cat_code) }}>
                                                     <img className='img' src={item.cat_image} alt={`Image ${i}`} />
                                                 </Link>

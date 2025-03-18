@@ -159,7 +159,7 @@ const Order = () => {
                                                             <div className={data.reser_code === "BP" ? "col-lg-2 text-center" : "col-lg-2 text-center"}>
                                                                 <div className="mt-5 mob-mt-20">
                                                                     <img src={data.sub_img} className="sub-img" alt={data.sub_tilte}></img>
-                                                                    <Link to="/sub_cat_list" onClick={() => { route_cat(data.reser_id, data.reser_cat_id); route_code(data.reser_code); }} className="sub-cat-part text-center">
+                                                                    <Link to={`/sub_cat_list/${data.reser_id}/${data.reser_cat_id}`} onClick={() => { route_cat(data.reser_id, data.reser_cat_id); route_code(data.reser_code); }} className="sub-cat-part text-center">
                                                                         <div className="">{data.reser_main_title}&nbsp;-&nbsp;{data.cat_title}</div>
                                                                         <h6 className="white">{data.sub_tilte}
                                                                             {(data.reser_code == "TB") ? "" :

@@ -4,13 +4,18 @@ import Navbar from "../Navbar";
 import '../../theme/css-component/sub_cat.css'
 import Sidebar from '../Sidebar';
 import axios from 'axios'
+import { useParams } from 'react-router-dom';
 
 import { Link } from 'react-router-dom';
 
 const SubCatList = () => {
 
-    const res_cat_id = localStorage.getItem('res_cat_id');
-    const res_id = localStorage.getItem('res_id');
+    const { res_id: paramResId, res_cat_id: paramResCatId} = useParams(); // Get IDs from URL
+
+    // State to store final values (from params or localStorage)
+    const [res_id, setResId] = useState(localStorage.getItem("res_id") || paramResId);
+    const [res_cat_id, setResCatId] = useState(localStorage.getItem("res_cat_id") || paramResCatId);
+
     const res_code = localStorage.getItem('res_code');
     const res_cat_code = localStorage.getItem('res_cat_code');
 
@@ -102,7 +107,7 @@ const SubCatList = () => {
                                     <div style={{ display: "contents" }}>
                                         <div><Link to="/reservation" className='breadcrums'>Reservation</Link></div>
                                         <div className='grey'>&nbsp;-&nbsp;</div>
-                                        <div><Link to="/sub_cat" className='breadcrums'>{title}</Link></div>
+                                        <div><Link to={`/sub_cat/${res_id}`} className='breadcrums'>{title}</Link></div>
                                         <div className='grey'>&nbsp;-&nbsp;</div>
                                         <div className='breadcrums-active'> {sub_title}</div>
                                     </div>

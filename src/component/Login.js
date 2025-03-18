@@ -26,7 +26,7 @@ const Login = () => {
   const handleGoBack = () => {
     setClickBack(true);
     if (res_id && res_cat_id && res_scat_id) {
-      navigate('/sub_cat_list');
+      navigate(`/sub_cat_list/${res_id}/${res_cat_id}`);
     } else {
       navigate(-1);
     } // -1 tells the browser to go back one step

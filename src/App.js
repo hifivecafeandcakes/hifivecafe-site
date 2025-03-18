@@ -62,8 +62,11 @@ function App() {
         <Route path="/cake" element={<ProtectedRoute><Cake /></ProtectedRoute>} />
         <Route path="/galary_list" element={<ProtectedRoute><GalaryList /></ProtectedRoute>} />
         <Route path="/reservation" element={<ProtectedRoute><Reservation /></ProtectedRoute>} />
-        <Route path="/sub_cat" element={<ProtectedRoute><SubCat /></ProtectedRoute>} />
-        <Route path="/sub_cat_list" element={<ProtectedRoute><SubCatList /></ProtectedRoute>} />
+        
+        <Route path="/sub_cat/:paramResId" element={<ProtectedRoute><SubCat /></ProtectedRoute>} />
+        
+        <Route path="/sub_cat_list/:paramResId/:paramResCatId" element={<ProtectedRoute><SubCatList /></ProtectedRoute>} />
+        
         <Route path="/clt_cart/:paramResId/:paramResCatId/:paramResScatId" element={<ProtectedRoute><CltCart /></ProtectedRoute>} />
         <Route path="/tb_cart/:paramResId/:paramResCatId/:paramResScatId" element={<ProtectedRoute><TbCart /></ProtectedRoute>} />
         <Route path="/btb_cart/:paramResId/:paramResCatId/:paramResScatId" element={<ProtectedRoute><BtbCart /></ProtectedRoute>} />

@@ -113,7 +113,7 @@ const Reservation = () => {
                                     <h4 className='pt-2'>{item.reser_main_title}</h4>
                                     <h5>{item.reser_title}</h5>
                                     {/* <button style={{ textAlign: 'center' }} className='home_action2_btn ' onClick={() => route_cat(res_list[0]?.reser_id)}>BOOK NOW</button> */}
-                                    <Link to="/sub_cat" style={{ textAlign: 'center' }} className='home_action2_btn '
+                                    <Link to={`/sub_cat/${item.reser_id}`} style={{ textAlign: 'center' }} className='home_action2_btn '
                                         onClick={() => { route_cat(item.reser_id); route_code(item.reser_code) }}>BOOK NOW</Link>
 
                                 </div>

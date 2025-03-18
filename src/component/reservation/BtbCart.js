@@ -22,11 +22,11 @@ import { useParams } from "react-router-dom";
 const BtbCart = () => {
     const user_id = localStorage.getItem("user_id")
     const { res_id: paramResId, res_cat_id: paramResCatId, res_scat_id: paramResScatId } = useParams(); // Get IDs from URL
-    
-        // State to store final values (from params or localStorage)
-        const [res_id, setResId] = useState(localStorage.getItem("res_id") || paramResId);
-        const [res_cat_id, setResCatId] = useState(localStorage.getItem("res_cat_id") || paramResCatId);
-        const [res_scat_id, setResScatId] = useState(localStorage.getItem("res_scat_id") || paramResScatId);
+
+    // State to store final values (from params or localStorage)
+    const [res_id, setResId] = useState(localStorage.getItem("res_id") || paramResId);
+    const [res_cat_id, setResCatId] = useState(localStorage.getItem("res_cat_id") || paramResCatId);
+    const [res_scat_id, setResScatId] = useState(localStorage.getItem("res_scat_id") || paramResScatId);
 
     const res_code = localStorage.getItem('res_code');
     const res_cat_code = localStorage.getItem('res_cat_code');
@@ -615,9 +615,9 @@ const BtbCart = () => {
                             <div style={{ display: "contents" }}>
                                 <div><Link to="/reservation" className='breadcrums'>Reservation</Link></div>
                                 <div className='grey'>&nbsp;-&nbsp;</div>
-                                <div><Link to="/sub_cat" className='breadcrums'>{subcatres.reser_main_title}</Link></div>
+                                <div><Link to={`/sub_cat/${res_id}`} className='breadcrums'>{subcatres.reser_main_title}</Link></div>
                                 <div className='grey'>&nbsp;-&nbsp;</div>
-                                <div><Link to="/sub_cat_list" className='breadcrums'>{subcatres.cat_title}</Link></div>
+                                <div><Link to={`/sub_cat_list/${res_id}/${res_cat_id}`} className='breadcrums'>{subcatres.cat_title}</Link></div>
                                 <div className='grey'>&nbsp;-&nbsp;</div>
                                 <div className='breadcrums-active'> {subcatres.sub_tilte}</div>
                             </div>
