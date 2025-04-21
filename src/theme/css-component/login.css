@@ -8,10 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('https://i.pinimg.com/originals/e1/2a/8e/e12a8ea15dc3cf40777ea8d7b01142d2.jpg');
+    background-image: url("../image/site/login.jpg");
     background-size: cover;
-
-
 }
 
 .loginbox {
