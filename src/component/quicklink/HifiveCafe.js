@@ -52,16 +52,24 @@ const HiFiveCafe = () => {
             </Helmet>
 
             <div className="white quicklink">
+                <Link to="/" class="home-link">
+                    Home
+                </Link>
+                <Link to="/contact" className="contact-link">Contact</Link>
 
                 <div className='row home_row_1'>
                     <div className='col-lg-12 home_col_2'>
-                        <div><img style={{ width: '100%', height: '90vh' }} className="responsive-image" src={(device == 'mobile') ? reservationMob1 : reservationWeb1} ></img></div>
+                        <div>
+                            <Link to="/reservation" className="btn quicklink_btn quicklink-btn">Reservation Page</Link>
+                            <img style={{ width: '100%', height: '90vh' }} className="responsive-image" src={(device == 'mobile') ? reservationMob1 : reservationWeb1} >
+                            </img>
+                        </div>
                     </div>
                 </div>
 
                 <h1 className="text-center mt-3">HiFive Cafe</h1>
                 <h5 className="mt-3 mb-5 text-center">
-                    Welcome to HiFive Cafe, where great food meets a healthy lifestyle! We are a continental restaurant in Coimbatore dedicated to serving nutritious, delicious, and freshly prepared dishes.
+                    Welcome to HiFive Cafe, where great food meets a healthy lifestyle!<br></br>We are a continental restaurant in Coimbatore dedicated to serving nutritious, delicious, and freshly prepared dishes.
                 </h5>
 
                 <div className="eachDiv">

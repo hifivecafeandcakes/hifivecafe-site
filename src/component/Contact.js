@@ -58,7 +58,7 @@ const Contact = () => {
                             alignItems: 'center', color: '#ffeeda'
                         }}>
                             <div className="pt-5">
-                                <h2 style={{ fontFamily: "'Dancing Script', cursive"}}>Other Events</h2><br></br>
+                                <h2 style={{ fontFamily: "'Dancing Script', cursive" }}>Other Events</h2><br></br>
                                 <h4 className="white">Wedding Event Hall</h4>
                                 <h4 className="white">Candle Light Dinner</h4>
                                 <h4 className="white">Book Team Lunch</h4>
@@ -77,13 +77,25 @@ const Contact = () => {
 
             {/* Copyright Footer */}
             <footer style={{ backgroundColor: 'black', padding: '20px 0', color: 'white', textAlign: 'center' }}>
-                <div className="d-flex justify-content-center" >
-                <Link to='/terms_condition'><h5 className="grey mob-fs-18 pe-3">Terms & Condition </h5></Link>
+                <div className="d-flex justify-content-center fs-20 pt-1" >
+                    <div>Quicklinks:&nbsp;&nbsp;&nbsp;</div>
+                    <Link to='/hifivecafe'><h5 className="hov-link fs-20 orange mob-fs-16 pe-3 pt-1">Hifive Cafe </h5></Link>
+                    <Link to='/hifivebirthday'><h5 className="hov-link fs-20 orange mob-fs-16 pe-3 pt-1">Hifive Birthday </h5></Link>
+                    <Link to='/hifivecandlelight'><h5 className="hov-link fs-20 orange mob-fs-16 pe-3 pt-1">Hifive Candle Light Dinner</h5></Link>
+                    <Link to='/hifivevalentines'><h5 className="hov-link fs-20 orange mob-fs-16 pe-3 pt-1">Hifive Valentine's Day</h5></Link>
+                    <Link to='/hifivebridetobe'><h5 className="hov-link fs-20 orange mob-fs-16 pe-3 pt-1">Hifive Bride-to-be Celebration</h5></Link>
+                    <Link to='/hifivecorporate'><h5 className="hov-link fs-20 orange mob-fs-16 pe-3 pt-1">Hifive Corporate Lunch & Dinner </h5></Link>
+                    <Link to='/hifiveanniversary'><h5 className="hov-link fs-20 orange mob-fs-16 pe-3 pt-1">Hifive Anniversary Dinner & Celebration </h5></Link>
+                </div>
+
+                <div className="d-flex justify-content-center pt-4" >
+                    <Link to='/terms_condition'><h5 className="grey mob-fs-18 pe-3">Terms & Condition </h5></Link>
                     <Link to='/privacy_policy'><h5 className="grey mob-fs-18 pe-3">Privacy Policy </h5></Link>
                     <Link to='/refund_policy'><h5 className="grey mob-fs-18 pe-3">Refund Policy </h5></Link>
                     <Link to='/shipping_policy'><h5 className="grey mob-fs-18 pe-3">Shipping Policy </h5></Link>
-
                 </div>
+
+
                 <p>&copy; {new Date().getFullYear()} {process.env.REACT_APP_CAFE_NAME}. All Rights Reserved.</p>
             </footer>
 

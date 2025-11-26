@@ -427,7 +427,12 @@
 
 
   .custom-spinner {
-    font-size: 100px; /* Adjust size as needed */
-    color: orangered; /* Optional: Cake shop theme color */
+      font-size: 100px;
+      /* Adjust size as needed */
+      color: orangered;
+      /* Optional: Cake shop theme color */
   }
-  
+
+  .hov-link:hover {
+      color: blue !important;
+  }

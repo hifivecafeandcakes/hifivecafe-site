@@ -152,8 +152,9 @@ const Sidebar = ({ openSidebar = 'hide' }) => {
                             {/* <IconButton style={{ color: 'white' }}>
                                 <XIcon />
                             </IconButton> */}
-
                         </div>
+                       
+
 
                     </div>
                 </div>

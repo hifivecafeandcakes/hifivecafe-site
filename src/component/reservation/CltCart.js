@@ -679,6 +679,7 @@ const CltCart = () => {
                                     <CustomSubSlider images={mainImages} />
                                     : ""}
                                 <h3 className='orange text-center'>CODE : {subcatres.sub_tilte}</h3>
+                                <h2 className='white text-center'>{subcatres.sub_cat_des}</h2>
                                 <h2 className='green text-center'>₹{price}</h2>
                             </div>
                             <div className="col-lg-6 CLT_cart_row2_2">

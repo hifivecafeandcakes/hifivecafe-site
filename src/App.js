@@ -36,6 +36,12 @@ import RefundPolicy from "./component/RefundPolicy";
 import ShippingPolicy from "./component/ShippingPolicy";
 import ReactGA from "react-ga4";
 import HiFiveCafe from "./component/quicklink/HifiveCafe";
+import HiFiveBirthday from "./component/quicklink/HiFiveBirthday";
+import HiFiveCandlelight from "./component/quicklink/HiFiveCandlelight";
+import HiFiveValentines from "./component/quicklink/HiFiveValentines";
+import HiFiveBrideToBe from "./component/quicklink/HiFiveBrideToBe";
+import HiFiveCorporate from "./component/quicklink/HiFiveCorporate";
+import HiFiveAnniversary from "./component/quicklink/HiFiveAnniversary";
 
 
 function App() {
@@ -87,6 +93,14 @@ function App() {
         <Route path="/shipping_policy" element={<ShippingPolicy />} />
 
         <Route path="/hifivecafe" element={<HiFiveCafe />} />
+        <Route path="/hifivebirthday" element={<HiFiveBirthday />} />
+        <Route path="/hifivecandlelight" element={<HiFiveCandlelight />} />
+        <Route path="/hifivevalentines" element={<HiFiveValentines />} />
+        <Route path="/hifivebridetobe" element={<HiFiveBrideToBe />} />
+        <Route path="/hifivecorporate" element={<HiFiveCorporate />} />
+        <Route path="/hifiveanniversary" element={<HiFiveAnniversary />} />
+        
+        
 
       </Routes>
 

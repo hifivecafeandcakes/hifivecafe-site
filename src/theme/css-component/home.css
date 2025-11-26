@@ -223,7 +223,7 @@ body::-webkit-scrollbar {
   height: 60vh;
   margin-top: 5%;
   color: black;
-  margin-bottom: 30vh;
+  /* margin-bottom: 30vh; */
 }
 
 .home_col1_3 div h1 {

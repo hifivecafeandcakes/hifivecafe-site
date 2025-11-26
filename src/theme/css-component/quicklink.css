@@ -22,6 +22,92 @@
     color: orange;
 }
 
+.quicklink_btn {
+    --color: orange;
+    padding: 0.8em 1.7em;
+    background-color: var(--color);
+    border-radius: .3em;
+    position: absolute;
+    overflow: hidden;
+    cursor: pointer;
+    /* transition: .5s; */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: bounce 0.6s ease;
+    font-weight: bold;
+
+    font-weight: 600;
+    font-size: 20px;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: white;
+    z-index: 1;
+    margin-bottom: 20px;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(30);
+    }
+
+    20% {
+        transform: translateY(-20px);
+    }
+
+    40% {
+        transform: translateY(0);
+    }
+
+    60% {
+        transform: translateY(50px);
+    }
+
+    80% {
+        transform: translateY(0);
+    }
+
+}
+
+
+.quicklink_btn::before,
+.quicklink_btn::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--color);
+    transition: 1s ease;
+}
+
+.quicklink_btn::before {
+    top: -1em;
+    left: -1em;
+}
+
+.quicklink_btn::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+}
+
+.quicklink_btn:hover::before,
+.quicklink_btn:hover::after {
+    height: 410px;
+    width: 410px;
+}
+
+.quicklink_btn:hover {
+    color: rgb(255, 255, 255);
+}
+
+.quicklink_btn:active {
+    filter: brightness(.8);
+}
+
 
 
 .quicklink ul li,
@@ -38,12 +124,14 @@
     font-family: "Abel", sans-serif;
 }
 
+
+/* desktop */
 @media(min-width:990px) {
-    .quicklink .fs-20{
+    .quicklink .fs-20 {
         font-size: 20px;
     }
 
-    .quicklink .eachDiv{
+    .quicklink .eachDiv {
         margin-top: 20px;
         margin-left: 20px;
         margin-bottom: 60px;
@@ -57,14 +145,25 @@
         color: orange;
         font-size: 36px;
     }
+
+    .quicklink_btn {
+        top: 600px !important;
+        left: 1200px !important;
+    }
+
 }
 
 
+/* mobile */
 @media(max-width:990px) {
     .quicklink {
         margin: 2px;
     }
 
+    .quicklink_btn {
+        top: 700px !important;
+        left: 100px !important;
+    }
 
     .quicklink h2 {
         font-family: "Bebas Neue", sans-serif;
@@ -73,11 +172,76 @@
         font-size: 32px;
     }
 
-    .quicklink .eachDiv{
+    .quicklink .eachDiv {
         margin-top: 50px;
         margin-left: 5px;
         margin-right: 5px;
         font-size: 16px;
         text-align: center;
+    }
+
+    .home-link {
+        left: 10px !important;
+    }
+
+    .contact-link {
+        top: 10px !important;
+        font-size: 16px !important;
+        padding: 6px 10px !important;
+        left: 80px !important;
+    }
+}
+
+
+.home-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 18px;
+    text-decoration: none;
+    background-color: orange;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 999;
+    text-transform: uppercase;
+
+    transition: background-color 0.3s ease;
+}
+
+.home-link:hover {
+    background-color: black;
+}
+
+
+.contact-link {
+    position: fixed;
+    top: 20px;
+    left: 100px;
+    text-decoration: none;
+    background-color: orange;
+    color: white;
+    font-size: 18px;
+    padding: 8px 14px;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 999;
+    text-transform: uppercase;
+
+    transition: background-color 0.3s ease;
+}
+
+.contact-link:hover {
+    background-color: black;
+}
+
+/* Responsive: Smaller size for mobile */
+@media (max-width: 600px) {
+    .home-link {
+        font-size: 16px;
+        padding: 6px 12px;
+        top: 10px;
+        left: 10px;
     }
 }
